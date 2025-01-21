@@ -11,13 +11,27 @@ p {
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #816b5c;
+}
+
 #header {
-  background-color: rgb(154, 154, 154);
+  background-color: #fff;
+  height: 14vh;
 }
 
 #header .logo {
   width: 226px;
-  padding: 15px 0;
+  padding: 20px 0;
   /* display: inline; */
 }
 
@@ -28,7 +42,7 @@ p {
 
 .navbar .menu {
   display: inline;
-  font-size: 25px;
+  font-size: 21px;
 }
 
 .navbar .menu a {
@@ -36,26 +50,128 @@ p {
   color: #000000;
   font-family: 'Outfit', serif;
   font-optical-sizing: auto;
-  font-weight: 500;
+  font-weight: 600;
   font-style: normal;
-  padding: 30px 25px;
+  padding: 37px 12px;
   display: inline-block;
+  letter-spacing: 2.5px;
 }
 
-.navbar #icon1 {
+.navbar .menu a:hover {
+  color: #816b5c;
+}
+
+.navbar .last {
+  padding-right: 26vh;
+}
+
+.navbar .icon {
   float: right;
   display: inline;
-  font-size: 50px;
-  padding: 20px 20px;
+  font-size: 20px;
+  padding: 38px 10px;
 }
 
-.navbar #icon1 a {
+.navbar .icon a {
   color: #000;
   display: inline;
   text-decoration: none;
 }
 
+.navbar .icon a:hover {
+  color: #816b5c;
+}
+
 .container {
   width: 80%;
   margin: auto;
+}
+
+#home {
+  height: 90vh;
+  background-color: #d2c8bc;
+}
+
+#home #headline {
+  font-family: 'Outfit', serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 2px;
+  text-align: center;
+  font-size: 95px;
+  padding-top: 110px;
+}
+
+#headline #rehome {
+  color: #946d43;
+}
+
+#headline #adopt {
+  color: #b2937e;
+}
+
+#headline #love {
+  color: #c1ab89;
+}
+
+#dog {
+  width: 320px;
+  padding-left: 200px;
+  display: block;
+  margin-bottom: -4px;
+}
+
+.button {
+  display: inline-block;
+  height: 90px;
+  width: 400px;
+  border-radius: 7px;
+}
+
+.adopt {
+  margin-left: 140px;
+  background-color: #ac7e4d;
+}
+
+.adopt:hover {
+  background-color: #9f764a;
+  cursor: pointer;
+}
+
+.rehome {
+  margin-left: 140px;
+  background-color: #c19c6c;
+}
+
+.rehome:hover {
+  background-color: #9f764a;
+  cursor: pointer;
+}
+
+.button i {
+  color: rgba(255, 255, 255, 0.475);
+  padding-top: 22px;
+  padding-left: 20px;
+}
+
+.adopt .intext {
+  padding-right: 30px;
+  padding-top: 32px;
+}
+
+.rehome .intext {
+  padding-right: 13px;
+  padding-top: 32px;
+}
+
+.button .intext {
+  font-family: 'Outfit', serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 2px;
+  color: #fff;
+  font-size: 25px;
+  float: right;
 }

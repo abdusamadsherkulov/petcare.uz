@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <title>Petcare.uz</title>
+    <!-- Icons -->
     <script
       src="https://kit.fontawesome.com/56fa1ef7a3.js"
       crossorigin="anonymous"
@@ -14,7 +15,15 @@
   <body>
     <div id="header">
       <div class="container">
-        <img class="logo" src="pics\Logo.png" alt="logo" />
+        <img class="logo" src="pics\petcare_logo.png" alt="logo" />
+        <!-- <div class="inner-width">
+          <a href="#" class="logo"></a>
+          <button class="menu-toggler">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div> -->
         <ul class="navbar">
           <li class="menu">
             <a href="#">Home</a>
@@ -28,16 +37,40 @@
           <li class="menu">
             <a href="#">Services</a>
           </li>
-          <li class="menu">
+          <li class="menu last">
             <a href="#">Contact</a>
           </li>
-          <li id="icon1">
+          <li class="icon">
+            <a href="#">
+              <i class="fa fa-user"></i>
+            </a>
+          </li>
+          <li class="icon">
             <a href="#">
               <i class="fa fa-search"></i>
-              <i class="fa-solid fa-magnifying-glass"></i>
             </a>
           </li>
         </ul>
+      </div>
+    </div>
+
+    <div id="home">
+      <div class="container">
+        <h1 id="headline">
+          <span id="rehome">Rehome,</span>
+          <span id="adopt">Adopt,</span>
+          <span id="love">Love</span>
+        </h1>
+        <img id="dog" src="pics\dog.png" alt="dog" />
+        <a class="button adopt">
+          <i class="fa fa-search fa-3x"></i>
+
+          <h1 class="intext">I want to adopt a pet</h1>
+        </a>
+        <a class="button rehome">
+          <i class="fa fa-home fa-3x"></i>
+          <h1 class="intext">I want to rehome a pet</h1>
+        </a>
       </div>
     </div>
   </body>
