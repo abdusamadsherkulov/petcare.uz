@@ -11,6 +11,13 @@ p {
   padding: 0;
 }
 
+h1 {
+  font-family: 'Outfit', serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  letter-spacing: 2px;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -89,7 +96,7 @@ html {
 
 #home {
   height: 90vh;
-  background-color: #d2c8bc;
+  background-image: linear-gradient(#d2c8bc 70%, #f5efeb);
 }
 
 #home #headline {
@@ -166,12 +173,32 @@ html {
 }
 
 .button .intext {
-  font-family: 'Outfit', serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-  letter-spacing: 2px;
   color: #fff;
   font-size: 25px;
   float: right;
+}
+
+#cat {
+  width: 100px;
+  position: absolute;
+  right: 0;
+  top: 72%;
+}
+
+#about {
+  background-image: linear-gradient(#f5efeb 35%, #f8e2c8);
+  height: 150vh;
+}
+
+.mini-headline {
+  text-align: center;
+  font-size: 50px;
+  color: #634e3f;
+  padding-top: 40px;
+}
+
+#line {
+  width: 80%;
+  margin: 70px auto;
+  display: block;
 }
