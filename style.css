@@ -33,12 +33,12 @@ html {
   background-color: #816b5c;
 }
 
-#header {
+.header {
   background-color: #fff;
   height: 14vh;
 }
 
-#header .logo {
+.header .logo {
   width: 226px;
   padding: 20px 0;
   /* display: inline; */
@@ -71,14 +71,14 @@ html {
 }
 
 .navbar .last {
-  padding-right: 26vh;
+  padding-right: 30vh;
 }
 
 .navbar .icon {
   float: right;
   display: inline;
   font-size: 20px;
-  padding: 38px 10px;
+  padding: 40px 10px;
 }
 
 .navbar .icon a {
@@ -266,7 +266,7 @@ html {
   background-color: #d2c8bc;
   box-sizing: border-box;
   border-radius: 50px;
-  padding: 8px;
+  padding: 10px;
   width: 120px;
   font-size: 20px;
   text-align: center;
@@ -282,5 +282,12 @@ html {
   color: #ffffff;
   background-color: #997863;
   cursor: pointer;
-  box-shadow: 5px 5px 10px 5px #926f496a;
+  box-shadow: 5px 5px 10px 5px #926f4940;
+}
+
+.buttonpet:active {
+  color: #ffffff;
+  background-color: #997863;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px 5px #926f4940;
 }
