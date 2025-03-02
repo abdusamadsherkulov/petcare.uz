@@ -87,7 +87,7 @@ a {
   padding-top: 5px;
   padding-right: 4px;
   padding-bottom: 2px; */
-  font-size: 16px;
+  font-size: 18px;
   color: rgb(105, 81, 49);
 }
 
@@ -213,7 +213,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
-    font-size: 16px;
+    font-size: 18px;
     font-family: 'Outfit', serif;
     font-weight: 600;
   }
