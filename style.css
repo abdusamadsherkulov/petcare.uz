@@ -41,16 +41,16 @@
   color: var(--text-light);
 }
 
-.logo {
-  /* font-size: 1.5rem; */
-  /* font-weight: 600; */
-  /* font-family: var(--header-font); */
-  width: 50%;
-}
+/* .logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: var(--header-font);
+  width: 100%;
+} */
 
 img {
   display: inline-block;
-  width: 20%;
+  width: 23%;
 }
 
 a {
