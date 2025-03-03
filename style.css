@@ -1,5 +1,7 @@
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=League+Spartan:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 :root {
   --primary-color: #685341;
@@ -21,7 +23,7 @@
 
 .section__container {
   /* max-width: var(--max-width); */
-  width: 1920px;
+  width: 100%;
   margin: auto;
   /* padding: 5rem 1rem; */
 }
@@ -43,7 +45,7 @@
   /* font-size: 1.5rem; */
   /* font-weight: 600; */
   /* font-family: var(--header-font); */
-  width: 600px;
+  width: 50%;
 }
 
 img {
@@ -123,7 +125,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #97784f;
+  background-color: #8a673ab7;
 }
 
 /* .nav__logo .logo {
@@ -132,7 +134,7 @@ nav {
 
 .nav__menu__btn {
   font-size: 1.5rem;
-  color: #816b5c;
+  color: #502b0f;
   cursor: pointer;
 }
 
@@ -150,7 +152,7 @@ nav {
   background-color: var(--white);
   transition: 0.5s;
   z-index: -1;
-  transform: translateY(-100%);
+  transform: translateY(-110%);
 }
 
 .nav__links.open {
@@ -159,7 +161,7 @@ nav {
 
 .nav__links a {
   font-weight: 500;
-  color: var(--white);
+  color: var(--text-dark);
 }
 
 .nav__search {
@@ -169,6 +171,55 @@ nav {
 .header__container {
   display: grid;
   overflow: hidden;
+}
+
+/* Language preferences */
+.hidden {
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+
+  background-color: white;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  font-family: 'Nunito', serif;
+}
+
+.modal h1 {
+  font-size: 25px;
+  text-align: center;
+}
+
+.modal ul li {
+  list-style-type: none;
+  text-align: center;
+  background-color: #97784f;
+  width: 6rem;
+  padding: 0.4rem;
+  margin: 0.6rem auto;
+  border-radius: 5px;
+}
+
+.modal a {
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
 }
 
 .header__page {

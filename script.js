@@ -21,3 +21,14 @@ const languages = {
     uzbek: "O'zbekcha",
   },
 };
+
+// Function to change language
+function changeLanguage(lang) {
+  // Update content based on selected language
+  document.getElementById('welcome').textContent = translations[lang].welcome;
+  document.getElementById('description').textContent =
+    translations[lang].description;
+
+  // Save the language preference
+  localStorage.setItem('lang', lang);
+}
