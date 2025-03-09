@@ -43,7 +43,8 @@
 
 .logo {
   display: inline-block;
-  width: 30%;
+  width: 190px;
+  /* width: 30%; */
   padding-top: 0.9rem;
 }
 
@@ -145,7 +146,7 @@ nav {
 
 .nav__links {
   position: absolute;
-  top: 57px;
+  top: 75px;
   left: 0;
   width: 100%;
   padding: 3rem 0 2rem 0;
@@ -276,19 +277,24 @@ nav {
   margin: 1rem;
 }
 
-.modal ul li a {
-  display: flex;
+.modal ul li button {
+  display: inline-block;
   color: var(--text-dark);
   /* background-color: var(--text-light); */
+  font-size: 1rem;
   padding: 0.7rem;
-  margin: 0;
+  margin: auto;
+  vertical-align: middle;
   width: 7rem;
+  border-radius: 5px;
+  border: rgba(0, 0, 0, 0);
 }
 
-.modal ul li a:hover {
+.modal ul li button:hover {
   background-color: var(--white);
   color: var(--text-light);
-  border-radius: 0.2rem;
+  cursor: pointer;
+  /* border-radius: 0.2rem; */
 }
 
 .overlay {
@@ -321,7 +327,7 @@ nav {
 
 .header__content h1 {
   margin-bottom: 1rem;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 600;
   font-family: var(--header-font);
   color: var(--primary-color);

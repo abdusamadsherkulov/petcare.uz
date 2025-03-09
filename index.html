@@ -9,6 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="pics/paw.png" />
     <title>petcare.uz</title>
   </head>
   <body>
@@ -24,10 +25,24 @@
         </div>
       </div>
       <ul class="nav__links" id="nav-links">
-        <li><a class="underline_anim under_ad" href="#home">Home</a></li>
-        <li><a class="underline_anim under_ad" href="#about">About us</a></li>
-        <li><a class="underline_anim under_ad" href="#product">Product</a></li>
-        <li><a class="underline_anim under_ad" href="#contact">Contact</a></li>
+        <li>
+          <a class="underline_anim under_ad" id="home" href="#home">Home</a>
+        </li>
+        <li>
+          <a class="underline_anim under_ad" id="about" href="#about"
+            >About us</a
+          >
+        </li>
+        <li>
+          <a class="underline_anim under_ad" id="services" href="#services"
+            >Services</a
+          >
+        </li>
+        <li>
+          <a class="underline_anim under_ad" id="contact" href="#contact"
+            >Contact us</a
+          >
+        </li>
         <li><a href="#" id="login">Log in</a></li>
         <li><a href="#" id="signup">Sign up</a></li>
         <li>
@@ -43,11 +58,17 @@
 
     <div class="modal hidden">
       <button class="close-modal">&times</button>
-      <h1>Choose a language</h1>
+      <h1 id="chooselang">Choose a language</h1>
       <ul>
-        <li><a href="#">English</a></li>
-        <li><a href="#">Русский</a></li>
-        <li><a href="#">O'zbekcha</a></li>
+        <li>
+          <button onclick="changeLanguage('en')">English</button>
+        </li>
+        <li>
+          <button onclick="changeLanguage('ru')">Русский</button>
+        </li>
+        <li>
+          <button onclick="changeLanguage('uz')">O'zbekcha</button>
+        </li>
       </ul>
     </div>
     <div class="overlay hidden"></div>
@@ -58,12 +79,10 @@
       </div>
       <div class="header__content">
         <div>
-          <h1>
-            Find Your Furry Friend, Shop Their Favorites, and Keep Them Healthy!
-          </h1>
-          <p>
-            Connecting pets with loving homes, premium products, and trusted vet
-            care—all in one place.
+          <h1 id="welcome">Welcome to petcare.uz</h1>
+          <p id="description">
+            Your trusted partner in pet adoption, rehoming, shopping, and vet
+            care—bringing love, joy, and wellness to every pet and their family.
           </p>
         </div>
       </div>
