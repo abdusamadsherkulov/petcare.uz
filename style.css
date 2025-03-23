@@ -201,19 +201,6 @@ nav {
   display: none;
 }
 
-.header__container {
-  display: grid;
-  overflow: hidden;
-}
-
-.header__image {
-  grid-area: 1/1/2/2;
-}
-
-.header__image img {
-  max-width: 900px;
-  margin-left: auto;
-}
 /* Language preferences */
 
 /* Close modal button */
@@ -306,6 +293,22 @@ nav {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(2px);
   z-index: 5;
+}
+
+/* Home page */
+
+.header__container {
+  display: grid;
+  overflow: hidden;
+}
+
+.header__image {
+  grid-area: 1/1/2/2;
+}
+
+.header__image img {
+  max-width: 900px;
+  margin-left: auto;
 }
 
 .header__content {
