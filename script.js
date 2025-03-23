@@ -56,7 +56,7 @@ const languages = {
     description:
       'Your trusted partner in pet adoption, rehoming, shopping, and vet care—bringing love, joy, and wellness to every pet and their family.',
     about_headline: 'About petcare.uz',
-    about_description:
+    about_1_description:
       'At petcare.uz, we’re a team of pet lovers dedicated to making life better for animals and the people who adore them. From finding forever homes to delivering top-notch supplies and vet care, we’re here to create a world where every pet thrives—and every pet parent smiles.',
   },
   ru: {
@@ -71,7 +71,7 @@ const languages = {
     description:
       'Ваш надежный партнер в вопросах усыновления домашних животных, поиска новых хозяев, покупок и ветеринарной помощи, приносящий любовь, радость и благополучие каждому питомцу и его семье.',
     about_headline: 'О petcare.uz',
-    about_description:
+    about_1_description:
       'На сайте petcare.uz мы — команда любителей животных, стремящихся улучшить жизнь питомцев и людей, которые их обожают. От поиска постоянного дома до поставки высококачественных товаров и ветеринарной помощи — мы здесь, чтобы создать мир, где каждый питомец процветает, а каждый хозяин улыбается.',
   },
   uz: {
@@ -85,7 +85,7 @@ const languages = {
     welcome: 'petcare.uzga xush kelibsiz',
     description: `Uy hayvonlarini boqib olish, uy hayvonlari uchun yangi uy topish, uy hayvonlari maxsulorlarini xarid qilish va veterinar xizmatlari bo'yicha ishonchli hamkoringiz.`,
     about_headline: 'petcare.uz haqida',
-    about_description:
+    about_1_description:
       'Petcare.uz uy hayvonlarini sevuvchilarga yordam beradi. Uy hayvonlari uchun doimiy uy topishdan boshlab, uy hayvonlari uchun yuqori sifatli mahsulotlar va veterinariya xizmatlarini taklif qiladi',
   },
 };
