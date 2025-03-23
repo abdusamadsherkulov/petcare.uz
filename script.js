@@ -15,31 +15,19 @@ const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.close-modal');
 const btnShowModal = document.querySelector('.show-modal');
 
-const openModal = function (e) {
-  e.preventDefault();
+btnShowModal.addEventListener('click', function () {
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
-};
-
-const closeModal = function () {
-  modal.classList.add('hidden');
-  overlay.classList.add('hidden');
-};
-
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-    closeModal();
-  }
 });
 
-btnShowModal.addEventListener('click', openModal);
-btnCloseModal.addEventListener('click', closeModal);
-overlay.addEventListener('click', closeModal);
+btnCloseModal.addEventListener('click', function () {
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
+});
 
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-    closeModal();
-  }
+overlay.addEventListener('click', e => {
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
 });
 
 //Language data
@@ -56,8 +44,6 @@ const languages = {
     description:
       'Your trusted partner in pet adoption, rehoming, shopping, and vet care—bringing love, joy, and wellness to every pet and their family.',
     about_headline: 'About petcare.uz',
-    about_1_description:
-      'At petcare.uz, we’re a team of pet lovers dedicated to making life better for animals and the people who adore them. From finding forever homes to delivering top-notch supplies and vet care, we’re here to create a world where every pet thrives—and every pet parent smiles.',
   },
   ru: {
     home: 'Главная',
@@ -71,8 +57,6 @@ const languages = {
     description:
       'Ваш надежный партнер в вопросах усыновления домашних животных, поиска новых хозяев, покупок и ветеринарной помощи, приносящий любовь, радость и благополучие каждому питомцу и его семье.',
     about_headline: 'О petcare.uz',
-    about_1_description:
-      'На сайте petcare.uz мы — команда любителей животных, стремящихся улучшить жизнь питомцев и людей, которые их обожают. От поиска постоянного дома до поставки высококачественных товаров и ветеринарной помощи — мы здесь, чтобы создать мир, где каждый питомец процветает, а каждый хозяин улыбается.',
   },
   uz: {
     home: 'Asosiy',
@@ -85,8 +69,6 @@ const languages = {
     welcome: 'petcare.uzga xush kelibsiz',
     description: `Uy hayvonlarini boqib olish, uy hayvonlari uchun yangi uy topish, uy hayvonlari maxsulorlarini xarid qilish va veterinar xizmatlari bo'yicha ishonchli hamkoringiz.`,
     about_headline: 'petcare.uz haqida',
-    about_1_description:
-      'Petcare.uz uy hayvonlarini sevuvchilarga yordam beradi. Uy hayvonlari uchun doimiy uy topishdan boshlab, uy hayvonlari uchun yuqori sifatli mahsulotlar va veterinariya xizmatlarini taklif qiladi',
   },
 };
 
@@ -106,8 +88,6 @@ function changeLanguage(lang) {
     languages[lang].description;
   document.getElementById('about_headline').textContent =
     languages[lang].about_headline;
-  document.getElementById('about_description').textContent =
-    languages[lang].about_description;
 
   // Save the language preference
   localStorage.setItem('lang', lang);
