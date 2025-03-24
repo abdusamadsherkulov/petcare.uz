@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="pics/paw.png" />
+    <title>petcare.uz</title>
+    <style>
+      /* Fonts */
+      @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=League+Spartan:wght@100..900&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Outfit:wght@100..900&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+      :root {
+        --primary-color: #685341;
+        --text-dark: #502b0f;
+        --extra-dark: #2e1402;
+        --text-light: #724a24;
+        --extra-light: #946d43;
+        --white: #ecdbc1;
+        --dirty-white: #b7966b;
+        --max-width: 1400px;
+        --header-font: 'Nunito', serif;
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      .section__container {
+        max-width: var(--max-width);
+        width: 100%;
+        margin: auto;
+        padding: 5rem 1rem;
+      }
+
+      .section__header {
+        margin-bottom: 1rem;
+        font-size: 2.5rem;
+        font-weight: 600;
+        font-family: var(--header-font);
+        color: var(--primary-color);
+      }
+
+      .section__description {
+        font-size: 1.1rem;
+        color: var(--text-light);
+      }
+
+      .logo {
+        display: inline-block;
+        width: 190px;
+        /* width: 30%; */
+        padding-top: 0.9rem;
+      }
+
+      img {
+        /* display: inline-block; */
+        display: flex;
+        /* width: 12rem; */
+        width: 100%;
+      }
+
+      /* img:hover{} */
+
+      a {
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      #login {
+        border: 1px solid rgb(105, 81, 49);
+        border-radius: 5px;
+        padding: 6px 14px;
+        color: rgb(105, 81, 49);
+      }
+
+      #login:hover {
+        background-color: var(--white);
+      }
+
+      #signup {
+        border-radius: 5px;
+        padding: 6px 14px;
+        border: 1px solid rgb(105, 81, 49);
+        background-color: var(--text-light);
+        color: #fff;
+      }
+
+      #signup:hover {
+        background-color: var(--extra-light);
+      }
+
+      #lang {
+        border: 1px solid rgb(105, 81, 49);
+        border-radius: 5px;
+        padding: 5px 8px;
+        /* padding-left: 4px;
+        padding-top: 5px;
+        padding-right: 4px;
+        padding-bottom: 2px; */
+        font-size: 18px;
+        font-weight: 100;
+        color: rgb(105, 81, 49);
+        background-color: rgba(0, 0, 0, 0);
+      }
+
+      #lang:hover {
+        background-color: var(--white);
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      html,
+      body {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--header-font);
+      }
+
+      nav {
+        position: fixed;
+        isolation: isolate;
+        width: 100%;
+        max-width: var(--max-width);
+        margin-inline: auto;
+        z-index: 4;
+      }
+
+      .nav__header {
+        padding: 1rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(--dirty-white);
+      }
+
+      /* .nav__logo .logo {
+        color: var(--white);
+      } */
+
+      .nav__menu__btn {
+        font-size: 1.5rem;
+        color: var(--text-dark);
+        cursor: pointer;
+      }
+
+      .nav__links {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        padding: 3rem 0 2rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1.5rem;
+        background-color: var(--white);
+        transition: 0.5s;
+        z-index: -1;
+        transform: translateY(-117%);
+      }
+
+      .nav__links.open {
+        transform: translateY(0);
+      }
+
+      .nav__links .underline_anim {
+        font-weight: 500;
+        color: var(--text-dark);
+        display: inline-block;
+        position: relative;
+      }
+
+      .nav__links .underline_anim::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--extra-light);
+        transition: transform 0.25s ease-out;
+      }
+
+      .nav__links .underline_anim:hover::after {
+        color: var(--extra-light);
+        transform: scaleX(1);
+      }
+
+      .underline_anim.under_ad::after {
+        transform-origin: bottom left;
+      }
+
+      .underline_anim.under_ad:hover::after {
+        transform-origin: bottom left;
+      }
+
+      .nav__search {
+        display: none;
+      }
+
+      /* Language preferences */
+
+      /* Close modal button */
+      .show-modal {
+        font-size: 2rem;
+        font-weight: 600;
+        padding: 1.75rem 3.5rem;
+        /* margin: 1rem; */
+        border: none;
+        background-color: #fff;
+        color: #444;
+        border-radius: 10rem;
+        cursor: pointer;
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 2rem;
+        color: #333;
+        cursor: pointer;
+        border: none;
+        background: none;
+        padding: 3px;
+      }
+
+      .close-modal:hover {
+        color: rgba(0, 0, 0, 0.603);
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        background-color: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        font-family: var(--header-font);
+        font-weight: 600;
+      }
+
+      .modal h1 {
+        font-size: 1.5rem;
+        color: var(--text-dark);
+        /* text-align: center; */
+      }
+
+      .modal ul li {
+        list-style-type: none;
+        text-align: center;
+        margin: 1rem;
+      }
+
+      .modal ul li button {
+        display: inline-block;
+        color: var(--text-dark);
+        /* background-color: var(--text-light); */
+        font-size: 1rem;
+        padding: 0.7rem;
+        margin: auto;
+        vertical-align: middle;
+        width: 7rem;
+        border-radius: 5px;
+        border: rgba(0, 0, 0, 0);
+      }
+
+      .modal ul li button:hover {
+        background-color: var(--white);
+        color: var(--text-light);
+        cursor: pointer;
+        /* border-radius: 0.2rem; */
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(2px);
+        z-index: 5;
+      }
+
+      /* Home page */
+
+      .header__container {
+        display: grid;
+        overflow: hidden;
+      }
+
+      .header__image {
+        grid-area: 1/1/2/2;
+      }
+
+      .header__image img {
+        max-width: 900px;
+        margin-left: auto;
+      }
+
+      .header__content {
+        grid-area: 1/1/2/2;
+        display: flex;
+        /* background-color: var(--white);
+        width: 100%;
+        margin: auto;
+        height: 400px; */
+        align-items: center;
+      }
+
+      .header__content > div {
+        max-width: 580px;
+        padding: 4rem 1rem;
+        background-color: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(10px);
+      }
+
+      .header__content h1 {
+        margin-bottom: 1rem;
+        font-size: 2.5rem;
+        font-weight: 600;
+        font-family: var(--header-font);
+        color: var(--primary-color);
+      }
+
+      .header__content p {
+        font-size: 1.2rem;
+        color: var(--text-light);
+      }
+
+      @media (width > 768px) {
+        nav {
+          position: sticky;
+          overflow: hidden;
+          padding: 2rem 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 2rem;
+          font-size: 18px;
+          font-family: var(--header-font);
+          font-weight: 600;
+        }
+
+        .nav__header {
+          flex: 1;
+          padding: 0;
+          background-color: transparent;
+        }
+
+        .nav__menu__btn {
+          display: none;
+        }
+
+        .section__container {
+          padding: 0rem 1rem;
+        }
+
+        /* .nav__logo .logo {
+          /* color: var(--primary-color); */
+        /* }  */
+
+        .nav__links {
+          position: static;
+          padding: 0;
+          width: fit-content;
+          flex-direction: row;
+          gap: 2rem;
+          background-color: transparent;
+          transform: none;
+        }
+
+        .nav__links a {
+          color: var(--text-dark);
+        }
+
+        .nav__links a:hover {
+          color: var(--extra-light);
+        }
+
+        .header__container {
+          padding-top: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__header">
+        <div class="nav__logo">
+          <a href="#" class="logo"
+            ><img src="pics/Logo.png" alt="petcare.uz"
+          /></a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+          <i class="ri-menu-line"></i>
+        </div>
+      </div>
+      <ul class="nav__links" id="nav-links">
+        <li>
+          <a class="underline_anim under_ad" id="home" href="#home">Home</a>
+        </li>
+        <li>
+          <a class="underline_anim under_ad" id="about" href="#about"
+            >About us</a
+          >
+        </li>
+        <li>
+          <a class="underline_anim under_ad" id="services" href="#services"
+            >Services</a
+          >
+        </li>
+        <li>
+          <a class="underline_anim under_ad" id="contact" href="#contact"
+            >Contact us</a
+          >
+        </li>
+        <li><a href="#" id="login">Log in</a></li>
+        <li><a href="#" id="signup">Sign up</a></li>
+        <li>
+          <a class="show-modal" id="lang">
+            <i class="ri-global-line"></i>
+          </a>
+          <!-- <button class="show-modal" id="lang">
+            <i class="ri-global-line"></i>
+          </button> -->
+        </li>
+      </ul>
+    </nav>
+
+    <div class="modal hidden">
+      <button class="close-modal">&times</button>
+      <h1 id="chooselang">Choose a language</h1>
+      <ul>
+        <li>
+          <button onclick="changeLanguage('en')">English</button>
+        </li>
+        <li>
+          <button onclick="changeLanguage('ru')">Русский</button>
+        </li>
+        <li>
+          <button onclick="changeLanguage('uz')">O'zbekcha</button>
+        </li>
+      </ul>
+    </div>
+    <div class="overlay hidden"></div>
+
+    <header class="section__container header__container" id="home">
+      <div class="header__image">
+        <img src="petcare.uz\dog-cat-under-sheet.jpg" alt="header" />
+      </div>
+      <div class="header__content">
+        <div>
+          <h1 id="welcome">Welcome to petcare.uz</h1>
+          <p id="description">
+            Your trusted partner in pet adoption, rehoming, shopping, and vet
+            care—bringing love, joy, and wellness to every pet and their family.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <section class="section__contatiner about__container">
+      <div class="about__header">
+        <h2 class="section__header" id="about_headline">About petcare.uz</h2>
+      </div>
+      <div class="about__content">
+        <div class="about__image">
+          <img src="petcare.uz/about_img.png" alt="about" />
+        </div>
+        <div class="about__grid">
+          <div class="about__card">
+            <h3>1.</h3>
+            <h4>Who we are</h4>
+            <p>
+              We’re a team of animal enthusiasts building a community where pets
+              and their families thrive.
+            </p>
+          </div>
+          <div class="about__card">
+            <h3>1.</h3>
+            <h4>Who we are</h4>
+            <p>
+              We’re a team of animal enthusiasts building a community where pets
+              and their families thrive.
+            </p>
+          </div>
+          <div class="about__card">
+            <h3>1.</h3>
+            <h4>Who we are</h4>
+            <p>
+              We’re a team of animal enthusiasts building a community where pets
+              and their families thrive.
+            </p>
+          </div>
+          <div class="about__card">
+            <h3>1.</h3>
+            <h4>Who we are</h4>
+            <p>
+              We’re a team of animal enthusiasts building a community where pets
+              and their families thrive.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+      const menuBtn = document.getElementById('menu-btn');
+      const navLinks = document.getElementById('nav-links');
+      const menuBtnIcon = menuBtn.querySelector('i');
+
+      menuBtn.addEventListener('click', e => {
+        navLinks.classList.toggle('open');
+
+        const isOpen = navLinks.classList.contains('open');
+        menuBtnIcon.setAttribute(
+          'class',
+          isOpen ? 'ri-close-line' : 'ri-menu-line'
+        );
+      });
+
+      //Language preferences
+      const modal = document.querySelector('.modal');
+      const overlay = document.querySelector('.overlay');
+      const btnCloseModal = document.querySelector('.close-modal');
+      const btnShowModal = document.querySelector('.show-modal');
+
+      btnShowModal.addEventListener('click', function () {
+        modal.classList.remove('hidden');
+        overlay.classList.remove('hidden');
+      });
+
+      btnCloseModal.addEventListener('click', function () {
+        modal.classList.add('hidden');
+        overlay.classList.add('hidden');
+      });
+
+      overlay.addEventListener('click', e => {
+        modal.classList.add('hidden');
+        overlay.classList.add('hidden');
+      });
+
+      //Language data
+      const languages = {
+        en: {
+          home: 'Home',
+          about: 'About',
+          services: 'Services',
+          contact: 'Contact us',
+          login: 'Log in',
+          signup: 'Sign in',
+          chooselang: 'Choose a language',
+          welcome: 'Welcome to petcare.uz',
+          description:
+            'Your trusted partner in pet adoption, rehoming, shopping, and vet care—bringing love, joy, and wellness to every pet and their family.',
+          about_headline: 'About petcare.uz',
+        },
+        ru: {
+          home: 'Главная',
+          about: 'О нас',
+          services: 'Наши сервисы',
+          contact: 'Контакты',
+          login: 'Войти',
+          signup: 'Зарегистрироваться',
+          chooselang: 'Выберите язык',
+          welcome: 'Добро пожаловать в petcare.uz',
+          description:
+            'Ваш надежный партнер в вопросах усыновления домашних животных, поиска новых хозяев, покупок и ветеринарной помощи, приносящий любовь, радость и благополучие каждому питомцу и его семье.',
+          about_headline: 'О petcare.uz',
+        },
+        uz: {
+          home: 'Asosiy',
+          about: 'Biz haqimizda',
+          services: 'Bizning xizmatlar',
+          contact: 'Kontaktlar',
+          login: 'Akkauntga kirish',
+          signup: `Ro'yxatdan o'tish`,
+          chooselang: 'Tilni tanlang',
+          welcome: 'petcare.uzga xush kelibsiz',
+          description: `Uy hayvonlarini boqib olish, uy hayvonlari uchun yangi uy topish, uy hayvonlari maxsulorlarini xarid qilish va veterinar xizmatlari bo'yicha ishonchli hamkoringiz.`,
+          about_headline: 'petcare.uz haqida',
+        },
+      };
+
+      // Function to change language
+      function changeLanguage(lang) {
+        // Update content based on selected language
+        document.getElementById('home').textContent = languages[lang].home;
+        document.getElementById('about').textContent = languages[lang].about;
+        document.getElementById('services').textContent =
+          languages[lang].services;
+        document.getElementById('contact').textContent =
+          languages[lang].contact;
+        document.getElementById('login').textContent = languages[lang].login;
+        document.getElementById('signup').textContent = languages[lang].signup;
+        document.getElementById('chooselang').textContent =
+          languages[lang].chooselang;
+        document.getElementById('welcome').textContent =
+          languages[lang].welcome;
+        document.getElementById('description').textContent =
+          languages[lang].description;
+        document.getElementById('about_headline').textContent =
+          languages[lang].about_headline;
+
+        // Save the language preference
+        localStorage.setItem('lang', lang);
+      }
+
+      const savedLang = localStorage.getItem('lang') || 'en';
+      changeLanguage(savedLang);
+
+      // Lazy reveal
+      const scrollRevealOption = {
+        distance: '50px',
+        origin: 'bottom',
+        duration: 1000,
+      };
+
+      ScrollReveal().reveal('.header__image img', {
+        ...scrollRevealOption,
+        origin: 'right',
+        delay: 300,
+      });
+
+      ScrollReveal().reveal('.header__content div', {
+        duration: 1000,
+        delay: 500,
+      });
+
+      ScrollReveal().reveal('.header__content h1', {
+        ...scrollRevealOption,
+        delay: 800,
+      });
+
+      ScrollReveal().reveal('.header__content p', {
+        ...scrollRevealOption,
+        delay: 1300,
+      });
+    </script>
+  </body>
+</html>
