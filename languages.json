@@ -1,0 +1,47 @@
+{
+  "en": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact us",
+    "login": "Log in",
+    "signup": "Sign up",
+    "chooselang": "Choose a language",
+    "welcome": "Welcome to petcare.uz",
+    "description": "Your trusted partner in pet adoption, rehoming, shopping, and vet care—bringing love, joy, and wellness to every pet and their family.",
+    "about_headline": "About petcare.uz",
+    "whoWeAre": "Who we are",
+    "whoWeAreDsc": "We are a team of animal enthusiasts building a community where pets and their families thrive.",
+    "whatWeDo": "What we do"
+  },
+  "ru": {
+    "home": "Главная",
+    "about": "О нас",
+    "services": "Наши сервисы",
+    "contact": "Контакты",
+    "login": "Войти",
+    "signup": "Зарегистрироваться",
+    "chooselang": "Выберите язык",
+    "welcome": "Добро пожаловать в petcare.uz",
+    "description": "Ваш надежный партнер в вопросах усыновления домашних животных, поиска новых хозяев, покупок и ветеринарной помощи, приносящий любовь, радость и благополучие каждому питомцу и его семье.",
+    "about_headline": "О petcare.uz",
+    "whoWeAre": "Кто мы",
+    "whoWeAreDsc": "Мы — команда, объединённая любовью к животным, которая строит сообщество для их счастья и благополучия.",
+    "whatWeDo": "Что мы делаем"
+  },
+  "uz": {
+    "home": "Asosiy",
+    "about": "Biz haqimizda",
+    "services": "Bizning xizmatlar",
+    "contact": "Kontaktlar",
+    "login": "Akkauntga kirish",
+    "signup": "Ro'yxatdan o'tish",
+    "chooselang": "Tilni tanlang",
+    "welcome": "petcare.uzga xush kelibsiz",
+    "description": "Uy hayvonlarini boqib olish, uy hayvonlari uchun yangi uy topish, uy hayvonlari maxsulorlarini xarid qilish va veterinar xizmatlari bo'yicha ishonchli hamkoringiz.",
+    "about_headline": "petcare.uz haqida",
+    "whoWeAre": "Biz kimmiz",
+    "whoWeAreDsc": "Biz hayvonlarni sevadigan jamoamiz, ularning baxti va farovonligi uchun birlashganmiz.",
+    "whatWeDo": "Biz nima qilamiz"
+  }
+}

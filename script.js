@@ -1,17 +1,59 @@
+// Menu toggle functionality
 const menuBtn = document.getElementById('menu-btn');
 const navLinks = document.getElementById('nav-links');
 const menuBtnIcon = menuBtn.querySelector('i');
+const overlay = document.querySelector('.overlay');
 
 menuBtn.addEventListener('click', e => {
   navLinks.classList.toggle('open');
-
   const isOpen = navLinks.classList.contains('open');
   menuBtnIcon.setAttribute('class', isOpen ? 'ri-close-line' : 'ri-menu-line');
+  if (isOpen) {
+  }
 });
 
-//Language preferences
+//this helps when navbar interrupts the view of section and for navigation
+document.querySelector('[href="#home"]').addEventListener('click', e => {
+  e.preventDefault();
+  const aboutSection = document.getElementById('home');
+  if (aboutSection) {
+    const navHeight = document.querySelector('nav').offsetHeight; // Get navbar height
+    const sectionTop =
+      aboutSection.getBoundingClientRect().top + window.pageYOffset; // Section position relative to document
+    window.scrollTo({
+      top: sectionTop - navHeight, // Offset by navbar height
+      behavior: 'smooth',
+    });
+    if (window.innerWidth <= 768) {
+      navLinks.classList.remove('open');
+      overlay.classList.add('hidden');
+      menuBtnIcon.setAttribute('class', 'ri-menu-line');
+    }
+  }
+});
+
+document.querySelector('[href="#about"]').addEventListener('click', e => {
+  e.preventDefault();
+  const aboutSection = document.getElementById('about');
+  if (aboutSection) {
+    const navHeight = document.querySelector('nav').offsetHeight; // Get navbar height
+    const sectionTop =
+      aboutSection.getBoundingClientRect().top + window.pageYOffset; // Section position relative to document
+    window.scrollTo({
+      top: sectionTop - navHeight, // Offset by navbar height
+      behavior: 'smooth',
+    });
+    if (window.innerWidth <= 768) {
+      navLinks.classList.remove('open');
+      overlay.classList.add('hidden');
+      menuBtnIcon.setAttribute('class', 'ri-menu-line');
+    }
+  }
+});
+
+// Modal handling
 const modal = document.querySelector('.modal');
-const overlay = document.querySelector('.overlay');
+
 const btnCloseModal = document.querySelector('.close-modal');
 const btnShowModal = document.querySelector('.show-modal');
 
@@ -30,73 +72,62 @@ overlay.addEventListener('click', e => {
   overlay.classList.add('hidden');
 });
 
-//Language data
-const languages = {
-  en: {
-    home: 'Home',
-    about: 'About',
-    services: 'Services',
-    contact: 'Contact us',
-    login: 'Log in',
-    signup: 'Sign in',
-    chooselang: 'Choose a language',
-    welcome: 'Welcome to petcare.uz',
-    description:
-      'Your trusted partner in pet adoption, rehoming, shopping, and vet care—bringing love, joy, and wellness to every pet and their family.',
-    about_headline: 'About petcare.uz',
-  },
-  ru: {
-    home: 'Главная',
-    about: 'О нас',
-    services: 'Наши сервисы',
-    contact: 'Контакты',
-    login: 'Войти',
-    signup: 'Зарегистрироваться',
-    chooselang: 'Выберите язык',
-    welcome: 'Добро пожаловать в petcare.uz',
-    description:
-      'Ваш надежный партнер в вопросах усыновления домашних животных, поиска новых хозяев, покупок и ветеринарной помощи, приносящий любовь, радость и благополучие каждому питомцу и его семье.',
-    about_headline: 'О petcare.uz',
-  },
-  uz: {
-    home: 'Asosiy',
-    about: 'Biz haqimizda',
-    services: 'Bizning xizmatlar',
-    contact: 'Kontaktlar',
-    login: 'Akkauntga kirish',
-    signup: `Ro'yxatdan o'tish`,
-    chooselang: 'Tilni tanlang',
-    welcome: 'petcare.uzga xush kelibsiz',
-    description: `Uy hayvonlarini boqib olish, uy hayvonlari uchun yangi uy topish, uy hayvonlari maxsulorlarini xarid qilish va veterinar xizmatlari bo'yicha ishonchli hamkoringiz.`,
-    about_headline: 'petcare.uz haqida',
-  },
-};
+// Variable to store translations
+let languages = {};
+
+// Function to fetch translations from languages.json
+async function loadTranslations() {
+  try {
+    const response = await fetch('languages.json'); // Adjust path if needed (e.g., 'scripts/languages.json')
+    if (!response.ok) throw new Error('Failed to load languages.json');
+    languages = await response.json();
+    // Load the saved language or default to 'en' after fetching
+    const savedLang = localStorage.getItem('lang') || 'en';
+    changeLanguage(savedLang);
+  } catch (error) {
+    console.error('Error fetching translations:', error);
+  }
+}
 
 // Function to change language
 function changeLanguage(lang) {
-  // Update content based on selected language
-  document.getElementById('home').textContent = languages[lang].home;
-  document.getElementById('about').textContent = languages[lang].about;
-  document.getElementById('services').textContent = languages[lang].services;
-  document.getElementById('contact').textContent = languages[lang].contact;
-  document.getElementById('login').textContent = languages[lang].login;
-  document.getElementById('signup').textContent = languages[lang].signup;
-  document.getElementById('chooselang').textContent =
-    languages[lang].chooselang;
-  document.getElementById('welcome').textContent = languages[lang].welcome;
-  document.getElementById('description').textContent =
-    languages[lang].description;
-  document.getElementById('about_headline').textContent =
-    languages[lang].about_headline;
+  if (!languages[lang]) {
+    console.error(`Language ${lang} not found in translations`);
+    return;
+  }
+
+  // Map of elements to update
+  const elements = {
+    home: document.getElementById('homeBtn'),
+    about: document.getElementById('aboutBtn'),
+    services: document.getElementById('servicesBtn'),
+    contact: document.getElementById('contactBtn'),
+    login: document.getElementById('login'),
+    signup: document.getElementById('signup'),
+    chooselang: document.getElementById('chooselang'),
+    welcome: document.getElementById('welcome'),
+    description: document.getElementById('description'),
+    about_headline: document.getElementById('about_headline'),
+    whoWeAre: document.getElementById('whoWeAre'),
+    whoWeAreDsc: document.getElementById('whoWeAreDsc'),
+    whatWeDo: document.getElementById('whatWeDo'),
+  };
+
+  // Update all elements with the selected language
+  Object.keys(elements).forEach(key => {
+    if (elements[key] && languages[lang][key]) {
+      elements[key].textContent = languages[lang][key];
+    }
+  });
 
   // Save the language preference
   localStorage.setItem('lang', lang);
 }
 
-const savedLang = localStorage.getItem('lang') || 'en';
-changeLanguage(savedLang);
+// Load translations when the page loads
+loadTranslations();
 
-// Lazy reveal
+// Lazy reveal (unchanged)
 const scrollRevealOption = {
   distance: '50px',
   origin: 'bottom',
@@ -122,4 +153,28 @@ ScrollReveal().reveal('.header__content h1', {
 ScrollReveal().reveal('.header__content p', {
   ...scrollRevealOption,
   delay: 1300,
+});
+
+ScrollReveal().reveal('#about_headline', {
+  ...scrollRevealOption,
+  origin: 'left',
+  delay: 400,
+});
+
+ScrollReveal().reveal('.about__header p', {
+  ...scrollRevealOption,
+  origin: 'left',
+  delay: 500,
+});
+
+ScrollReveal().reveal('.about__image img', {
+  ...scrollRevealOption,
+  origin: 'right',
+  delay: 300,
+});
+
+ScrollReveal().reveal('.about__card', {
+  duration: 1000,
+  interval: 500,
+  delay: 500,
 });
