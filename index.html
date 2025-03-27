@@ -8,6 +8,7 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/png" href="pics/paw.png" />
     <title>petcare.uz</title>
@@ -90,7 +91,7 @@
 
     <section class="section__container about__container" id="about">
       <div class="about__header">
-        <h2 class="section__header" id="about_headline">About petcare.uz</h2>
+        <h1 class="section__header" id="about_headline">About petcare.uz</h1>
         <p class="section__description">
           At petcare.uz, we’re passionate about pets and the people who love
           them, delivering a seamless experience for adoption, supplies, and
@@ -138,9 +139,78 @@
       </div>
     </section>
 
-    section
+    <section class="section__container services__container" id="services">
+      <div class="services__header">
+        <h1 class="section__header" id="services_headline">Our services</h1>
+        <p class="section__description">
+          At petcare.uz, we’re passionate about pets and the people who love
+          them, delivering a seamless experience for adoption, supplies, and
+          care.
+        </p>
+      </div>
+      <div class="services__content">
+        <!-- <div class="about__image">
+          <img src="petcare.uz/about_img.png" alt="about" />
+        </div> -->
+        <div class="services__grid">
+          <div class="services__card">
+            <div class="card-details">
+              <h1><i data-lucide="paw-print"></i></h1>
+              <p class="text-title">Adopt a pet</p>
+              <p class="text-body">
+                Find your perfect companion from our curated list of adoptable
+                pets, ready to bring joy to your home.
+              </p>
+            </div>
+            <button class="card-button">Meet your pet</button>
+          </div>
+          <div class="services__card">
+            <div class="card-details">
+              <h1><i data-lucide="house"></i></h1>
+              <p class="text-title">Rehome a pet</p>
+              <p class="text-body">
+                Give a pet a new loving home with our easy rehoming process,
+                connecting pets with caring families.
+              </p>
+            </div>
+            <button class="card-button">Start rehoming</button>
+          </div>
+          <div class="services__card">
+            <div class="card-details">
+              <h1><i data-lucide="bone"></i></h1>
+              <p class="text-title">Pet shop</p>
+              <p class="text-body">
+                Shop quality food, <br />toys, and accessories <br />to keep
+                your pet happy and healthy, all in one place.
+              </p>
+            </div>
+            <button class="card-button">Browse products</button>
+          </div>
+          <div class="services__card">
+            <div class="card-details">
+              <h1><i data-lucide="briefcase-medical"></i></h1>
+              <p class="text-title">Vet service</p>
+              <p class="text-body">
+                Access trusted veterinary care, from check-ups to emergencies,
+                ensuring your pet’s well-being.
+              </p>
+            </div>
+            <button class="card-button">Book a visit</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="script.js"></script>
     <script src="languages.json"></script>
+    <!-- Development version -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- Production version -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
   </body>
 </html>

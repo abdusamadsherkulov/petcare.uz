@@ -178,3 +178,21 @@ ScrollReveal().reveal('.about__card', {
   interval: 500,
   delay: 500,
 });
+
+ScrollReveal().reveal('#services_headline', {
+  ...scrollRevealOption,
+  origin: 'left',
+  delay: 400,
+});
+
+ScrollReveal().reveal('.services__header p', {
+  ...scrollRevealOption,
+  origin: 'left',
+  delay: 500,
+});
+
+ScrollReveal().reveal('.services__card', {
+  duration: 1000,
+  interval: 500,
+  delay: 500,
+});

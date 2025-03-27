@@ -8,6 +8,8 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
+
+    <!-- <link rel="stylesheet" href="style.css" /> -->
     <link rel="icon" type="image/png" href="pics/paw.png" />
     <title>petcare.uz</title>
     <style>
@@ -38,15 +40,16 @@
         max-width: var(--max-width);
         width: 100%;
         margin: auto;
-        padding: 5rem 1rem;
+        padding: 1rem 1rem;
       }
 
       .section__header {
-        margin-bottom: 1rem;
+        /* margin-bottom: 1rem; */
         font-size: 2.5rem;
         font-weight: 600;
         font-family: var(--header-font);
         color: var(--primary-color);
+        /* display: inline-block; */
       }
 
       .section__description {
@@ -103,9 +106,9 @@
         border-radius: 5px;
         padding: 5px 8px;
         /* padding-left: 4px;
-  padding-top: 5px;
-  padding-right: 4px;
-  padding-bottom: 2px; */
+        padding-top: 5px;
+        padding-right: 4px;
+        padding-bottom: 2px; */
         font-size: 18px;
         font-weight: 100;
         color: rgb(105, 81, 49);
@@ -148,8 +151,8 @@
       }
 
       /* .nav__logo .logo {
-  color: var(--white);
-} */
+        color: var(--white);
+      } */
 
       .nav__menu__btn {
         font-size: 1.5rem;
@@ -312,6 +315,7 @@
       .header__container {
         display: grid;
         overflow: hidden;
+        padding-top: 5rem;
       }
 
       .header__image {
@@ -319,7 +323,7 @@
       }
 
       .header__image img {
-        max-width: 900px;
+        max-width: 790px;
         margin-left: auto;
       }
 
@@ -327,17 +331,17 @@
         grid-area: 1/1/2/2;
         display: flex;
         /* background-color: var(--white);
-  width: 100%;
-  margin: auto;
-  height: 400px; */
+        width: 100%;
+        margin: auto;
+        height: 400px; */
         align-items: center;
       }
 
       .header__content > div {
         max-width: 580px;
-        padding: 4rem 1rem;
+        padding: 4rem 0rem;
         background-color: rgba(255, 255, 255, 0.5);
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(5px);
       }
 
       .header__content h1 {
@@ -356,11 +360,15 @@
       .about__header {
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 1rem;
+      }
+
+      .about__header .section__description {
+        max-width: 600px;
       }
 
       .about__content {
-        margin-top: 2rem;
+        margin-top: 0rem;
         display: grid;
         gap: 2rem;
       }
@@ -381,14 +389,109 @@
         color: var(--primary-color);
       }
 
+      .about__card h4 {
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+
+      .about__card p {
+        color: var(--text-light);
+      }
+
+      .services__header .section__description {
+        max-width: 600px;
+      }
+
+      .services__content {
+        margin-top: 0rem;
+        display: grid;
+        gap: 2rem;
+      }
+
+      .services__grid {
+        display: grid;
+        gap: 3rem;
+        padding-top: 2rem;
+      }
+
+      .services__card {
+        width: 240px;
+        height: 254px;
+        border-radius: 20px;
+        background: #f1e6d5;
+        position: relative;
+        padding: 1.8rem;
+        border: 2px solid #c3c6ce;
+        transition: 0.5s ease-out;
+        overflow: visible;
+      }
+
+      .card-details {
+        color: var(--primary-color);
+        height: 100%;
+        gap: 0.5em;
+        display: grid;
+        place-content: center;
+      }
+
+      .card-button {
+        transform: translate(-50%, 125%);
+        width: 65%;
+        border-radius: 1rem;
+        border: none;
+        background-color: var(--text-light);
+        color: #fff;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        opacity: 0;
+        transition: 0.3s ease-out;
+        cursor: pointer;
+      }
+
+      .card-button:hover {
+        background-color: var(--extra-light);
+      }
+
+      .text-body {
+        color: var(--primary-color);
+      }
+
+      /*Text*/
+      .text-title {
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+
+      /*Hover*/
+      .services__card:hover {
+        border-color: var(--extra-light);
+        box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+        background-color: #eee1c8;
+      }
+
+      .services__card:hover .card-button {
+        transform: translate(-50%, 50%);
+        opacity: 1;
+      }
+
       @media (width > 540px) {
-        /*  */
+        .about__grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .services__grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
       }
 
       @media (width > 768px) {
         nav {
           position: sticky;
-          padding: 2rem 1rem;
+          padding: 1rem 1rem;
           width: 100%;
           top: 0;
           display: flex;
@@ -398,7 +501,8 @@
           font-size: 18px;
           font-family: var(--header-font);
           font-weight: 600;
-          background-color: rgb(255, 255, 255);
+          background-color: rgba(255, 255, 255, 0.685);
+          backdrop-filter: blur(8px);
         }
 
         .nav__header {
@@ -412,13 +516,13 @@
         }
 
         .section__container {
-          padding: 5rem 1rem;
+          padding: 4rem 1rem;
           max-width: var(--max-width);
           margin: auto;
         }
 
         /* .nav__logo .logo {
-    /* color: var(--primary-color); */
+          /* color: var(--primary-color); */
         /* }  */
 
         .nav__links {
@@ -442,6 +546,41 @@
         .header__container {
           padding-top: 0;
         }
+
+        .about__header {
+          flex-direction: column;
+          /* align-items: center; */
+          justify-content: space-between;
+        }
+
+        .about__content {
+          grid-template-columns: repeat(2, 1fr);
+          align-items: center;
+        }
+
+        .about__image {
+          grid-area: 1/2/2/3;
+        }
+
+        .services__header {
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        .services__content {
+          grid-template-columns: repeat(1, 1fr);
+          align-items: center;
+        }
+      }
+
+      @media (width>1024px) {
+        .about__grid {
+          gap: 4rem 2rem;
+        }
+
+        .services__grid {
+          gap: 4rem 2rem;
+        }
       }
     </style>
   </head>
@@ -459,20 +598,20 @@
       </div>
       <ul class="nav__links" id="nav-links">
         <li>
-          <a class="underline_anim under_ad" id="home" href="#home">Home</a>
+          <a class="underline_anim under_ad" id="homeBtn" href="#home">Home</a>
         </li>
         <li>
-          <a class="underline_anim under_ad" id="about" href="#about"
+          <a class="underline_anim under_ad" id="aboutBtn" href="#about"
             >About us</a
           >
         </li>
         <li>
-          <a class="underline_anim under_ad" id="services" href="#services"
+          <a class="underline_anim under_ad" id="servicesBtn" href="#services"
             >Services</a
           >
         </li>
         <li>
-          <a class="underline_anim under_ad" id="contact" href="#contact"
+          <a class="underline_anim under_ad" id="contactBtn" href="#contact"
             >Contact us</a
           >
         </li>
@@ -521,9 +660,14 @@
       </div>
     </header>
 
-    <section class="section__contatiner about__container">
+    <section class="section__container about__container" id="about">
       <div class="about__header">
-        <h2 class="section__header" id="about_headline">About petcare.uz</h2>
+        <h1 class="section__header" id="about_headline">About petcare.uz</h1>
+        <p class="section__description">
+          At petcare.uz, we’re passionate about pets and the people who love
+          them, delivering a seamless experience for adoption, supplies, and
+          care.
+        </p>
       </div>
       <div class="about__content">
         <div class="about__image">
@@ -532,35 +676,97 @@
         <div class="about__grid">
           <div class="about__card">
             <h3>1.</h3>
-            <h4>Who we are</h4>
-            <p>
-              We’re a team of animal enthusiasts building a community where pets
-              and their families thrive.
+            <h4 id="whoWeAre">Who we are</h4>
+            <p id="whoWeAreDsc">
+              We are a team of animal enthusiasts building a community where
+              pets and their families thrive.
             </p>
           </div>
           <div class="about__card">
-            <h3>1.</h3>
-            <h4>Who we are</h4>
-            <p>
-              We’re a team of animal enthusiasts building a community where pets
-              and their families thrive.
+            <h3>2.</h3>
+            <h4 id="whatWeDo">What we do</h4>
+            <p id="whatWeDoDsc">
+              We connect pets with homes, sell quality pet products, and offer
+              expert vet services—all in one place.
             </p>
           </div>
           <div class="about__card">
-            <h3>1.</h3>
-            <h4>Who we are</h4>
+            <h3>3.</h3>
+            <h4>How we help</h4>
             <p>
-              We’re a team of animal enthusiasts building a community where pets
-              and their families thrive.
+              We simplify adoption and rehoming, provide essentials, and ensure
+              pets stay healthy with trusted care.
             </p>
           </div>
           <div class="about__card">
-            <h3>1.</h3>
-            <h4>Who we are</h4>
+            <h3>4.</h3>
+            <h4>Why choose us</h4>
             <p>
-              We’re a team of animal enthusiasts building a community where pets
-              and their families thrive.
+              With compassion, convenience, and a love for pets, we’re your
+              go-to for everything pet-related.
             </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section__container services__container" id="services">
+      <div class="services__header">
+        <h1 class="section__header" id="services_headline">Our services</h1>
+        <p class="section__description">
+          At petcare.uz, we’re passionate about pets and the people who love
+          them, delivering a seamless experience for adoption, supplies, and
+          care.
+        </p>
+      </div>
+      <div class="services__content">
+        <!-- <div class="about__image">
+          <img src="petcare.uz/about_img.png" alt="about" />
+        </div> -->
+        <div class="services__grid">
+          <div class="services__card">
+            <div class="card-details">
+              <h1><i data-lucide="paw-print"></i></h1>
+              <p class="text-title">Adopt a pet</p>
+              <p class="text-body">
+                Find your perfect companion from our curated list of adoptable
+                pets, ready to bring joy to your home.
+              </p>
+            </div>
+            <button class="card-button">Meet your pet</button>
+          </div>
+          <div class="services__card">
+            <div class="card-details">
+              <h1><i data-lucide="house"></i></h1>
+              <p class="text-title">Rehome a pet</p>
+              <p class="text-body">
+                Give a pet a new loving home with our easy rehoming process,
+                connecting pets with caring families.
+              </p>
+            </div>
+            <button class="card-button">Start rehoming</button>
+          </div>
+          <div class="services__card">
+            <div class="card-details">
+              <h1><i data-lucide="bone"></i></h1>
+              <p class="text-title">Pet shop</p>
+              <p class="text-body">
+                Shop quality food, <br />toys, and accessories <br />to keep
+                your pet happy and healthy, all in one place.
+              </p>
+            </div>
+            <button class="card-button">Browse products</button>
+          </div>
+          <div class="services__card">
+            <div class="card-details">
+              <h1><i data-lucide="briefcase-medical"></i></h1>
+              <p class="text-title">Vet service</p>
+              <p class="text-body">
+                Access trusted veterinary care, from check-ups to emergencies,
+                ensuring your pet’s well-being.
+              </p>
+            </div>
+            <button class="card-button">Book a visit</button>
           </div>
         </div>
       </div>
@@ -568,23 +774,65 @@
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script>
+      // Menu toggle functionality
       const menuBtn = document.getElementById('menu-btn');
       const navLinks = document.getElementById('nav-links');
       const menuBtnIcon = menuBtn.querySelector('i');
+      const overlay = document.querySelector('.overlay');
 
       menuBtn.addEventListener('click', e => {
         navLinks.classList.toggle('open');
-
         const isOpen = navLinks.classList.contains('open');
         menuBtnIcon.setAttribute(
           'class',
           isOpen ? 'ri-close-line' : 'ri-menu-line'
         );
+        if (isOpen) {
+        }
       });
 
-      //Language preferences
+      //this helps when navbar interrupts the view of section and for navigation
+      document.querySelector('[href="#home"]').addEventListener('click', e => {
+        e.preventDefault();
+        const aboutSection = document.getElementById('home');
+        if (aboutSection) {
+          const navHeight = document.querySelector('nav').offsetHeight; // Get navbar height
+          const sectionTop =
+            aboutSection.getBoundingClientRect().top + window.pageYOffset; // Section position relative to document
+          window.scrollTo({
+            top: sectionTop - navHeight, // Offset by navbar height
+            behavior: 'smooth',
+          });
+          if (window.innerWidth <= 768) {
+            navLinks.classList.remove('open');
+            overlay.classList.add('hidden');
+            menuBtnIcon.setAttribute('class', 'ri-menu-line');
+          }
+        }
+      });
+
+      document.querySelector('[href="#about"]').addEventListener('click', e => {
+        e.preventDefault();
+        const aboutSection = document.getElementById('about');
+        if (aboutSection) {
+          const navHeight = document.querySelector('nav').offsetHeight; // Get navbar height
+          const sectionTop =
+            aboutSection.getBoundingClientRect().top + window.pageYOffset; // Section position relative to document
+          window.scrollTo({
+            top: sectionTop - navHeight, // Offset by navbar height
+            behavior: 'smooth',
+          });
+          if (window.innerWidth <= 768) {
+            navLinks.classList.remove('open');
+            overlay.classList.add('hidden');
+            menuBtnIcon.setAttribute('class', 'ri-menu-line');
+          }
+        }
+      });
+
+      // Modal handling
       const modal = document.querySelector('.modal');
-      const overlay = document.querySelector('.overlay');
+
       const btnCloseModal = document.querySelector('.close-modal');
       const btnShowModal = document.querySelector('.show-modal');
 
@@ -603,76 +851,62 @@
         overlay.classList.add('hidden');
       });
 
-      //Language data
-      const languages = {
-        en: {
-          home: 'Home',
-          about: 'About',
-          services: 'Services',
-          contact: 'Contact us',
-          login: 'Log in',
-          signup: 'Sign in',
-          chooselang: 'Choose a language',
-          welcome: 'Welcome to petcare.uz',
-          description:
-            'Your trusted partner in pet adoption, rehoming, shopping, and vet care—bringing love, joy, and wellness to every pet and their family.',
-          about_headline: 'About petcare.uz',
-        },
-        ru: {
-          home: 'Главная',
-          about: 'О нас',
-          services: 'Наши сервисы',
-          contact: 'Контакты',
-          login: 'Войти',
-          signup: 'Зарегистрироваться',
-          chooselang: 'Выберите язык',
-          welcome: 'Добро пожаловать в petcare.uz',
-          description:
-            'Ваш надежный партнер в вопросах усыновления домашних животных, поиска новых хозяев, покупок и ветеринарной помощи, приносящий любовь, радость и благополучие каждому питомцу и его семье.',
-          about_headline: 'О petcare.uz',
-        },
-        uz: {
-          home: 'Asosiy',
-          about: 'Biz haqimizda',
-          services: 'Bizning xizmatlar',
-          contact: 'Kontaktlar',
-          login: 'Akkauntga kirish',
-          signup: `Ro'yxatdan o'tish`,
-          chooselang: 'Tilni tanlang',
-          welcome: 'petcare.uzga xush kelibsiz',
-          description: `Uy hayvonlarini boqib olish, uy hayvonlari uchun yangi uy topish, uy hayvonlari maxsulorlarini xarid qilish va veterinar xizmatlari bo'yicha ishonchli hamkoringiz.`,
-          about_headline: 'petcare.uz haqida',
-        },
-      };
+      // Variable to store translations
+      let languages = {};
+
+      // Function to fetch translations from languages.json
+      async function loadTranslations() {
+        try {
+          const response = await fetch('languages.json'); // Adjust path if needed (e.g., 'scripts/languages.json')
+          if (!response.ok) throw new Error('Failed to load languages.json');
+          languages = await response.json();
+          // Load the saved language or default to 'en' after fetching
+          const savedLang = localStorage.getItem('lang') || 'en';
+          changeLanguage(savedLang);
+        } catch (error) {
+          console.error('Error fetching translations:', error);
+        }
+      }
 
       // Function to change language
       function changeLanguage(lang) {
-        // Update content based on selected language
-        document.getElementById('home').textContent = languages[lang].home;
-        document.getElementById('about').textContent = languages[lang].about;
-        document.getElementById('services').textContent =
-          languages[lang].services;
-        document.getElementById('contact').textContent =
-          languages[lang].contact;
-        document.getElementById('login').textContent = languages[lang].login;
-        document.getElementById('signup').textContent = languages[lang].signup;
-        document.getElementById('chooselang').textContent =
-          languages[lang].chooselang;
-        document.getElementById('welcome').textContent =
-          languages[lang].welcome;
-        document.getElementById('description').textContent =
-          languages[lang].description;
-        document.getElementById('about_headline').textContent =
-          languages[lang].about_headline;
+        if (!languages[lang]) {
+          console.error(`Language ${lang} not found in translations`);
+          return;
+        }
+
+        // Map of elements to update
+        const elements = {
+          home: document.getElementById('homeBtn'),
+          about: document.getElementById('aboutBtn'),
+          services: document.getElementById('servicesBtn'),
+          contact: document.getElementById('contactBtn'),
+          login: document.getElementById('login'),
+          signup: document.getElementById('signup'),
+          chooselang: document.getElementById('chooselang'),
+          welcome: document.getElementById('welcome'),
+          description: document.getElementById('description'),
+          about_headline: document.getElementById('about_headline'),
+          whoWeAre: document.getElementById('whoWeAre'),
+          whoWeAreDsc: document.getElementById('whoWeAreDsc'),
+          whatWeDo: document.getElementById('whatWeDo'),
+        };
+
+        // Update all elements with the selected language
+        Object.keys(elements).forEach(key => {
+          if (elements[key] && languages[lang][key]) {
+            elements[key].textContent = languages[lang][key];
+          }
+        });
 
         // Save the language preference
         localStorage.setItem('lang', lang);
       }
 
-      const savedLang = localStorage.getItem('lang') || 'en';
-      changeLanguage(savedLang);
+      // Load translations when the page loads
+      loadTranslations();
 
-      // Lazy reveal
+      // Lazy reveal (unchanged)
       const scrollRevealOption = {
         distance: '50px',
         origin: 'bottom',
@@ -699,6 +933,39 @@
         ...scrollRevealOption,
         delay: 1300,
       });
+
+      ScrollReveal().reveal('#about_headline', {
+        ...scrollRevealOption,
+        origin: 'left',
+        delay: 400,
+      });
+
+      ScrollReveal().reveal('.about__header p', {
+        ...scrollRevealOption,
+        origin: 'left',
+        delay: 500,
+      });
+
+      ScrollReveal().reveal('.about__image img', {
+        ...scrollRevealOption,
+        origin: 'right',
+        delay: 300,
+      });
+
+      ScrollReveal().reveal('.about__card', {
+        duration: 1000,
+        interval: 500,
+        delay: 500,
+      });
+    </script>
+    <script src="languages.json"></script>
+    <!-- Development version -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- Production version -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
     </script>
   </body>
 </html>
