@@ -4,12 +4,43 @@ const navLinks = document.getElementById('nav-links');
 const menuBtnIcon = menuBtn.querySelector('i');
 const overlay = document.querySelector('.overlay');
 
+// Function to close the menu
+function closeMenu() {
+  navLinks.classList.remove('open');
+  menuBtnIcon.setAttribute('class', 'ri-menu-line');
+  overlay.classList.add('hidden');
+}
+
 menuBtn.addEventListener('click', e => {
   navLinks.classList.toggle('open');
   const isOpen = navLinks.classList.contains('open');
   menuBtnIcon.setAttribute('class', isOpen ? 'ri-close-line' : 'ri-menu-line');
-  if (isOpen) {
-  }
+  // overlay.classList.toggle('hidden', !isOpen);
+});
+
+document.querySelectorAll('.nav__links a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault(); // Prevent default anchor behavior
+    const sectionId = link.getAttribute('href').substring(1); // Get section ID (e.g., "services")
+    const section = document.getElementById(sectionId);
+
+    if (section) {
+      const navHeight = document.querySelector('nav').offsetHeight; // Get navbar height
+      const sectionTop =
+        section.getBoundingClientRect().top + window.pageYOffset; // Section position
+      window.scrollTo({
+        top: sectionTop - navHeight, // Offset by navbar height
+        behavior: 'smooth',
+      });
+
+      // Close menu on phone view (width <= 768px)
+      if (window.innerWidth <= 768) {
+        navLinks.classList.remove('open');
+        overlay.classList.add('hidden');
+        menuBtnIcon.setAttribute('class', 'ri-menu-line');
+      }
+    }
+  });
 });
 
 //this helps when navbar interrupts the view of section and for navigation

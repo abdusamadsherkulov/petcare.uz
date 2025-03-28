@@ -9,7 +9,6 @@
       rel="stylesheet"
     />
 
-    <!-- <link rel="stylesheet" href="style.css" /> -->
     <link rel="icon" type="image/png" href="pics/paw.png" />
     <title>petcare.uz</title>
     <style>
@@ -436,27 +435,6 @@
         place-content: center;
       }
 
-      .card-button {
-        transform: translate(-50%, 125%);
-        width: 65%;
-        border-radius: 1rem;
-        border: none;
-        background-color: var(--text-light);
-        color: #fff;
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        opacity: 0;
-        transition: 0.3s ease-out;
-        cursor: pointer;
-      }
-
-      .card-button:hover {
-        background-color: var(--extra-light);
-      }
-
       .text-body {
         color: var(--primary-color);
       }
@@ -477,6 +455,74 @@
       .services__card:hover .card-button {
         transform: translate(-50%, 50%);
         opacity: 1;
+      }
+
+      /* .card-button {
+        transform: translate(-50%, 125%);
+        width: 65%;
+        border-radius: 1rem;
+        border: none;
+        background-color: var(--text-light);
+        color: #fff;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        opacity: 0;
+        transition: 0.3s ease-out;
+        cursor: pointer;
+      } */
+
+      /* .card-button:hover {
+        background-color: var(--extra-light);
+      } */
+
+      .card-button {
+        transform: translate(-50%, 125%);
+        width: 77%;
+        border-radius: 34px;
+        position: absolute;
+        padding: 10px 24px;
+        font-size: 1rem;
+        color: #fff;
+        border: 0px;
+        background-color: var(--text-light);
+        font-weight: 600;
+        left: 50%;
+        bottom: 0;
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        cursor: pointer;
+        overflow: hidden;
+      }
+
+      .card-button::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 50px;
+        height: 50px;
+        border-radius: inherit;
+        scale: 0;
+        z-index: -1;
+        background-color: var(--extra-light);
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      .card-button:hover::before {
+        scale: 4;
+      }
+
+      .button:hover {
+        color: #212121;
+        scale: 1.1;
+        box-shadow: 0 0px 20px rgba(193, 163, 98, 0.4);
+      }
+
+      .button:active {
+        scale: 1;
       }
 
       @media (width > 540px) {
@@ -516,7 +562,7 @@
         }
 
         .section__container {
-          padding: 4rem 1rem;
+          padding: 4rem 1rem 1rem 1rem;
           max-width: var(--max-width);
           margin: auto;
         }
@@ -953,6 +999,24 @@
       });
 
       ScrollReveal().reveal('.about__card', {
+        duration: 1000,
+        interval: 500,
+        delay: 500,
+      });
+
+      ScrollReveal().reveal('#services_headline', {
+        ...scrollRevealOption,
+        origin: 'left',
+        delay: 400,
+      });
+
+      ScrollReveal().reveal('.services__header p', {
+        ...scrollRevealOption,
+        origin: 'left',
+        delay: 500,
+      });
+
+      ScrollReveal().reveal('.services__card', {
         duration: 1000,
         interval: 500,
         delay: 500,
