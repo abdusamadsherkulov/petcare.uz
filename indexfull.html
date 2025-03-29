@@ -24,9 +24,10 @@
         --text-light: #724a24;
         --extra-light: #946d43;
         --white: #ecdbc1;
-        --dirty-white: #b7966b;
+        --dirty-white: #ddb17e;
         --max-width: 1200px;
         --header-font: 'Nunito', serif;
+        --nav-foot-bg: #cbb799;
       }
 
       * {
@@ -39,7 +40,7 @@
         max-width: var(--max-width);
         width: 100%;
         margin: auto;
-        padding: 1rem 1rem;
+        padding: 2rem 1rem;
       }
 
       .section__header {
@@ -81,22 +82,11 @@
         border: 1px solid rgb(105, 81, 49);
         border-radius: 5px;
         padding: 6px 14px;
-        color: rgb(105, 81, 49);
+        color: #fff;
+        background-color: var(--text-light);
       }
 
       #login:hover {
-        background-color: var(--white);
-      }
-
-      #signup {
-        border-radius: 5px;
-        padding: 6px 14px;
-        border: 1px solid rgb(105, 81, 49);
-        background-color: var(--text-light);
-        color: #fff;
-      }
-
-      #signup:hover {
         background-color: var(--extra-light);
       }
 
@@ -146,7 +136,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background-color: var(--dirty-white);
+        background-color: var(--nav-foot-bg);
       }
 
       /* .nav__logo .logo {
@@ -407,10 +397,15 @@
         margin-top: 0rem;
         display: grid;
         gap: 2rem;
+        align-items: center;
+        margin-bottom: 3rem;
       }
 
       .services__grid {
         display: grid;
+        /* grid-template-columns: 1fr; */
+        grid-template-columns: minmax(0, 240px);
+        justify-content: center;
         gap: 3rem;
         padding-top: 2rem;
       }
@@ -419,7 +414,7 @@
         width: 240px;
         height: 254px;
         border-radius: 20px;
-        background: #f1e6d5;
+        background: #ffeed5;
         position: relative;
         padding: 1.8rem;
         border: 2px solid #c3c6ce;
@@ -449,34 +444,13 @@
       .services__card:hover {
         border-color: var(--extra-light);
         box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
-        background-color: #eee1c8;
+        background-color: rgb(255, 238, 206);
       }
 
       .services__card:hover .card-button {
         transform: translate(-50%, 50%);
         opacity: 1;
       }
-
-      /* .card-button {
-        transform: translate(-50%, 125%);
-        width: 65%;
-        border-radius: 1rem;
-        border: none;
-        background-color: var(--text-light);
-        color: #fff;
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        opacity: 0;
-        transition: 0.3s ease-out;
-        cursor: pointer;
-      } */
-
-      /* .card-button:hover {
-        background-color: var(--extra-light);
-      } */
 
       .card-button {
         transform: translate(-50%, 125%);
@@ -525,12 +499,93 @@
         scale: 1;
       }
 
+      .footer {
+        background-color: var(--nav-foot-bg);
+      }
+
+      .footer__container {
+        display: grid;
+        gap: 3rem 2rem;
+      }
+
+      .footer__logo {
+        margin-bottom: 0rem;
+      }
+
+      .footer__logo img {
+        width: 10rem;
+      }
+
+      #footerLogoText {
+        margin-bottom: 2rem;
+        color: var(--extra-dark);
+        font-size: large;
+        opacity: 0.8;
+      }
+
+      .footer__col h4 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: var(--extra-dark);
+      }
+
+      .footer__links {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .footer__links a {
+        color: var(--extra-dark);
+        font-size: 1.5rem;
+      }
+
+      .footer__links a:hover {
+        opacity: 0.5;
+      }
+
+      .footer__bar {
+        padding: 1rem;
+        font-size: 0.9rem;
+        color: var(--extra-dark);
+        text-align: center;
+      }
+
+      #email {
+        color: var(--extra-dark);
+        opacity: 0.8;
+      }
+
+      #email:hover {
+        opacity: 0.6;
+      }
+
+      #follow-us-at {
+        display: inline;
+      }
+
       @media (width > 540px) {
         .about__grid {
           grid-template-columns: repeat(2, 1fr);
         }
         .services__grid {
           grid-template-columns: repeat(4, 1fr);
+        }
+        .footer__container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (width <= 768px) {
+        .services__card {
+          height: auto;
+          min-height: 254px;
+          padding-bottom: 3.5rem;
+        }
+
+        .services__card .card-button {
+          transform: translate(-50%, 50%);
+          opacity: 1;
         }
       }
 
@@ -562,7 +617,7 @@
         }
 
         .section__container {
-          padding: 4rem 1rem 1rem 1rem;
+          padding: 4rem 1rem 2rem 1rem;
           max-width: var(--max-width);
           margin: auto;
         }
@@ -614,8 +669,16 @@
         }
 
         .services__content {
-          grid-template-columns: repeat(1, 1fr);
+          /* grid-template-columns: repeat(1, 1fr); */
           align-items: center;
+        }
+
+        .services__grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .footer__container {
+          grid-template-columns: repeat(2, 1fr);
         }
       }
 
@@ -634,7 +697,7 @@
     <nav>
       <div class="nav__header">
         <div class="nav__logo">
-          <a href="#" class="logo"
+          <a href="#home" class="logo"
             ><img src="pics/Logo.png" alt="petcare.uz"
           /></a>
         </div>
@@ -662,7 +725,7 @@
           >
         </li>
         <li><a href="#" id="login">Log in</a></li>
-        <li><a href="#" id="signup">Sign up</a></li>
+        <!-- <li><a href="#" id="signup">Sign up</a></li> -->
         <li>
           <a class="show-modal" id="lang">
             <i class="ri-global-line"></i>
@@ -818,6 +881,30 @@
       </div>
     </section>
 
+    <footer class="footer" id="contact">
+      <div class="section__container footer__container">
+        <div class="footer__logo">
+          <a href="#home"><img src="pics/Logo.png" alt="petcare.uz" /></a>
+          <p id="footerLogoText">
+            From Adoption to Vet Care – We’ve Got It Covered
+          </p>
+        </div>
+
+        <div class="footer__col">
+          <h4>Support: <a href="" id="email">info@petcare.uz</a></h4>
+          <h4 id="follow-us-at">Follow us at:</h4>
+          <ul class="footer__links">
+            <li>
+              <a href="#"><i class="ri-telegram-fill"></i></a>
+              <a href="#"><i class="ri-pinterest-fill"></i></a>
+              <a href="#"><i class="ri-mail-fill"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bar">© 2025 Petcare.uz</div>
+    </footer>
+
     <script src="https://unpkg.com/scrollreveal"></script>
     <script>
       // Menu toggle functionality
@@ -826,6 +913,13 @@
       const menuBtnIcon = menuBtn.querySelector('i');
       const overlay = document.querySelector('.overlay');
 
+      // Function to close the menu
+      function closeMenu() {
+        navLinks.classList.remove('open');
+        menuBtnIcon.setAttribute('class', 'ri-menu-line');
+        overlay.classList.add('hidden');
+      }
+
       menuBtn.addEventListener('click', e => {
         navLinks.classList.toggle('open');
         const isOpen = navLinks.classList.contains('open');
@@ -833,8 +927,32 @@
           'class',
           isOpen ? 'ri-close-line' : 'ri-menu-line'
         );
-        if (isOpen) {
-        }
+        // overlay.classList.toggle('hidden', !isOpen);
+      });
+
+      document.querySelectorAll('.nav__links a[href^="#"]').forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault(); // Prevent default anchor behavior
+          const sectionId = link.getAttribute('href').substring(1); // Get section ID (e.g., "services")
+          const section = document.getElementById(sectionId);
+
+          if (section) {
+            const navHeight = document.querySelector('nav').offsetHeight; // Get navbar height
+            const sectionTop =
+              section.getBoundingClientRect().top + window.pageYOffset; // Section position
+            window.scrollTo({
+              top: sectionTop - navHeight, // Offset by navbar height
+              behavior: 'smooth',
+            });
+
+            // Close menu on phone view (width <= 768px)
+            if (window.innerWidth <= 768) {
+              navLinks.classList.remove('open');
+              overlay.classList.add('hidden');
+              menuBtnIcon.setAttribute('class', 'ri-menu-line');
+            }
+          }
+        });
       });
 
       //this helps when navbar interrupts the view of section and for navigation
