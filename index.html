@@ -92,7 +92,7 @@
     <section class="section__container about__container" id="about">
       <div class="about__header">
         <h1 class="section__header" id="about_headline">About petcare.uz</h1>
-        <p class="section__description">
+        <p class="section__description" id="about_description">
           At petcare.uz, we’re passionate about pets and the people who love
           them, delivering a seamless experience for adoption, supplies, and
           care.
@@ -104,7 +104,7 @@
         </div>
         <div class="about__grid">
           <div class="about__card">
-            <h3>1.</h3>
+            <h3>1</h3>
             <h4 id="whoWeAre">Who we are</h4>
             <p id="whoWeAreDsc">
               We are a team of animal enthusiasts building a community where
@@ -112,7 +112,7 @@
             </p>
           </div>
           <div class="about__card">
-            <h3>2.</h3>
+            <h3>2</h3>
             <h4 id="whatWeDo">What we do</h4>
             <p id="whatWeDoDsc">
               We connect pets with homes, sell quality pet products, and offer
@@ -120,17 +120,17 @@
             </p>
           </div>
           <div class="about__card">
-            <h3>3.</h3>
-            <h4>How we help</h4>
-            <p>
+            <h3>3</h3>
+            <h4 id="howWeHelp">How we help</h4>
+            <p id="howWeHelpDsc">
               We simplify adoption and rehoming, provide essentials, and ensure
               pets stay healthy with trusted care.
             </p>
           </div>
           <div class="about__card">
-            <h3>4.</h3>
-            <h4>Why choose us</h4>
-            <p>
+            <h3>4</h3>
+            <h4 id="whyChooseUs">Why choose us</h4>
+            <p id="whyChooseUsDsc">
               With compassion, convenience, and a love for pets, we’re your
               go-to for everything pet-related.
             </p>
@@ -142,10 +142,11 @@
     <section class="section__container services__container" id="services">
       <div class="services__header">
         <h1 class="section__header" id="services_headline">Our services</h1>
-        <p class="section__description">
-          At petcare.uz, we’re passionate about pets and the people who love
-          them, delivering a seamless experience for adoption, supplies, and
-          care.
+        <p class="section__description" id="services_description">
+          Discover everything your pet needs in one place—whether it’s finding a
+          furry friend, giving a pet a new home, shopping for essentials, or
+          booking expert care, we’re here to make every moment with your pet
+          special.
         </p>
       </div>
       <div class="services__content">
@@ -155,47 +156,53 @@
         <div class="services__grid">
           <div class="services__card">
             <div class="card-details">
-              <h1><i data-lucide="paw-print"></i></h1>
-              <p class="text-title">Adopt a pet</p>
-              <p class="text-body">
+              <h1><i data-lucide="paw-print" class="icon"></i></h1>
+              <p class="text-title" id="adoptAPet">Adopt a pet</p>
+              <p class="text-body" id="adoptAPetBody">
                 Find your perfect companion from our curated list of adoptable
                 pets, ready to bring joy to your home.
               </p>
             </div>
-            <button class="card-button">Meet your pet</button>
+            <button class="card-button" id="btnMeetYourPet">
+              Meet your pet
+            </button>
           </div>
           <div class="services__card">
             <div class="card-details">
-              <h1><i data-lucide="house"></i></h1>
-              <p class="text-title">Rehome a pet</p>
-              <p class="text-body">
+              <h1><i data-lucide="house" class="icon"></i></h1>
+              <p class="text-title" id="rehomeAPet">Rehome a pet</p>
+              <p class="text-body" id="rehomeAPetBody">
                 Give a pet a new loving home with our easy rehoming process,
                 connecting pets with caring families.
               </p>
             </div>
-            <button class="card-button">Start rehoming</button>
+            <button class="card-button" id="btnStartRehoming">
+              Start rehoming
+            </button>
           </div>
           <div class="services__card">
             <div class="card-details">
-              <h1><i data-lucide="bone"></i></h1>
-              <p class="text-title">Pet shop</p>
-              <p class="text-body">
-                Shop quality food, <br />toys, and accessories <br />to keep
-                your pet happy and healthy, all in one place.
+              <h1><i data-lucide="bone" class="icon"></i></h1>
+              <p class="text-title" id="petShop">Pet shop</p>
+              <p class="text-body" id="petShopBody">
+                Shop quality food, toys, and accessories to keep your pet happy
+                and healthy, all in one convenient spot.
               </p>
             </div>
-            <button class="card-button">Browse products</button>
+            <button class="card-button" id="btnBrowseProducts">
+              Browse products
+            </button>
           </div>
           <div class="services__card">
             <div class="card-details">
-              <h1><i data-lucide="briefcase-medical"></i></h1>
-              <p class="text-title">Vet service</p>
-              <p class="text-body">
-                Access trusted veterinary care, from check-ups to emergencies,
-                ensuring your pet’s well-being.
+              <h1><i data-lucide="briefcase-medical" class="icon"></i></h1>
+              <p class="text-title" id="vetService">Vet service</p>
+              <p class="text-body" id="vetServiceBody">
+                Access trusted veterinary care, from routine check-ups to
+                emergencies, ensuring your pet’s lifelong well-being.
               </p>
             </div>
-            <button class="card-button">Book a visit</button>
+            <button class="card-button" id="btnBookAVisit">Book a visit</button>
           </div>
         </div>
       </div>
@@ -212,21 +219,22 @@
 
         <div class="footer__col">
           <h4 id="support">
-            Support: <a href="" id="email">info@petcare.uz</a>
+            <span id="supportWord">Support:</span>
+            <a href="" id="email">info@petcare.uz</a>
           </h4>
           <div class="footer__socials">
-            <h4 id="follow-us-at">Follow us at:</h4>
+            <h4 id="followUsAt">Follow us at:</h4>
             <ul class="footer__links">
               <li>
                 <a href="#"><i class="ri-telegram-fill"></i></a>
                 <a href="#"><i class="ri-pinterest-fill"></i></a>
-                <a href="#"><i class="ri-mail-fill"></i></a>
+                <a href="#"><i class="ri-instagram-fill"></i></a>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="footer__bar">© 2025 Petcare.uz</div>
+      <div class="footer__bar" id="footer-bar">© 2025 Petcare.uz</div>
     </footer>
 
     <script src="https://unpkg.com/scrollreveal"></script>

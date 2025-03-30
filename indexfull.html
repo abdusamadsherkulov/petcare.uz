@@ -375,7 +375,7 @@
         margin-bottom: 0.5rem;
         font-size: 2.5rem;
         font-weight: 600;
-        color: var(--primary-color);
+        color: var(--extra-light);
       }
 
       .about__card h4 {
@@ -411,12 +411,12 @@
       }
 
       .services__card {
-        width: 240px;
-        height: 254px;
+        width: 260px;
+        height: 300px;
         border-radius: 20px;
         background: #ffeed5;
         position: relative;
-        padding: 1.8rem;
+        padding: 1rem;
         border: 2px solid #c3c6ce;
         transition: 0.5s ease-out;
         overflow: visible;
@@ -501,6 +501,7 @@
 
       .footer {
         background-color: var(--nav-foot-bg);
+        padding-bottom: 1rem;
       }
 
       .footer__container {
@@ -521,18 +522,32 @@
         color: var(--extra-dark);
         font-size: large;
         opacity: 0.8;
+        padding-top: 1rem;
       }
 
       .footer__col h4 {
-        margin-bottom: 1rem;
+        margin-bottom: 0;
         font-size: 1.2rem;
         font-weight: 400;
         color: var(--extra-dark);
+        white-space: nowrap;
+      }
+
+      .footer__socials {
+        display: flex; /* Align "Follow us at" and icons horizontally */
+        align-items: center; /* Vertically center them */
+        gap: 1rem; /* Space between text and icons */
       }
 
       .footer__links {
-        display: grid;
+        display: inline;
         gap: 1rem;
+        margin: 0;
+      }
+
+      .footer__links li {
+        gap: 1.5rem;
+        padding-top: 1.6rem;
       }
 
       .footer__links a {
@@ -545,23 +560,31 @@
       }
 
       .footer__bar {
-        padding: 1rem;
-        font-size: 0.9rem;
+        padding: 1.2rem;
+        font-size: 1.1rem;
         color: var(--extra-dark);
         text-align: center;
+      }
+
+      #support {
+        padding-top: 0.4rem;
+        font-weight: 600;
       }
 
       #email {
         color: var(--extra-dark);
         opacity: 0.8;
+        font-weight: 400;
       }
 
       #email:hover {
         opacity: 0.6;
       }
 
-      #follow-us-at {
-        display: inline;
+      #followUsAt {
+        padding-top: 1.5rem;
+        display: inline-flex;
+        font-weight: 600;
       }
 
       @media (width > 540px) {
@@ -772,7 +795,7 @@
     <section class="section__container about__container" id="about">
       <div class="about__header">
         <h1 class="section__header" id="about_headline">About petcare.uz</h1>
-        <p class="section__description">
+        <p class="section__description" id="about_description">
           At petcare.uz, we’re passionate about pets and the people who love
           them, delivering a seamless experience for adoption, supplies, and
           care.
@@ -784,7 +807,7 @@
         </div>
         <div class="about__grid">
           <div class="about__card">
-            <h3>1.</h3>
+            <h3>1</h3>
             <h4 id="whoWeAre">Who we are</h4>
             <p id="whoWeAreDsc">
               We are a team of animal enthusiasts building a community where
@@ -792,7 +815,7 @@
             </p>
           </div>
           <div class="about__card">
-            <h3>2.</h3>
+            <h3>2</h3>
             <h4 id="whatWeDo">What we do</h4>
             <p id="whatWeDoDsc">
               We connect pets with homes, sell quality pet products, and offer
@@ -800,17 +823,17 @@
             </p>
           </div>
           <div class="about__card">
-            <h3>3.</h3>
-            <h4>How we help</h4>
-            <p>
+            <h3>3</h3>
+            <h4 id="howWeHelp">How we help</h4>
+            <p id="howWeHelpDsc">
               We simplify adoption and rehoming, provide essentials, and ensure
               pets stay healthy with trusted care.
             </p>
           </div>
           <div class="about__card">
-            <h3>4.</h3>
-            <h4>Why choose us</h4>
-            <p>
+            <h3>4</h3>
+            <h4 id="whyChooseUs">Why choose us</h4>
+            <p id="whyChooseUsDsc">
               With compassion, convenience, and a love for pets, we’re your
               go-to for everything pet-related.
             </p>
@@ -822,10 +845,11 @@
     <section class="section__container services__container" id="services">
       <div class="services__header">
         <h1 class="section__header" id="services_headline">Our services</h1>
-        <p class="section__description">
-          At petcare.uz, we’re passionate about pets and the people who love
-          them, delivering a seamless experience for adoption, supplies, and
-          care.
+        <p class="section__description" id="services_description">
+          Discover everything your pet needs in one place—whether it’s finding a
+          furry friend, giving a pet a new home, shopping for essentials, or
+          booking expert care, we’re here to make every moment with your pet
+          special.
         </p>
       </div>
       <div class="services__content">
@@ -836,46 +860,52 @@
           <div class="services__card">
             <div class="card-details">
               <h1><i data-lucide="paw-print"></i></h1>
-              <p class="text-title">Adopt a pet</p>
-              <p class="text-body">
+              <p class="text-title" id="adoptAPet">Adopt a pet</p>
+              <p class="text-body" id="adoptAPetBody">
                 Find your perfect companion from our curated list of adoptable
                 pets, ready to bring joy to your home.
               </p>
             </div>
-            <button class="card-button">Meet your pet</button>
+            <button class="card-button" id="btnMeetYourPet">
+              Meet your pet
+            </button>
           </div>
           <div class="services__card">
             <div class="card-details">
               <h1><i data-lucide="house"></i></h1>
-              <p class="text-title">Rehome a pet</p>
-              <p class="text-body">
+              <p class="text-title" id="rehomeAPet">Rehome a pet</p>
+              <p class="text-body" id="rehomeAPetBody">
                 Give a pet a new loving home with our easy rehoming process,
                 connecting pets with caring families.
               </p>
             </div>
-            <button class="card-button">Start rehoming</button>
+            <button class="card-button" id="btnStartRehoming">
+              Start rehoming
+            </button>
           </div>
           <div class="services__card">
             <div class="card-details">
               <h1><i data-lucide="bone"></i></h1>
-              <p class="text-title">Pet shop</p>
-              <p class="text-body">
-                Shop quality food, <br />toys, and accessories <br />to keep
-                your pet happy and healthy, all in one place.
+              <p class="text-title" id="petShop">Pet shop</p>
+              <p class="text-body" id="petShopBody">
+                Shop quality food, toys, and accessories to keep your pet happy
+                and healthy, all in one convenient spot.
               </p>
             </div>
-            <button class="card-button">Browse products</button>
+            <button class="card-button" id="btnBrowseProducts">
+              Browse products
+            </button>
           </div>
           <div class="services__card">
             <div class="card-details">
               <h1><i data-lucide="briefcase-medical"></i></h1>
-              <p class="text-title">Vet service</p>
-              <p class="text-body">
+              <p class="text-title" id="vetService">Vet service</p>
+              <p class="text-body" id="vetServiceBody">
                 Access trusted veterinary care, from check-ups to emergencies,
                 ensuring your pet’s well-being.
               </p>
             </div>
-            <button class="card-button">Book a visit</button>
+            <button class="card-button" id="btnBookAVisit">Book a visit</button>
           </div>
         </div>
       </div>
@@ -884,25 +914,30 @@
     <footer class="footer" id="contact">
       <div class="section__container footer__container">
         <div class="footer__logo">
-          <a href="#home"><img src="pics/Logo.png" alt="petcare.uz" /></a>
+          <img src="pics/Logo.png" alt="petcare.uz" />
           <p id="footerLogoText">
             From Adoption to Vet Care – We’ve Got It Covered
           </p>
         </div>
 
         <div class="footer__col">
-          <h4>Support: <a href="" id="email">info@petcare.uz</a></h4>
-          <h4 id="follow-us-at">Follow us at:</h4>
-          <ul class="footer__links">
-            <li>
-              <a href="#"><i class="ri-telegram-fill"></i></a>
-              <a href="#"><i class="ri-pinterest-fill"></i></a>
-              <a href="#"><i class="ri-mail-fill"></i></a>
-            </li>
-          </ul>
+          <h4 id="support">
+            <span id="supportWord">Support:</span>
+            <a href="" id="email">info@petcare.uz</a>
+          </h4>
+          <div class="footer__socials">
+            <h4 id="followUsAt">Follow us at:</h4>
+            <ul class="footer__links">
+              <li>
+                <a href="#"><i class="ri-telegram-fill"></i></a>
+                <a href="#"><i class="ri-pinterest-fill"></i></a>
+                <a href="#"><i class="ri-instagram-fill"></i></a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-      <div class="footer__bar">© 2025 Petcare.uz</div>
+      <div class="footer__bar" id="footer-bar">© 2025 Petcare.uz</div>
     </footer>
 
     <script src="https://unpkg.com/scrollreveal"></script>
@@ -1051,9 +1086,32 @@
           welcome: document.getElementById('welcome'),
           description: document.getElementById('description'),
           about_headline: document.getElementById('about_headline'),
+          about_description: document.getElementById('about_description'),
           whoWeAre: document.getElementById('whoWeAre'),
           whoWeAreDsc: document.getElementById('whoWeAreDsc'),
           whatWeDo: document.getElementById('whatWeDo'),
+          whatWeDoDsc: document.getElementById('whatWeDoDsc'),
+          howWeHelp: document.getElementById('howWeHelp'),
+          howWeHelpDsc: document.getElementById('howWeHelpDsc'),
+          whyChooseUs: document.getElementById('whyChooseUs'),
+          whyChooseUsDsc: document.getElementById('whyChooseUsDsc'),
+          services_headline: document.getElementById('services_headline'),
+          services_description: document.getElementById('services_description'),
+          adoptAPet: document.getElementById('adoptAPet'),
+          adoptAPetBody: document.getElementById('adoptAPetBody'),
+          btnMeetYourPet: document.getElementById('btnMeetYourPet'),
+          rehomeAPet: document.getElementById('rehomeAPet'),
+          rehomeAPetBody: document.getElementById('rehomeAPetBody'),
+          btnStartRehoming: document.getElementById('btnStartRehoming'),
+          petShop: document.getElementById('petShop'),
+          petShopBody: document.getElementById('petShopBody'),
+          btnBrowseProducts: document.getElementById('btnBrowseProducts'),
+          vetService: document.getElementById('vetService'),
+          vetServiceBody: document.getElementById('vetServiceBody'),
+          btnBookAVisit: document.getElementById('btnBookAVisit'),
+          footerLogoText: document.getElementById('footerLogoText'),
+          supportWord: document.getElementById('supportWord'),
+          followUsAt: document.getElementById('followUsAt'),
         };
 
         // Update all elements with the selected language
@@ -1138,6 +1196,12 @@
         duration: 1000,
         interval: 500,
         delay: 500,
+      });
+
+      ScrollReveal().reveal('.footer__container', {
+        ...scrollRevealOption,
+        origin: 'left',
+        delay: 400,
       });
     </script>
     <script src="languages.json"></script>

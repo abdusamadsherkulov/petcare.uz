@@ -139,9 +139,32 @@ function changeLanguage(lang) {
     welcome: document.getElementById('welcome'),
     description: document.getElementById('description'),
     about_headline: document.getElementById('about_headline'),
+    about_description: document.getElementById('about_description'),
     whoWeAre: document.getElementById('whoWeAre'),
     whoWeAreDsc: document.getElementById('whoWeAreDsc'),
     whatWeDo: document.getElementById('whatWeDo'),
+    whatWeDoDsc: document.getElementById('whatWeDoDsc'),
+    howWeHelp: document.getElementById('howWeHelp'),
+    howWeHelpDsc: document.getElementById('howWeHelpDsc'),
+    whyChooseUs: document.getElementById('whyChooseUs'),
+    whyChooseUsDsc: document.getElementById('whyChooseUsDsc'),
+    services_headline: document.getElementById('services_headline'),
+    services_description: document.getElementById('services_description'),
+    adoptAPet: document.getElementById('adoptAPet'),
+    adoptAPetBody: document.getElementById('adoptAPetBody'),
+    btnMeetYourPet: document.getElementById('btnMeetYourPet'),
+    rehomeAPet: document.getElementById('rehomeAPet'),
+    rehomeAPetBody: document.getElementById('rehomeAPetBody'),
+    btnStartRehoming: document.getElementById('btnStartRehoming'),
+    petShop: document.getElementById('petShop'),
+    petShopBody: document.getElementById('petShopBody'),
+    btnBrowseProducts: document.getElementById('btnBrowseProducts'),
+    vetService: document.getElementById('vetService'),
+    vetServiceBody: document.getElementById('vetServiceBody'),
+    btnBookAVisit: document.getElementById('btnBookAVisit'),
+    footerLogoText: document.getElementById('footerLogoText'),
+    supportWord: document.getElementById('supportWord'),
+    followUsAt: document.getElementById('followUsAt'),
   };
 
   // Update all elements with the selected language
@@ -226,4 +249,10 @@ ScrollReveal().reveal('.services__card', {
   duration: 1000,
   interval: 500,
   delay: 500,
+});
+
+ScrollReveal().reveal('.footer__container', {
+  ...scrollRevealOption,
+  origin: 'left',
+  delay: 400,
 });
