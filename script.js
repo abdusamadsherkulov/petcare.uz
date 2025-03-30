@@ -256,3 +256,54 @@ ScrollReveal().reveal('.footer__container', {
   origin: 'left',
   delay: 400,
 });
+
+//Oauth
+window.onload = function () {
+  google.accounts.id.initialize({
+    client_id: 'YOUR_ACTUAL_CLIENT_ID_HERE', // Replace with your Client ID
+    callback: handleCredentialResponse,
+  });
+  google.accounts.id.renderButton(document.getElementById('g_id_signin'), {
+    theme: 'outline',
+    size: 'large',
+  });
+};
+
+function handleCredentialResponse(response) {
+  const responsePayload = parseJwt(response.credential);
+  const userData = {
+    id: responsePayload.sub,
+    name: responsePayload.name,
+    email: responsePayload.email,
+    picture: responsePayload.picture,
+    loginTime: new Date().toISOString(),
+  };
+  localStorage.setItem('userData', JSON.stringify(userData));
+  alert(`Welcome, ${userData.name}!`);
+  updateUI(userData);
+}
+
+function parseJwt(token) {
+  const base64Url = token.split('.')[1];
+  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  const jsonPayload = decodeURIComponent(
+    atob(base64)
+      .split('')
+      .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+      .join('')
+  );
+  return JSON.parse(jsonPayload);
+}
+
+function updateUI(userData) {
+  const loginBtn = document.getElementById('g_id_signin');
+  if (userData) {
+    loginBtn.style.display = 'none';
+    // Optionally add a logout button or user info display
+  }
+}
+
+const savedUser = JSON.parse(localStorage.getItem('userData'));
+if (savedUser) {
+  updateUI(savedUser);
+}
