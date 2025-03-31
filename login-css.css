@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+  --primary-color: #685341;
+  --text-dark: #502b0f;
+  --extra-dark: #2e1402;
+  --text-light: #724a24;
+  --extra-light: #946d43;
+  --white: #ecdbc1;
+  --dirty-white: #ddb17e;
+  --nav-foot-bg: #cbb799;
+  --header-font: 'Nunito', serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--header-font);
+  background-image: url(pics/brick-5066288_1920.jpg);
+  background-size: cover;
+  backdrop-filter: blur(2px) brightness(70%);
+  /* background-color: var(--primary-color); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* backdrop-filter: brightness(70%); */
+}
+
+.login__container {
+  background-color: rgba(255, 255, 255, 0.39);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  backdrop-filter: blur(3px);
+}
+
+.login__container img {
+  width: 200px;
+}
+
+.login__container h1 {
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+}
+
+#formTitle {
+  font-family: var(--header-font);
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login__form input {
+  padding: 0.8rem;
+  border: 1px solid var(--text-light);
+  border-radius: 5px;
+  font-size: 1rem;
+  color: var(--text-dark);
+  font-family: var(--header-font);
+  background-color: #ffffff73;
+}
+
+.login__form button {
+  padding: 0.8rem;
+  background-color: var(--text-light);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login__form button:hover {
+  background-color: var(--extra-light);
+}
+
+.google__btn {
+  background-color: #4285f4;
+  margin-top: 1rem;
+}
+
+.google__btn:hover {
+  background-color: #357abd;
+}
+
+.toggle__link {
+  margin-top: 1rem;
+  color: var(--text-dark);
+  font-size: 1rem;
+}
+
+.toggle__link a {
+  color: var(--extra-dark);
+  text-decoration: none;
+}
+
+.toggle__link a:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  display: none;
+}

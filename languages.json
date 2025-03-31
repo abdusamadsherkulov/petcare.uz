@@ -112,5 +112,13 @@
     "footerLogoText": "Uy hayvonlarini boqib olishdan tortib veterinar xizmatigacha - bizda hammasi bor",
     "supportWord": "Savollar uchun:",
     "followUsAt": "Bizga obuna bo'ling:"
+  },
+  "comment": {
+    "formTitle": "Log In",
+    "submitBtn": "Log In",
+    "googleLogin": "Log In with Google",
+    "errorMsg": "Invalid email or password",
+    "toggleText": "Don't have and account?",
+    "toggleLink": "Sign Up"
   }
 }
