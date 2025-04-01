@@ -22,7 +22,7 @@ body {
   font-family: var(--header-font);
   background-image: url(pics/brick-5066288_1920.jpg);
   background-size: cover;
-  backdrop-filter: blur(2px) brightness(70%);
+  backdrop-filter: blur(3px) brightness(70%);
   /* background-color: var(--primary-color); */
   display: flex;
   justify-content: center;

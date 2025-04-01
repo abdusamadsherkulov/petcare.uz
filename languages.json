@@ -35,7 +35,8 @@
     "btnBookAVisit": "Book a visit",
     "footerLogoText": "From Adoption to Vet Care – We’ve Got It Covered",
     "supportWord": "Support:",
-    "followUsAt": "Follow us at:"
+    "followUsAt": "Follow us at:",
+    "formTitle": "Log In"
   },
   "ru": {
     "home": "Главная",
@@ -73,7 +74,8 @@
     "btnBookAVisit": "Записаться на прием",
     "footerLogoText": "От усыновления до ветеринарной помощи — у нас есть все",
     "supportWord": "Служба поддержки:",
-    "followUsAt": "Подпишитесь на нас:"
+    "followUsAt": "Подпишитесь на нас:",
+    "formTitle": "Вход"
   },
   "uz": {
     "home": "Asosiy",
@@ -111,7 +113,8 @@
     "btnBookAVisit": "Qabulga yozilish",
     "footerLogoText": "Uy hayvonlarini boqib olishdan tortib veterinar xizmatigacha - bizda hammasi bor",
     "supportWord": "Savollar uchun:",
-    "followUsAt": "Bizga obuna bo'ling:"
+    "followUsAt": "Bizga obuna bo'ling:",
+    "formTitle": "Kirish"
   },
   "comment": {
     "formTitle": "Log In",
