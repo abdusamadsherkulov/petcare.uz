@@ -36,7 +36,17 @@
     "footerLogoText": "From Adoption to Vet Care – We’ve Got It Covered",
     "supportWord": "Support:",
     "followUsAt": "Follow us at:",
-    "formTitle": "Log In"
+    "formTitle": "Log in",
+    "logoutBtn": "Log out",
+    "name": "Name",
+    "surname": "Surname",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "toggleText": "Don't have an account?",
+    "toggleTextAlt": "Already have an account?",
+    "toggleLink": "Sign Up",
+    "errorMsg": "Invalid email or password"
   },
   "ru": {
     "home": "Главная",
@@ -75,7 +85,17 @@
     "footerLogoText": "От усыновления до ветеринарной помощи — у нас есть все",
     "supportWord": "Служба поддержки:",
     "followUsAt": "Подпишитесь на нас:",
-    "formTitle": "Вход"
+    "formTitle": "Вход",
+    "logoutBtn": "Выйти",
+    "name": "Имя",
+    "surname": "Фамилия",
+    "email": "Электронная почта",
+    "password": "Пароль",
+    "confirmPassword": "Подтвердите пароль",
+    "toggleText": "Нет аккаунта?",
+    "toggleTextAlt": "Уже есть аккаунт?",
+    "toggleLink": "Зарегистрироваться",
+    "errorMsg": "Неверный email или пароль"
   },
   "uz": {
     "home": "Asosiy",
@@ -114,7 +134,17 @@
     "footerLogoText": "Uy hayvonlarini boqib olishdan tortib veterinar xizmatigacha - bizda hammasi bor",
     "supportWord": "Savollar uchun:",
     "followUsAt": "Bizga obuna bo'ling:",
-    "formTitle": "Kirish"
+    "formTitle": "Kirish",
+    "logoutBtn": "Chiqish",
+    "name": "Ism",
+    "surname": "Familiya",
+    "email": "Elektron pochta",
+    "password": "Parol",
+    "confirmPassword": "Parolni tasdiqlash",
+    "toggleText": "Akkauntingiz yo'qmi?",
+    "toggleTextAlt": "Akkauntingiz bormi?",
+    "toggleLink": "Ro'yxatdan o'tish",
+    "errorMsg": "Elektron pochta yoki parolda xatolik bor"
   },
   "comment": {
     "formTitle": "Log In",

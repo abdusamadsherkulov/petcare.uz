@@ -3,29 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="google-signin-client_id"
-      content="877691268840-mfe9nuk08dt5br15sdga7ffb62thvqk9.apps.googleusercontent.com"
-    />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
     <link rel="icon" type="image/png" href="pics/paw.png" />
-    <title>Login | petcare.uz</title>
     <link rel="stylesheet" href="login-css.css" />
+    <title>Login | petcare.uz</title>
   </head>
   <body>
     <div class="login__container">
       <img src="pics/Logo.png" alt="petcare.uz" />
       <h1 id="formTitle">Log In</h1>
       <form class="login__form" id="authForm">
+        <input
+          type="text"
+          id="name"
+          class="signup-only"
+          placeholder="Name"
+          required
+        />
+        <input
+          type="text"
+          id="surname"
+          class="signup-only"
+          placeholder="Surname"
+          required
+        />
         <input type="email" id="email" placeholder="Email" required />
         <input type="password" id="password" placeholder="Password" required />
+        <input
+          type="password"
+          id="confirmPassword"
+          class="signup-only"
+          placeholder="Confirm Password"
+          required
+        />
         <button type="submit" id="submitBtn">Log In</button>
-        <button type="button" class="google__btn" id="googleLogin">
-          <i class="ri-google-fill"></i> Log In with Google
-        </button>
       </form>
       <p class="error" id="errorMsg">Invalid email or password</p>
       <p class="toggle__link">
@@ -34,7 +48,7 @@
       </p>
     </div>
 
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="login-script.js"></script>
+    <script src="languages.json"></script>
   </body>
 </html>

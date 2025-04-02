@@ -23,12 +23,10 @@ body {
   background-image: url(pics/brick-5066288_1920.jpg);
   background-size: cover;
   backdrop-filter: blur(3px) brightness(70%);
-  /* background-color: var(--primary-color); */
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  /* backdrop-filter: brightness(70%); */
 }
 
 .login__container {
@@ -87,15 +85,6 @@ body {
   background-color: var(--extra-light);
 }
 
-.google__btn {
-  background-color: #4285f4;
-  margin-top: 1rem;
-}
-
-.google__btn:hover {
-  background-color: #357abd;
-}
-
 .toggle__link {
   margin-top: 1rem;
   color: var(--text-dark);
@@ -116,4 +105,8 @@ body {
   font-size: 0.9rem;
   margin-top: 0.5rem;
   display: none;
+}
+
+.signup-only {
+  display: none; /* Hidden by default for login */
 }

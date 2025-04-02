@@ -473,7 +473,7 @@ nav {
 }
 
 .card-button:hover::before {
-  scale: 4;
+  scale: 4.2;
 }
 
 .button:hover {
@@ -572,6 +572,31 @@ nav {
   padding-top: 1.5rem;
   display: inline-flex;
   font-weight: 600;
+}
+
+.logout-btn {
+  border: 1px solid rgb(105, 81, 49);
+  border-radius: 5px;
+  padding: 6px 14px;
+  color: #fff;
+  background-color: var(--text-light);
+  list-style: none;
+}
+
+.logout-btn:hover {
+  background-color: var(--extra-light);
+}
+
+#profileBtn {
+  font-size: 1rem;
+  color: var(--extra-dark);
+  /* padding: 10px; */
+  /* background-color: rgb(143, 143, 143); */
+  border-radius: 50%;
+}
+
+#profileBtn:hover {
+  color: var(--extra-light);
 }
 
 @media (width > 540px) {

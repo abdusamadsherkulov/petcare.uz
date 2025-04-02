@@ -3,6 +3,8 @@ const menuBtn = document.getElementById('menu-btn');
 const navLinks = document.getElementById('nav-links');
 const menuBtnIcon = menuBtn.querySelector('i');
 const overlay = document.querySelector('.overlay');
+const authSection = document.getElementById('authSection');
+const profileLi = document.getElementById('profileLi');
 
 // Function to close the menu
 function closeMenu() {
@@ -165,7 +167,8 @@ function changeLanguage(lang) {
     footerLogoText: document.getElementById('footerLogoText'),
     supportWord: document.getElementById('supportWord'),
     followUsAt: document.getElementById('followUsAt'),
-    // formTitle: document.getElementById('formTitle'),
+    formTitle: document.getElementById('formTitle'),
+    logoutBtn: document.getElementById('logoutBtn'),
   };
 
   // Update all elements with the selected language
@@ -259,3 +262,23 @@ ScrollReveal().reveal('.footer__container', {
 });
 
 //client id 877691268840-mfe9nuk08dt5br15sdga7ffb62thvqk9.apps.googleusercontent.com
+
+function updateAuthSection() {
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  if (currentUser) {
+    authSection.innerHTML = `
+      <a href="index.html" id="logoutBtn" class="logout-btn" style="color:#fff">Log out</a>
+    `;
+    profileLi.style = 'display: block';
+
+    document.getElementById('logoutBtn').addEventListener('click', e => {
+      e.preventDefault();
+      localStorage.removeItem('currentUser');
+      window.location.href = 'index.html'; // Redirect to login page
+    });
+  } else {
+    authSection.innerHTML = `<a href="login-page.html" id="login">Log in</a>`;
+  }
+}
+
+updateAuthSection();
