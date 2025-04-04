@@ -3,17 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="google-signin-client_id"
-      content="877691268840-mfe9nuk08dt5br15sdga7ffb62thvqk9.apps.googleusercontent.com"
-    />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
     <link rel="icon" type="image/png" href="pics/paw.png" />
+    <link rel="stylesheet" href="login-css.css" />
     <title>Login | petcare.uz</title>
-    <!-- <link rel="stylesheet" href="login-css.css" /> -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
@@ -40,12 +36,10 @@
         background-image: url(pics/brick-5066288_1920.jpg);
         background-size: cover;
         backdrop-filter: blur(3px) brightness(70%);
-        /* background-color: var(--primary-color); */
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        /* backdrop-filter: brightness(70%); */
       }
 
       .login__container {
@@ -104,15 +98,6 @@
         background-color: var(--extra-light);
       }
 
-      .google__btn {
-        background-color: #4285f4;
-        margin-top: 1rem;
-      }
-
-      .google__btn:hover {
-        background-color: #357abd;
-      }
-
       .toggle__link {
         margin-top: 1rem;
         color: var(--text-dark);
@@ -134,6 +119,10 @@
         margin-top: 0.5rem;
         display: none;
       }
+
+      .signup-only {
+        display: none; /* Hidden by default for login */
+      }
     </style>
   </head>
   <body>
@@ -141,12 +130,30 @@
       <img src="pics/Logo.png" alt="petcare.uz" />
       <h1 id="formTitle">Log In</h1>
       <form class="login__form" id="authForm">
+        <input
+          type="text"
+          id="name"
+          class="signup-only"
+          placeholder="Name"
+          required
+        />
+        <input
+          type="text"
+          id="surname"
+          class="signup-only"
+          placeholder="Surname"
+          required
+        />
         <input type="email" id="email" placeholder="Email" required />
         <input type="password" id="password" placeholder="Password" required />
+        <input
+          type="password"
+          id="confirmPassword"
+          class="signup-only"
+          placeholder="Confirm Password"
+          required
+        />
         <button type="submit" id="submitBtn">Log In</button>
-        <button type="button" class="google__btn" id="googleLogin">
-          <i class="ri-google-fill"></i> Log In with Google
-        </button>
       </form>
       <p class="error" id="errorMsg">Invalid email or password</p>
       <p class="toggle__link">
@@ -155,70 +162,160 @@
       </p>
     </div>
 
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <!-- <script src="login-script.js"></script> -->
-    <script>
-      //Oauth
+    <script src="login-script.js">
       const authForm = document.getElementById('authForm');
-      const submitBtn = document.getElementById('submitBtn');
-      const formTitle = document.getElementById('formTitle');
-      const toggleLink = document.getElementById('toggleLink');
-      const toggleText = document.getElementById('toggleText');
-      const errorMsg = document.getElementById('errorMsg');
-      let isLogin = true;
+            const submitBtn = document.getElementById('submitBtn');
+            const formTitle = document.getElementById('formTitle');
+            const toggleLink = document.getElementById('toggleLink');
+            const toggleText = document.getElementById('toggleText');
+            const errorMsg = document.getElementById('errorMsg');
+            const nameInput = document.getElementById('name');
+            const surnameInput = document.getElementById('surname');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            let isLogin = true;
 
-      // Load users from localStorage (for demo purposes)
-      let users = JSON.parse(localStorage.getItem('users')) || [];
+            // Load users from localStorage (for demo purposes)
+            let users = JSON.parse(localStorage.getItem('users')) || [];
 
-      // Toggle between login and sign-up
-      toggleLink.addEventListener('click', e => {
-        e.preventDefault();
-        isLogin = !isLogin;
-        formTitle.textContent = isLogin ? 'Log In' : 'Sign Up';
-        submitBtn.textContent = isLogin ? 'Log In' : 'Sign Up';
-        toggleText.textContent = isLogin
-          ? "Don't have an account?"
-          : 'Already have an account?';
-        toggleLink.textContent = isLogin ? 'Sign Up' : 'Log In';
-        errorMsg.style.display = 'none';
-      });
+            // Function to toggle form fields visibility
+            function toggleFormFields() {
+              const signupFields = document.querySelectorAll('.signup-only');
+              signupFields.forEach(field => {
+                field.style.display = isLogin ? 'none' : 'block';
+                field.required = !isLogin; // Make fields required only for signup
+              });
+            }
 
-      // Handle form submission
-      authForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+            // Initial call to set correct field visibility
+            toggleFormFields();
 
-        if (isLogin) {
-          // Login logic
-          const user = users.find(
-            u => u.email === email && u.password === password
-          );
-          if (user) {
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            window.location.href = 'index.html'; // Redirect to home page
-          } else {
-            errorMsg.style.display = 'block';
-          }
-        } else {
-          // Sign-up logic
-          if (users.some(u => u.email === email)) {
-            errorMsg.textContent = 'Email already exists';
-            errorMsg.style.display = 'block';
-          } else {
-            const newUser = {email, password};
-            users.push(newUser);
-            localStorage.setItem('users', JSON.stringify(users));
-            localStorage.setItem('currentUser', JSON.stringify(newUser));
-            window.location.href = 'index.html'; // Redirect to home page
-          }
-        }
-      });
+            // Toggle between login and sign-up
+            toggleLink.addEventListener('click', e => {
+              e.preventDefault();
+              isLogin = !isLogin;
+              const currentLang = localStorage.getItem('lang') || 'en';
+              formTitle.textContent = isLogin
+                ? languages[currentLang].formTitle
+                : languages[currentLang].signup;
+              submitBtn.textContent = isLogin
+                ? languages[currentLang].formTitle
+                : languages[currentLang].signup;
+              toggleText.textContent = isLogin
+                ? languages[currentLang].toggleText
+                : languages[currentLang].toggleTextAlt;
 
-      // Check if user is already logged in
-      if (localStorage.getItem('currentUser')) {
-        window.location.href = 'index.html';
-      }
+              toggleLink.textContent = isLogin
+                ? languages[currentLang].toggleLink
+                : languages[currentLang].formTitle;
+              errorMsg.style.display = 'none';
+              toggleFormFields(); // Show/hide signup fields
+            });
+
+            // Handle form submission
+            authForm.addEventListener('submit', e => {
+              e.preventDefault();
+              const email = document.getElementById('email').value;
+              const password = document.getElementById('password').value;
+
+              if (isLogin) {
+                // Login logic
+                const user = users.find(u => u.email === email && u.password === password);
+                if (user) {
+                  localStorage.setItem('currentUser', JSON.stringify(user));
+                  window.location.href = 'index.html'; // Redirect to home page
+                } else {
+                  errorMsg.textContent = 'Invalid email or password';
+                  errorMsg.style.display = 'block';
+                }
+              } else {
+                // Sign-up logic
+                const name = nameInput.value;
+                const surname = surnameInput.value;
+                const confirmPassword = confirmPasswordInput.value;
+
+                // Validation
+                if (password !== confirmPassword) {
+                  errorMsg.textContent = 'Passwords do not match';
+                  errorMsg.style.display = 'block';
+                  return;
+                }
+
+                if (users.some(u => u.email === email)) {
+                  errorMsg.textContent = 'Email already exists';
+                  errorMsg.style.display = 'block';
+                } else {
+                  const newUser = {name, surname, email, password};
+                  users.push(newUser);
+                  localStorage.setItem('users', JSON.stringify(users));
+                  localStorage.setItem('currentUser', JSON.stringify(newUser));
+                  window.location.href = 'index.html'; // Redirect to home page
+                }
+              }
+            });
+
+            // Check if user is already logged in
+            if (localStorage.getItem('currentUser')) {
+              window.location.href = 'index.html';
+            }
+
+            // Fetch translations from languages.json
+            async function loadTranslations() {
+              try {
+                const response = await fetch('languages.json');
+                if (!response.ok) throw new Error('Failed to load languages.json');
+                languages = await response.json();
+                const savedLang = localStorage.getItem('lang') || 'en';
+                updateLanguage(savedLang);
+              } catch (error) {
+                console.error('Error fetching translations:', error);
+              }
+            }
+
+            function updateLanguage(lang = localStorage.getItem('lang') || 'en') {
+              if (!languages[lang]) {
+                console.error(`Language ${lang} not found in translations`);
+                return;
+              }
+
+              const elements = {
+                formTitle: formTitle,
+                submitBtn: submitBtn,
+                toggleText: toggleText,
+                toggleLink: toggleLink,
+                errorMsg: errorMsg,
+              };
+
+              // Update text content based on language
+              elements.formTitle.textContent = isLogin
+                ? languages[lang].formTitle
+                : languages[lang].signup || 'Sign Up';
+              elements.submitBtn.textContent = isLogin
+                ? languages[lang].formTitle
+                : languages[lang].signup || 'Sign Up';
+              elements.toggleText.textContent = isLogin
+                ? languages[lang].toggleText || "Don't have an account?"
+                : languages[lang].toggleTextAlt || 'Already have an account?';
+              elements.toggleLink.textContent = isLogin
+                ? languages[lang].toggleLink || 'Sign Up'
+                : languages[lang].login || 'Log In';
+              elements.errorMsg.textContent =
+                languages[lang].errorMsg || 'Invalid email or password';
+
+              // Update placeholders (optional, if you want them translated)
+              document.getElementById('name').placeholder = languages[lang].name || 'Name';
+              document.getElementById('surname').placeholder =
+                languages[lang].surname || 'Surname';
+              document.getElementById('email').placeholder =
+                languages[lang].email || 'Email';
+              document.getElementById('password').placeholder =
+                languages[lang].password || 'Password';
+              document.getElementById('confirmPassword').placeholder =
+                languages[lang].confirmPassword || 'Confirm Password';
+            }
+
+            // Load translations when the page loads
+            loadTranslations();
     </script>
+    <script src="languages.json"></script>
   </body>
 </html>

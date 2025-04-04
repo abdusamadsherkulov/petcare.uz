@@ -8,6 +8,7 @@ const nameInput = document.getElementById('name');
 const surnameInput = document.getElementById('surname');
 const confirmPasswordInput = document.getElementById('confirmPassword');
 let isLogin = true;
+const API_URL = 'http://localhost:5000/api/auth'; // Change this to your production URL after deploying
 
 // Load users from localStorage (for demo purposes)
 let users = JSON.parse(localStorage.getItem('users')) || [];
@@ -28,30 +29,50 @@ toggleFormFields();
 toggleLink.addEventListener('click', e => {
   e.preventDefault();
   isLogin = !isLogin;
-  formTitle.textContent = isLogin ? 'Log In' : 'Sign Up';
-  submitBtn.textContent = isLogin ? 'Log In' : 'Sign Up';
+  const currentLang = localStorage.getItem('lang') || 'en';
+  formTitle.textContent = isLogin
+    ? languages[currentLang].formTitle
+    : languages[currentLang].signup;
+  submitBtn.textContent = isLogin
+    ? languages[currentLang].formTitle
+    : languages[currentLang].signup;
   toggleText.textContent = isLogin
-    ? "Don't have an account?"
-    : 'Already have an account?';
-  toggleLink.textContent = isLogin ? 'Sign Up' : 'Log In';
+    ? languages[currentLang].toggleText
+    : languages[currentLang].toggleTextAlt;
+
+  toggleLink.textContent = isLogin
+    ? languages[currentLang].toggleLink
+    : languages[currentLang].formTitle;
   errorMsg.style.display = 'none';
   toggleFormFields(); // Show/hide signup fields
 });
 
 // Handle form submission
-authForm.addEventListener('submit', e => {
+authForm.addEventListener('submit', async e => {
   e.preventDefault();
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 
   if (isLogin) {
     // Login logic
-    const user = users.find(u => u.email === email && u.password === password);
-    if (user) {
-      localStorage.setItem('currentUser', JSON.stringify(user));
+    const response = await fetch('http://localhost:5000/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({email, password}),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      // Successful login, store token and user data
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('currentUser', JSON.stringify(data.user)); // Store user data
       window.location.href = 'index.html'; // Redirect to home page
     } else {
-      errorMsg.textContent = 'Invalid email or password';
+      // Login failed, show error
+      errorMsg.textContent = data.message || 'Invalid email or password';
       errorMsg.style.display = 'block';
     }
   } else {
@@ -67,18 +88,84 @@ authForm.addEventListener('submit', e => {
       return;
     }
 
-    if (users.some(u => u.email === email)) {
-      errorMsg.textContent = 'Email already exists';
-      errorMsg.style.display = 'block';
-    } else {
-      const newUser = {name, surname, email, password};
-      users.push(newUser);
-      localStorage.setItem('users', JSON.stringify(users));
-      localStorage.setItem('currentUser', JSON.stringify(newUser));
+    const response = await fetch('http://localhost:5000/api/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({name, surname, email, password}),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      // Successful sign-up, store token and user data
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('currentUser', JSON.stringify(data.user)); // Store user data
       window.location.href = 'index.html'; // Redirect to home page
+    } else {
+      // Sign-up failed, show error
+      errorMsg.textContent = data.message || 'Error during registration';
+      errorMsg.style.display = 'block';
     }
   }
 });
+
+// Get token from localStorage
+const currentUser = localStorage.getItem('currentUser');
+const token = localStorage.getItem('token');
+
+// Use token for making authenticated requests
+fetch('http://localhost:5000/api/auth/profile', {
+  method: 'GET',
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error fetching profile:', error));
+
+// authForm.addEventListener('submit', e => {
+//   e.preventDefault();
+//   const email = document.getElementById('email').value;
+//   const password = document.getElementById('password').value;
+
+//   if (isLogin) {
+//     // Login logic
+//     const user = users.find(u => u.email === email && u.password === password);
+//     if (user) {
+//       localStorage.setItem('currentUser', JSON.stringify(user));
+//       window.location.href = 'index.html'; // Redirect to home page
+//     } else {
+//       errorMsg.textContent = 'Invalid email or password';
+//       errorMsg.style.display = 'block';
+//     }
+//   } else {
+//     // Sign-up logic
+//     const name = nameInput.value;
+//     const surname = surnameInput.value;
+//     const confirmPassword = confirmPasswordInput.value;
+
+//     // Validation
+//     if (password !== confirmPassword) {
+//       errorMsg.textContent = 'Passwords do not match';
+//       errorMsg.style.display = 'block';
+//       return;
+//     }
+
+//     if (users.some(u => u.email === email)) {
+//       errorMsg.textContent = 'Email already exists';
+//       errorMsg.style.display = 'block';
+//     } else {
+//       const newUser = {name, surname, email, password};
+//       users.push(newUser);
+//       localStorage.setItem('users', JSON.stringify(users));
+//       localStorage.setItem('currentUser', JSON.stringify(newUser));
+//       window.location.href = 'index.html'; // Redirect to home page
+//     }
+//   }
+// });
 
 // Check if user is already logged in
 if (localStorage.getItem('currentUser')) {

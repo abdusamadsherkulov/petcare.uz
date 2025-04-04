@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
 
+    <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/png" href="pics/paw.png" />
     <title>petcare.uz</title>
     <style>
@@ -314,6 +316,7 @@
       .header__image img {
         max-width: 790px;
         margin-left: auto;
+        padding-bottom: 2rem;
       }
 
       .header__content {
@@ -328,7 +331,7 @@
 
       .header__content > div {
         max-width: 580px;
-        padding: 4rem 0rem;
+        padding: 3rem 1rem;
         background-color: rgba(255, 255, 255, 0.5);
         backdrop-filter: blur(5px);
       }
@@ -411,12 +414,12 @@
       }
 
       .services__card {
-        width: 260px;
-        height: 300px;
+        width: 255px;
+        height: 264px;
         border-radius: 20px;
         background: #ffeed5;
         position: relative;
-        padding: 1rem;
+        padding: 1.8rem;
         border: 2px solid #c3c6ce;
         transition: 0.5s ease-out;
         overflow: visible;
@@ -425,9 +428,9 @@
       .card-details {
         color: var(--primary-color);
         height: 100%;
-        gap: 0.5em;
+        gap: 0.3em;
         display: grid;
-        place-content: center;
+        /* place-content: center; */
       }
 
       .text-body {
@@ -436,7 +439,7 @@
 
       /*Text*/
       .text-title {
-        font-size: 1.5em;
+        font-size: 1.3em;
         font-weight: bold;
       }
 
@@ -454,7 +457,7 @@
 
       .card-button {
         transform: translate(-50%, 125%);
-        width: 77%;
+        width: 85%;
         border-radius: 34px;
         position: absolute;
         padding: 10px 24px;
@@ -486,7 +489,7 @@
       }
 
       .card-button:hover::before {
-        scale: 4;
+        scale: 4.2;
       }
 
       .button:hover {
@@ -585,6 +588,31 @@
         padding-top: 1.5rem;
         display: inline-flex;
         font-weight: 600;
+      }
+
+      .logout-btn {
+        border: 1px solid rgb(105, 81, 49);
+        border-radius: 5px;
+        padding: 6px 14px;
+        color: #fff;
+        background-color: var(--text-light);
+        list-style: none;
+      }
+
+      .logout-btn:hover {
+        background-color: var(--extra-light);
+      }
+
+      #profileBtn {
+        font-size: 1rem;
+        color: var(--extra-dark);
+        /* padding: 10px; */
+        /* background-color: rgb(143, 143, 143); */
+        border-radius: 50%;
+      }
+
+      #profileBtn:hover {
+        color: var(--extra-light);
       }
 
       @media (width > 540px) {
@@ -698,6 +726,7 @@
 
         .services__grid {
           grid-template-columns: repeat(4, 1fr);
+          gap: 2rem;
         }
 
         .footer__container {
@@ -747,7 +776,15 @@
             >Contact us</a
           >
         </li>
-        <li><a href="#" id="login">Log in</a></li>
+        <li id="authSection">
+          <a href="login-page.html" id="login">Log in</a>
+        </li>
+        <li id="profileLi" style="display: none">
+          <a href="profile.html" id="profileBtn" title="Profile">
+            <i class="ri-user-fill"></i>
+          </a>
+        </li>
+        <!-- <li><a href="#" id="logout" style="display: none">Log Out</a></li> -->
         <!-- <li><a href="#" id="signup">Sign up</a></li> -->
         <li>
           <a class="show-modal" id="lang">
@@ -859,7 +896,7 @@
         <div class="services__grid">
           <div class="services__card">
             <div class="card-details">
-              <h1><i data-lucide="paw-print"></i></h1>
+              <h1><i data-lucide="paw-print" class="icon"></i></h1>
               <p class="text-title" id="adoptAPet">Adopt a pet</p>
               <p class="text-body" id="adoptAPetBody">
                 Find your perfect companion from our curated list of adoptable
@@ -872,7 +909,7 @@
           </div>
           <div class="services__card">
             <div class="card-details">
-              <h1><i data-lucide="house"></i></h1>
+              <h1><i data-lucide="house" class="icon"></i></h1>
               <p class="text-title" id="rehomeAPet">Rehome a pet</p>
               <p class="text-body" id="rehomeAPetBody">
                 Give a pet a new loving home with our easy rehoming process,
@@ -885,7 +922,7 @@
           </div>
           <div class="services__card">
             <div class="card-details">
-              <h1><i data-lucide="bone"></i></h1>
+              <h1><i data-lucide="bone" class="icon"></i></h1>
               <p class="text-title" id="petShop">Pet shop</p>
               <p class="text-body" id="petShopBody">
                 Shop quality food, toys, and accessories to keep your pet happy
@@ -898,11 +935,11 @@
           </div>
           <div class="services__card">
             <div class="card-details">
-              <h1><i data-lucide="briefcase-medical"></i></h1>
+              <h1><i data-lucide="briefcase-medical" class="icon"></i></h1>
               <p class="text-title" id="vetService">Vet service</p>
               <p class="text-body" id="vetServiceBody">
-                Access trusted veterinary care, from check-ups to emergencies,
-                ensuring your pet’s well-being.
+                Access trusted veterinary care, from routine check-ups to
+                emergencies, ensuring your pet’s lifelong well-being.
               </p>
             </div>
             <button class="card-button" id="btnBookAVisit">Book a visit</button>
@@ -941,269 +978,7 @@
     </footer>
 
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script>
-      // Menu toggle functionality
-      const menuBtn = document.getElementById('menu-btn');
-      const navLinks = document.getElementById('nav-links');
-      const menuBtnIcon = menuBtn.querySelector('i');
-      const overlay = document.querySelector('.overlay');
-
-      // Function to close the menu
-      function closeMenu() {
-        navLinks.classList.remove('open');
-        menuBtnIcon.setAttribute('class', 'ri-menu-line');
-        overlay.classList.add('hidden');
-      }
-
-      menuBtn.addEventListener('click', e => {
-        navLinks.classList.toggle('open');
-        const isOpen = navLinks.classList.contains('open');
-        menuBtnIcon.setAttribute(
-          'class',
-          isOpen ? 'ri-close-line' : 'ri-menu-line'
-        );
-        // overlay.classList.toggle('hidden', !isOpen);
-      });
-
-      document.querySelectorAll('.nav__links a[href^="#"]').forEach(link => {
-        link.addEventListener('click', e => {
-          e.preventDefault(); // Prevent default anchor behavior
-          const sectionId = link.getAttribute('href').substring(1); // Get section ID (e.g., "services")
-          const section = document.getElementById(sectionId);
-
-          if (section) {
-            const navHeight = document.querySelector('nav').offsetHeight; // Get navbar height
-            const sectionTop =
-              section.getBoundingClientRect().top + window.pageYOffset; // Section position
-            window.scrollTo({
-              top: sectionTop - navHeight, // Offset by navbar height
-              behavior: 'smooth',
-            });
-
-            // Close menu on phone view (width <= 768px)
-            if (window.innerWidth <= 768) {
-              navLinks.classList.remove('open');
-              overlay.classList.add('hidden');
-              menuBtnIcon.setAttribute('class', 'ri-menu-line');
-            }
-          }
-        });
-      });
-
-      //this helps when navbar interrupts the view of section and for navigation
-      document.querySelector('[href="#home"]').addEventListener('click', e => {
-        e.preventDefault();
-        const aboutSection = document.getElementById('home');
-        if (aboutSection) {
-          const navHeight = document.querySelector('nav').offsetHeight; // Get navbar height
-          const sectionTop =
-            aboutSection.getBoundingClientRect().top + window.pageYOffset; // Section position relative to document
-          window.scrollTo({
-            top: sectionTop - navHeight, // Offset by navbar height
-            behavior: 'smooth',
-          });
-          if (window.innerWidth <= 768) {
-            navLinks.classList.remove('open');
-            overlay.classList.add('hidden');
-            menuBtnIcon.setAttribute('class', 'ri-menu-line');
-          }
-        }
-      });
-
-      document.querySelector('[href="#about"]').addEventListener('click', e => {
-        e.preventDefault();
-        const aboutSection = document.getElementById('about');
-        if (aboutSection) {
-          const navHeight = document.querySelector('nav').offsetHeight; // Get navbar height
-          const sectionTop =
-            aboutSection.getBoundingClientRect().top + window.pageYOffset; // Section position relative to document
-          window.scrollTo({
-            top: sectionTop - navHeight, // Offset by navbar height
-            behavior: 'smooth',
-          });
-          if (window.innerWidth <= 768) {
-            navLinks.classList.remove('open');
-            overlay.classList.add('hidden');
-            menuBtnIcon.setAttribute('class', 'ri-menu-line');
-          }
-        }
-      });
-
-      // Modal handling
-      const modal = document.querySelector('.modal');
-
-      const btnCloseModal = document.querySelector('.close-modal');
-      const btnShowModal = document.querySelector('.show-modal');
-
-      btnShowModal.addEventListener('click', function () {
-        modal.classList.remove('hidden');
-        overlay.classList.remove('hidden');
-      });
-
-      btnCloseModal.addEventListener('click', function () {
-        modal.classList.add('hidden');
-        overlay.classList.add('hidden');
-      });
-
-      overlay.addEventListener('click', e => {
-        modal.classList.add('hidden');
-        overlay.classList.add('hidden');
-      });
-
-      // Variable to store translations
-      let languages = {};
-
-      // Function to fetch translations from languages.json
-      async function loadTranslations() {
-        try {
-          const response = await fetch('languages.json'); // Adjust path if needed (e.g., 'scripts/languages.json')
-          if (!response.ok) throw new Error('Failed to load languages.json');
-          languages = await response.json();
-          // Load the saved language or default to 'en' after fetching
-          const savedLang = localStorage.getItem('lang') || 'en';
-          changeLanguage(savedLang);
-        } catch (error) {
-          console.error('Error fetching translations:', error);
-        }
-      }
-
-      // Function to change language
-      function changeLanguage(lang) {
-        if (!languages[lang]) {
-          console.error(`Language ${lang} not found in translations`);
-          return;
-        }
-
-        // Map of elements to update
-        const elements = {
-          home: document.getElementById('homeBtn'),
-          about: document.getElementById('aboutBtn'),
-          services: document.getElementById('servicesBtn'),
-          contact: document.getElementById('contactBtn'),
-          login: document.getElementById('login'),
-          signup: document.getElementById('signup'),
-          chooselang: document.getElementById('chooselang'),
-          welcome: document.getElementById('welcome'),
-          description: document.getElementById('description'),
-          about_headline: document.getElementById('about_headline'),
-          about_description: document.getElementById('about_description'),
-          whoWeAre: document.getElementById('whoWeAre'),
-          whoWeAreDsc: document.getElementById('whoWeAreDsc'),
-          whatWeDo: document.getElementById('whatWeDo'),
-          whatWeDoDsc: document.getElementById('whatWeDoDsc'),
-          howWeHelp: document.getElementById('howWeHelp'),
-          howWeHelpDsc: document.getElementById('howWeHelpDsc'),
-          whyChooseUs: document.getElementById('whyChooseUs'),
-          whyChooseUsDsc: document.getElementById('whyChooseUsDsc'),
-          services_headline: document.getElementById('services_headline'),
-          services_description: document.getElementById('services_description'),
-          adoptAPet: document.getElementById('adoptAPet'),
-          adoptAPetBody: document.getElementById('adoptAPetBody'),
-          btnMeetYourPet: document.getElementById('btnMeetYourPet'),
-          rehomeAPet: document.getElementById('rehomeAPet'),
-          rehomeAPetBody: document.getElementById('rehomeAPetBody'),
-          btnStartRehoming: document.getElementById('btnStartRehoming'),
-          petShop: document.getElementById('petShop'),
-          petShopBody: document.getElementById('petShopBody'),
-          btnBrowseProducts: document.getElementById('btnBrowseProducts'),
-          vetService: document.getElementById('vetService'),
-          vetServiceBody: document.getElementById('vetServiceBody'),
-          btnBookAVisit: document.getElementById('btnBookAVisit'),
-          footerLogoText: document.getElementById('footerLogoText'),
-          supportWord: document.getElementById('supportWord'),
-          followUsAt: document.getElementById('followUsAt'),
-        };
-
-        // Update all elements with the selected language
-        Object.keys(elements).forEach(key => {
-          if (elements[key] && languages[lang][key]) {
-            elements[key].textContent = languages[lang][key];
-          }
-        });
-
-        // Save the language preference
-        localStorage.setItem('lang', lang);
-      }
-
-      // Load translations when the page loads
-      loadTranslations();
-
-      // Lazy reveal (unchanged)
-      const scrollRevealOption = {
-        distance: '50px',
-        origin: 'bottom',
-        duration: 1000,
-      };
-
-      ScrollReveal().reveal('.header__image img', {
-        ...scrollRevealOption,
-        origin: 'right',
-        delay: 300,
-      });
-
-      ScrollReveal().reveal('.header__content div', {
-        duration: 1000,
-        delay: 500,
-      });
-
-      ScrollReveal().reveal('.header__content h1', {
-        ...scrollRevealOption,
-        delay: 800,
-      });
-
-      ScrollReveal().reveal('.header__content p', {
-        ...scrollRevealOption,
-        delay: 1300,
-      });
-
-      ScrollReveal().reveal('#about_headline', {
-        ...scrollRevealOption,
-        origin: 'left',
-        delay: 400,
-      });
-
-      ScrollReveal().reveal('.about__header p', {
-        ...scrollRevealOption,
-        origin: 'left',
-        delay: 500,
-      });
-
-      ScrollReveal().reveal('.about__image img', {
-        ...scrollRevealOption,
-        origin: 'right',
-        delay: 300,
-      });
-
-      ScrollReveal().reveal('.about__card', {
-        duration: 1000,
-        interval: 500,
-        delay: 500,
-      });
-
-      ScrollReveal().reveal('#services_headline', {
-        ...scrollRevealOption,
-        origin: 'left',
-        delay: 400,
-      });
-
-      ScrollReveal().reveal('.services__header p', {
-        ...scrollRevealOption,
-        origin: 'left',
-        delay: 500,
-      });
-
-      ScrollReveal().reveal('.services__card', {
-        duration: 1000,
-        interval: 500,
-        delay: 500,
-      });
-
-      ScrollReveal().reveal('.footer__container', {
-        ...scrollRevealOption,
-        origin: 'left',
-        delay: 400,
-      });
-    </script>
+    <script src="script.js"></script>
     <script src="languages.json"></script>
     <!-- Development version -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
@@ -1213,5 +988,6 @@
     <script>
       lucide.createIcons();
     </script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
   </body>
 </html>

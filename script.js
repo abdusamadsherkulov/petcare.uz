@@ -264,8 +264,9 @@ ScrollReveal().reveal('.footer__container', {
 //client id 877691268840-mfe9nuk08dt5br15sdga7ffb62thvqk9.apps.googleusercontent.com
 
 function updateAuthSection() {
-  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  if (currentUser) {
+  const currentUser = localStorage.getItem('currentUser');
+  const token = localStorage.getItem('token');
+  if (currentUser && token) {
     authSection.innerHTML = `
       <a href="index.html" id="logoutBtn" class="logout-btn" style="color:#fff">Log out</a>
     `;
@@ -274,10 +275,12 @@ function updateAuthSection() {
     document.getElementById('logoutBtn').addEventListener('click', e => {
       e.preventDefault();
       localStorage.removeItem('currentUser');
+      localStorage.removeItem('token');
       window.location.href = 'index.html'; // Redirect to login page
     });
   } else {
     authSection.innerHTML = `<a href="login-page.html" id="login">Log in</a>`;
+    profileLi.style = 'display: none';
   }
 }
 
