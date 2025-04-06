@@ -9,10 +9,9 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-
-    <!-- <link rel="stylesheet" href="style.css" /> -->
     <link rel="icon" type="image/png" href="pics/paw.png" />
-    <title>petcare.uz</title>
+    <link rel="stylesheet" href="style.css" />
+    <title>Profile - petcare.uz</title>
     <style>
       /* Fonts */
       @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=League+Spartan:wght@100..900&display=swap');
@@ -615,6 +614,151 @@
         color: var(--extra-light);
       }
 
+      /* Profile Section */
+      .profile__container {
+        /* padding-top: 6rem; */
+        text-align: center;
+        height: 350px;
+        padding-top: 4rem;
+      }
+
+      .profile__details {
+        max-width: 550px;
+        margin: 0 0;
+        padding: 2rem;
+        background-color: var(--white);
+        border-radius: 10px;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .profile__details h2 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .profile__details p {
+        font-size: 1.2rem;
+        color: var(--text-dark);
+        margin-bottom: 0.5rem;
+      }
+
+      .profile__upload button:hover {
+        background-color: var(--extra-light);
+      }
+
+      #changePassword {
+        border: 1px solid rgb(105, 81, 49);
+        border-radius: 5px;
+        padding: 6px 14px;
+        color: #fff;
+        font-size: 1rem;
+        background-color: var(--text-light);
+        list-style: none;
+        cursor: pointer;
+        font-family: var(--header-font);
+        margin-top: 1rem;
+        align-self: flex-end;
+      }
+
+      #changePassword:hover {
+        background-color: var(--extra-light);
+      }
+
+      .profile-footer {
+        background-color: var(--nav-foot-bg);
+        padding-bottom: 0rem;
+        width: 100%;
+        position: absolute;
+      }
+
+      .your-pets__container {
+        padding: 0;
+        height: 500px;
+      }
+
+      .your-pets__header {
+        text-align: center;
+        color: var(--extra-dark);
+      }
+
+      /* Change Password Modal */
+      .password-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 400px;
+        background-color: var(--white);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        font-family: var(--header-font);
+      }
+
+      .password-modal h2 {
+        font-size: 1.5rem;
+        color: var(--text-dark);
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .password-modal form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .password-modal input {
+        padding: 0.8rem;
+        border: 1px solid var(--text-light);
+        border-radius: 5px;
+        font-size: 1rem;
+        color: var(--text-dark);
+        font-family: var(--header-font);
+      }
+
+      .password-modal button[type='submit'] {
+        padding: 0.8rem;
+        background-color: var(--text-light);
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .password-modal button[type='submit']:hover {
+        background-color: var(--extra-light);
+      }
+
+      .password-modal .close-modal {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 2rem;
+        color: #333;
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
+
+      .password-modal .close-modal:hover {
+        color: rgba(0, 0, 0, 0.603);
+      }
+
+      .password-modal .error {
+        color: red;
+        font-size: 0.9rem;
+        text-align: center;
+        display: none;
+      }
+
       @media (width > 540px) {
         .about__grid {
           grid-template-columns: repeat(2, 1fr);
@@ -637,6 +781,23 @@
         .services__card .card-button {
           transform: translate(-50%, 50%);
           opacity: 1;
+        }
+
+        /* Profile Section */
+        .profile__container {
+          text-align: center;
+          height: auto;
+          padding-top: 7rem;
+        }
+
+        .profile__details h2 {
+          font-size: 1.8rem;
+        }
+
+        .profile__details p {
+          font-size: 1rem;
+          width: 100%;
+          margin: 0 auto;
         }
       }
 
@@ -732,6 +893,12 @@
         .footer__container {
           grid-template-columns: repeat(2, 1fr);
         }
+
+        /* Profile Section */
+        .profile__container {
+          /* padding-top: 6rem; */
+          text-align: left;
+        }
       }
 
       @media (width>1024px) {
@@ -749,7 +916,7 @@
     <nav>
       <div class="nav__header">
         <div class="nav__logo">
-          <a href="#home" class="logo"
+          <a href="index.html" class="logo" href="index.html"
             ><img src="pics/Logo.png" alt="petcare.uz"
           /></a>
         </div>
@@ -758,316 +925,117 @@
         </div>
       </div>
       <ul class="nav__links" id="nav-links">
-        <li>
-          <a class="underline_anim under_ad" id="homeBtn" href="#home">Home</a>
-        </li>
-        <li>
-          <a class="underline_anim under_ad" id="aboutBtn" href="#about"
-            >About us</a
-          >
-        </li>
-        <li>
-          <a class="underline_anim under_ad" id="servicesBtn" href="#services"
-            >Services</a
-          >
-        </li>
-        <li>
-          <a class="underline_anim under_ad" id="contactBtn" href="#contact"
-            >Contact us</a
-          >
-        </li>
         <li id="authSection">
-          <a href="login-page.html" id="login">Log in</a>
+          <a
+            href="index.html"
+            id="logoutBtn"
+            class="logout-btn"
+            style="color: #fff"
+            >Log out</a
+          >
         </li>
-        <li id="profileLi" style="display: none">
-          <a href="profile.html" id="profileBtn" title="Profile">
-            <i class="ri-user-fill"></i>
-          </a>
-        </li>
-        <!-- <li><a href="#" id="logout" style="display: none">Log Out</a></li> -->
-        <!-- <li><a href="#" id="signup">Sign up</a></li> -->
         <li>
           <a class="show-modal" id="lang">
             <i class="ri-global-line"></i>
           </a>
-          <!-- <button class="show-modal" id="lang">
-            <i class="ri-global-line"></i>
-          </button> -->
         </li>
       </ul>
     </nav>
 
     <div class="modal hidden">
-      <button class="close-modal">&times</button>
+      <button class="close-modal">×</button>
       <h1 id="chooselang">Choose a language</h1>
       <ul>
-        <li>
-          <button onclick="changeLanguage('en')">English</button>
-        </li>
-        <li>
-          <button onclick="changeLanguage('ru')">Русский</button>
-        </li>
-        <li>
-          <button onclick="changeLanguage('uz')">O'zbekcha</button>
-        </li>
+        <li><button onclick="changeLanguage('en')">English</button></li>
+        <li><button onclick="changeLanguage('ru')">Русский</button></li>
+        <li><button onclick="changeLanguage('uz')">O'zbekcha</button></li>
       </ul>
     </div>
     <div class="overlay hidden"></div>
 
-    <header class="section__container header__container" id="home">
-      <div class="header__image">
-        <img src="petcare.uz\dog-cat-under-sheet.jpg" alt="header" />
-      </div>
-      <div class="header__content">
-        <div>
-          <h1 id="welcome">Welcome to petcare.uz</h1>
-          <p id="description">
-            Your trusted partner in pet adoption, rehoming, shopping, and vet
-            care—bringing love, joy, and wellness to every pet and their family.
-          </p>
-        </div>
-      </div>
-    </header>
+    <div class="password-modal hidden">
+      <button class="close-modal">×</button>
+      <h2 id="changePasswordTitle">Change Password</h2>
+      <form id="changePasswordForm">
+        <input
+          type="password"
+          id="oldPassword"
+          placeholder="Old Password"
+          required
+        />
+        <input
+          type="password"
+          id="newPassword"
+          placeholder="New Password"
+          required
+        />
+        <input
+          type="password"
+          id="confirmNewPassword"
+          placeholder="Confirm New Password"
+          required
+        />
+        <button type="submit" id="submitPasswordChange">Change Password</button>
+      </form>
+      <p class="error" id="passwordError"></p>
+    </div>
 
-    <section class="section__container about__container" id="about">
-      <div class="about__header">
-        <h1 class="section__header" id="about_headline">About petcare.uz</h1>
-        <p class="section__description" id="about_description">
-          At petcare.uz, we’re passionate about pets and the people who love
-          them, delivering a seamless experience for adoption, supplies, and
-          care.
+    <section class="section__container profile__container">
+      <div class="profile__details">
+        <!-- <p id="profileName">Name:User Name</p>
+        <p id="profileSurname">Surname: User Surname</p>
+        <p id="profileEmail">Email: Not available</p>
+        <button id="changePassword">Change password</button> -->
+        <h2 id="profileTitle">Profile</h2>
+        <p>
+          <span id="profileNameLabel">Name:</span>
+          <span id="profileNameValue"></span>
         </p>
-      </div>
-      <div class="about__content">
-        <div class="about__image">
-          <img src="petcare.uz/about_img.png" alt="about" />
-        </div>
-        <div class="about__grid">
-          <div class="about__card">
-            <h3>1</h3>
-            <h4 id="whoWeAre">Who we are</h4>
-            <p id="whoWeAreDsc">
-              We are a team of animal enthusiasts building a community where
-              pets and their families thrive.
-            </p>
-          </div>
-          <div class="about__card">
-            <h3>2</h3>
-            <h4 id="whatWeDo">What we do</h4>
-            <p id="whatWeDoDsc">
-              We connect pets with homes, sell quality pet products, and offer
-              expert vet services—all in one place.
-            </p>
-          </div>
-          <div class="about__card">
-            <h3>3</h3>
-            <h4 id="howWeHelp">How we help</h4>
-            <p id="howWeHelpDsc">
-              We simplify adoption and rehoming, provide essentials, and ensure
-              pets stay healthy with trusted care.
-            </p>
-          </div>
-          <div class="about__card">
-            <h3>4</h3>
-            <h4 id="whyChooseUs">Why choose us</h4>
-            <p id="whyChooseUsDsc">
-              With compassion, convenience, and a love for pets, we’re your
-              go-to for everything pet-related.
-            </p>
-          </div>
-        </div>
+        <p>
+          <span id="profileSurnameLabel">Surname:</span>
+          <span id="profileSurnameValue"></span>
+        </p>
+        <p>
+          <span id="profileEmailLabel">Email:</span>
+          <span id="profileEmailValue"></span>
+        </p>
+        <button id="changePassword">Change password</button>
       </div>
     </section>
 
-    <section class="section__container services__container" id="services">
-      <div class="services__header">
-        <h1 class="section__header" id="services_headline">Our services</h1>
-        <p class="section__description" id="services_description">
-          Discover everything your pet needs in one place—whether it’s finding a
-          furry friend, giving a pet a new home, shopping for essentials, or
-          booking expert care, we’re here to make every moment with your pet
-          special.
-        </p>
-      </div>
-      <div class="services__content">
-        <!-- <div class="about__image">
-          <img src="petcare.uz/about_img.png" alt="about" />
-        </div> -->
-        <div class="services__grid">
-          <div class="services__card">
-            <div class="card-details">
-              <h1><i data-lucide="paw-print" class="icon"></i></h1>
-              <p class="text-title" id="adoptAPet">Adopt a pet</p>
-              <p class="text-body" id="adoptAPetBody">
-                Find your perfect companion from our curated list of adoptable
-                pets, ready to bring joy to your home.
-              </p>
-            </div>
-            <button class="card-button" id="btnMeetYourPet">
-              Meet your pet
-            </button>
-          </div>
-          <div class="services__card">
-            <div class="card-details">
-              <h1><i data-lucide="house" class="icon"></i></h1>
-              <p class="text-title" id="rehomeAPet">Rehome a pet</p>
-              <p class="text-body" id="rehomeAPetBody">
-                Give a pet a new loving home with our easy rehoming process,
-                connecting pets with caring families.
-              </p>
-            </div>
-            <button class="card-button" id="btnStartRehoming">
-              Start rehoming
-            </button>
-          </div>
-          <div class="services__card">
-            <div class="card-details">
-              <h1><i data-lucide="bone" class="icon"></i></h1>
-              <p class="text-title" id="petShop">Pet shop</p>
-              <p class="text-body" id="petShopBody">
-                Shop quality food, toys, and accessories to keep your pet happy
-                and healthy, all in one convenient spot.
-              </p>
-            </div>
-            <button class="card-button" id="btnBrowseProducts">
-              Browse products
-            </button>
-          </div>
-          <div class="services__card">
-            <div class="card-details">
-              <h1><i data-lucide="briefcase-medical" class="icon"></i></h1>
-              <p class="text-title" id="vetService">Vet service</p>
-              <p class="text-body" id="vetServiceBody">
-                Access trusted veterinary care, from routine check-ups to
-                emergencies, ensuring your pet’s lifelong well-being.
-              </p>
-            </div>
-            <button class="card-button" id="btnBookAVisit">Book a visit</button>
-          </div>
-        </div>
+    <section class="section__container your-pets__container">
+      <div class="your-pets__header">
+        <h1 id="yourPets">Your Pets:</h1>
       </div>
     </section>
 
-    <footer class="footer" id="contact">
-      <div class="section__container footer__container">
-        <div class="footer__logo">
-          <img src="pics/Logo.png" alt="petcare.uz" />
-          <p id="footerLogoText">
-            From Adoption to Vet Care – We’ve Got It Covered
-          </p>
-        </div>
-
-        <div class="footer__col">
-          <h4 id="support">
-            <span id="supportWord">Support:</span>
-            <a href="" id="email">info@petcare.uz</a>
-          </h4>
-          <div class="footer__socials">
-            <h4 id="followUsAt">Follow us at:</h4>
-            <ul class="footer__links">
-              <li>
-                <a href="#"><i class="ri-telegram-fill"></i></a>
-                <a href="#"><i class="ri-pinterest-fill"></i></a>
-                <a href="#"><i class="ri-instagram-fill"></i></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <footer class="profile-footer" id="contact">
       <div class="footer__bar" id="footer-bar">© 2025 Petcare.uz</div>
     </footer>
 
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="script.js">
+    <script src="profile.js">
       // Menu toggle functionality
             const menuBtn = document.getElementById('menu-btn');
             const navLinks = document.getElementById('nav-links');
             const menuBtnIcon = menuBtn.querySelector('i');
             const overlay = document.querySelector('.overlay');
             const authSection = document.getElementById('authSection');
-            const profileLi = document.getElementById('profileLi');
 
-            // Function to close the menu
             function closeMenu() {
               navLinks.classList.remove('open');
               menuBtnIcon.setAttribute('class', 'ri-menu-line');
               overlay.classList.add('hidden');
             }
 
-            menuBtn.addEventListener('click', e => {
+            menuBtn.addEventListener('click', () => {
               navLinks.classList.toggle('open');
               const isOpen = navLinks.classList.contains('open');
               menuBtnIcon.setAttribute('class', isOpen ? 'ri-close-line' : 'ri-menu-line');
-              // overlay.classList.toggle('hidden', !isOpen);
-            });
-
-            document.querySelectorAll('.nav__links a[href^="#"]').forEach(link => {
-              link.addEventListener('click', e => {
-                e.preventDefault(); // Prevent default anchor behavior
-                const sectionId = link.getAttribute('href').substring(1); // Get section ID (e.g., "services")
-                const section = document.getElementById(sectionId);
-
-                if (section) {
-                  const navHeight = document.querySelector('nav').offsetHeight; // Get navbar height
-                  const sectionTop =
-                    section.getBoundingClientRect().top + window.pageYOffset; // Section position
-                  window.scrollTo({
-                    top: sectionTop - navHeight, // Offset by navbar height
-                    behavior: 'smooth',
-                  });
-
-                  // Close menu on phone view (width <= 768px)
-                  if (window.innerWidth <= 768) {
-                    navLinks.classList.remove('open');
-                    overlay.classList.add('hidden');
-                    menuBtnIcon.setAttribute('class', 'ri-menu-line');
-                  }
-                }
-              });
-            });
-
-            //this helps when navbar interrupts the view of section and for navigation
-            document.querySelector('[href="#home"]').addEventListener('click', e => {
-              e.preventDefault();
-              const aboutSection = document.getElementById('home');
-              if (aboutSection) {
-                const navHeight = document.querySelector('nav').offsetHeight; // Get navbar height
-                const sectionTop =
-                  aboutSection.getBoundingClientRect().top + window.pageYOffset; // Section position relative to document
-                window.scrollTo({
-                  top: sectionTop - navHeight, // Offset by navbar height
-                  behavior: 'smooth',
-                });
-                if (window.innerWidth <= 768) {
-                  navLinks.classList.remove('open');
-                  overlay.classList.add('hidden');
-                  menuBtnIcon.setAttribute('class', 'ri-menu-line');
-                }
-              }
-            });
-
-            document.querySelector('[href="#about"]').addEventListener('click', e => {
-              e.preventDefault();
-              const aboutSection = document.getElementById('about');
-              if (aboutSection) {
-                const navHeight = document.querySelector('nav').offsetHeight; // Get navbar height
-                const sectionTop =
-                  aboutSection.getBoundingClientRect().top + window.pageYOffset; // Section position relative to document
-                window.scrollTo({
-                  top: sectionTop - navHeight, // Offset by navbar height
-                  behavior: 'smooth',
-                });
-                if (window.innerWidth <= 768) {
-                  navLinks.classList.remove('open');
-                  overlay.classList.add('hidden');
-                  menuBtnIcon.setAttribute('class', 'ri-menu-line');
-                }
-              }
             });
 
             // Modal handling
             const modal = document.querySelector('.modal');
-
             const btnCloseModal = document.querySelector('.close-modal');
             const btnShowModal = document.querySelector('.show-modal');
 
@@ -1081,21 +1049,19 @@
               overlay.classList.add('hidden');
             });
 
-            overlay.addEventListener('click', e => {
+            overlay.addEventListener('click', () => {
               modal.classList.add('hidden');
               overlay.classList.add('hidden');
             });
 
-            // Variable to store translations
+            // Language translations
             let languages = {};
 
-            // Function to fetch translations from languages.json
             async function loadTranslations() {
               try {
-                const response = await fetch('languages.json'); // Adjust path if needed (e.g., 'scripts/languages.json')
+                const response = await fetch('languages.json');
                 if (!response.ok) throw new Error('Failed to load languages.json');
                 languages = await response.json();
-                // Load the saved language or default to 'en' after fetching
                 const savedLang = localStorage.getItem('lang') || 'en';
                 changeLanguage(savedLang);
               } catch (error) {
@@ -1103,179 +1069,137 @@
               }
             }
 
-            // Function to change language
             function changeLanguage(lang) {
-              if (!languages[lang]) {
-                console.error(`Language ${lang} not found in translations`);
-                return;
-              }
+              if (!languages[lang]) return;
 
-              // Map of elements to update
               const elements = {
-                home: document.getElementById('homeBtn'),
-                about: document.getElementById('aboutBtn'),
-                services: document.getElementById('servicesBtn'),
-                contact: document.getElementById('contactBtn'),
-                login: document.getElementById('login'),
-                signup: document.getElementById('signup'),
                 chooselang: document.getElementById('chooselang'),
-                welcome: document.getElementById('welcome'),
-                description: document.getElementById('description'),
-                about_headline: document.getElementById('about_headline'),
-                about_description: document.getElementById('about_description'),
-                whoWeAre: document.getElementById('whoWeAre'),
-                whoWeAreDsc: document.getElementById('whoWeAreDsc'),
-                whatWeDo: document.getElementById('whatWeDo'),
-                whatWeDoDsc: document.getElementById('whatWeDoDsc'),
-                howWeHelp: document.getElementById('howWeHelp'),
-                howWeHelpDsc: document.getElementById('howWeHelpDsc'),
-                whyChooseUs: document.getElementById('whyChooseUs'),
-                whyChooseUsDsc: document.getElementById('whyChooseUsDsc'),
-                services_headline: document.getElementById('services_headline'),
-                services_description: document.getElementById('services_description'),
-                adoptAPet: document.getElementById('adoptAPet'),
-                adoptAPetBody: document.getElementById('adoptAPetBody'),
-                btnMeetYourPet: document.getElementById('btnMeetYourPet'),
-                rehomeAPet: document.getElementById('rehomeAPet'),
-                rehomeAPetBody: document.getElementById('rehomeAPetBody'),
-                btnStartRehoming: document.getElementById('btnStartRehoming'),
-                petShop: document.getElementById('petShop'),
-                petShopBody: document.getElementById('petShopBody'),
-                btnBrowseProducts: document.getElementById('btnBrowseProducts'),
-                vetService: document.getElementById('vetService'),
-                vetServiceBody: document.getElementById('vetServiceBody'),
-                btnBookAVisit: document.getElementById('btnBookAVisit'),
-                footerLogoText: document.getElementById('footerLogoText'),
-                supportWord: document.getElementById('supportWord'),
-                followUsAt: document.getElementById('followUsAt'),
-                formTitle: document.getElementById('formTitle'),
                 logoutBtn: document.getElementById('logoutBtn'),
+                profileTitle: document.getElementById('profileTitle'),
+                profileNameLabel: document.getElementById('profileNameLabel'),
+                profileSurnameLabel: document.getElementById('profileSurnameLabel'),
+                profileEmailLabel: document.getElementById('profileEmailLabel'),
+                changePassword: document.getElementById('changePassword'),
+                changePasswordTitle: document.getElementById('changePasswordTitle'),
+                submitPasswordChange: document.getElementById('submitPasswordChange'),
               };
 
-              // Update all elements with the selected language
+              document.getElementById('oldPassword').placeholder =
+                languages[lang].oldPassword;
+              document.getElementById('newPassword').placeholder =
+                languages[lang].newPassword;
+              document.getElementById('confirmNewPassword').placeholder =
+                languages[lang].confirmNewPassword;
+
               Object.keys(elements).forEach(key => {
                 if (elements[key] && languages[lang][key]) {
                   elements[key].textContent = languages[lang][key];
                 }
               });
 
-              // Save the language preference
               localStorage.setItem('lang', lang);
             }
 
-            // Load translations when the page loads
             loadTranslations();
 
-            // Lazy reveal (unchanged)
-            const scrollRevealOption = {
-              distance: '50px',
-              origin: 'bottom',
-              duration: 1000,
-            };
-
-            ScrollReveal().reveal('.header__image img', {
-              ...scrollRevealOption,
-              origin: 'right',
-              delay: 300,
-            });
-
-            ScrollReveal().reveal('.header__content div', {
-              duration: 1000,
-              delay: 500,
-            });
-
-            ScrollReveal().reveal('.header__content h1', {
-              ...scrollRevealOption,
-              delay: 800,
-            });
-
-            ScrollReveal().reveal('.header__content p', {
-              ...scrollRevealOption,
-              delay: 1300,
-            });
-
-            ScrollReveal().reveal('#about_headline', {
-              ...scrollRevealOption,
-              origin: 'left',
-              delay: 400,
-            });
-
-            ScrollReveal().reveal('.about__header p', {
-              ...scrollRevealOption,
-              origin: 'left',
-              delay: 500,
-            });
-
-            ScrollReveal().reveal('.about__image img', {
-              ...scrollRevealOption,
-              origin: 'right',
-              delay: 300,
-            });
-
-            ScrollReveal().reveal('.about__card', {
-              duration: 1000,
-              interval: 500,
-              delay: 500,
-            });
-
-            ScrollReveal().reveal('#services_headline', {
-              ...scrollRevealOption,
-              origin: 'left',
-              delay: 400,
-            });
-
-            ScrollReveal().reveal('.services__header p', {
-              ...scrollRevealOption,
-              origin: 'left',
-              delay: 500,
-            });
-
-            ScrollReveal().reveal('.services__card', {
-              duration: 1000,
-              interval: 500,
-              delay: 500,
-            });
-
-            ScrollReveal().reveal('.footer__container', {
-              ...scrollRevealOption,
-              origin: 'left',
-              delay: 400,
-            });
-
-            //client id 877691268840-mfe9nuk08dt5br15sdga7ffb62thvqk9.apps.googleusercontent.com
-
-            function updateAuthSection() {
-              const currentUser = localStorage.getItem('currentUser');
+            // Profile data handling
+            function updateProfile() {
+              const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
               const token = localStorage.getItem('token');
-              if (currentUser && token) {
-                authSection.innerHTML = `
-                  <a href="index.html" id="logoutBtn" class="logout-btn" style="color:#fff">Log out</a>
-                `;
-                profileLi.style = 'display: block';
 
-                document.getElementById('logoutBtn').addEventListener('click', e => {
-                  e.preventDefault();
-                  localStorage.removeItem('currentUser');
-                  localStorage.removeItem('token');
-                  window.location.href = 'index.html'; // Redirect to login page
-                });
+              if (currentUser && token) {
+                document.getElementById('profileNameValue').textContent = `
+                  ${currentUser.name}`;
+                document.getElementById('profileSurnameValue').textContent = `
+                  ${currentUser.surname}`;
+                document.getElementById(
+                  'profileEmailValue'
+                ).textContent = `${currentUser.email}`;
+                document.getElementById('profileJoined').textContent = `Joined: ${
+                  currentUser.joined || 'Not available'
+                }`;
+                const savedPhoto = localStorage.getItem('profilePhoto');
+                if (savedPhoto) {
+                  document.getElementById('profilePhoto').src = savedPhoto;
+                }
               } else {
-                authSection.innerHTML = `<a href="login-page.html" id="login">Log in</a>`;
-                profileLi.style = 'display: none';
+                window.location.href = 'index.html'; // Redirect if not logged in
               }
             }
 
-            updateAuthSection();
+            // Change password modal handling
+            const passwordModal = document.querySelector('.password-modal');
+            const btnClosePasswordModal = passwordModal.querySelector('.close-modal');
+            const btnChangePassword = document.getElementById('changePassword');
+            const changePasswordForm = document.getElementById('changePasswordForm');
+            const passwordError = document.getElementById('passwordError');
+
+            btnChangePassword.addEventListener('click', () => {
+              passwordModal.classList.remove('hidden');
+              overlay.classList.remove('hidden');
+            });
+
+            btnClosePasswordModal.addEventListener('click', () => {
+              passwordModal.classList.add('hidden');
+              overlay.classList.add('hidden');
+              passwordError.style.display = 'none';
+            });
+
+            changePasswordForm.addEventListener('submit', e => {
+              e.preventDefault();
+              const oldPassword = document.getElementById('oldPassword').value;
+              const newPassword = document.getElementById('newPassword').value;
+              const confirmNewPassword =
+                document.getElementById('confirmNewPassword').value;
+              const currentLang = localStorage.getItem('lang') || 'en';
+
+              if (oldPassword !== currentUser.password) {
+                passwordError.textContent =
+                  languages[currentLang].wrongOldPassword || 'Incorrect old password';
+                passwordError.style.display = 'block';
+                return;
+              }
+
+              if (newPassword !== confirmNewPassword) {
+                passwordError.textContent =
+                  languages[currentLang].passwordMismatch || 'New passwords do not match';
+                passwordError.style.display = 'block';
+                return;
+              }
+
+              // Update password in localStorage
+              currentUser.password = newPassword;
+              const users = JSON.parse(localStorage.getItem('users')) || [];
+              const userIndex = users.findIndex(u => u.email === currentUser.email);
+              if (userIndex !== -1) {
+                users[userIndex].password = newPassword;
+                localStorage.setItem('users', JSON.stringify(users));
+              }
+              localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+              // Close modal and reset form
+              passwordModal.classList.add('hidden');
+              overlay.classList.add('hidden');
+              passwordError.style.display = 'none';
+              changePasswordForm.reset();
+            });
+
+            overlay.addEventListener('click', () => {
+              passwordModal.classList.add('hidden');
+              overlay.classList.add('hidden');
+            });
+
+            // Logout functionality
+            document.getElementById('logoutBtn').addEventListener('click', e => {
+              e.preventDefault();
+              localStorage.removeItem('currentUser');
+              localStorage.removeItem('token');
+              window.location.href = 'index.html';
+            });
+
+            // Initial setup
+            updateProfile();
     </script>
     <script src="languages.json"></script>
-    <!-- Development version -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-
-    <!-- Production version -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-      lucide.createIcons();
-    </script>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
   </body>
 </html>

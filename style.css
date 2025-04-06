@@ -599,6 +599,193 @@ nav {
   color: var(--extra-light);
 }
 
+/* Profile Section */
+.profile__container {
+  /* padding-top: 6rem; */
+  text-align: center;
+  height: 350px;
+  padding-top: 4rem;
+}
+
+.profile__details {
+  max-width: 550px;
+  margin: 0 0;
+  padding: 2rem;
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__details h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.profile__details p {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.profile__upload button:hover {
+  background-color: var(--extra-light);
+}
+
+#changePassword {
+  border: 1px solid rgb(105, 81, 49);
+  border-radius: 5px;
+  padding: 6px 14px;
+  color: #fff;
+  font-size: 1rem;
+  background-color: var(--text-light);
+  list-style: none;
+  cursor: pointer;
+  font-family: var(--header-font);
+  margin-top: 1rem;
+  align-self: flex-end;
+}
+
+#changePassword:hover {
+  background-color: var(--extra-light);
+}
+
+.profile-footer {
+  background-color: var(--nav-foot-bg);
+  padding-bottom: 0rem;
+  width: 100%;
+  position: absolute;
+}
+
+.your-pets__container {
+  padding: 0;
+  height: 500px;
+}
+
+.your-pets__header {
+  text-align: center;
+  color: var(--extra-dark);
+}
+
+/* Change Password Modal */
+.password-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 400px;
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  font-family: var(--header-font);
+}
+
+.password-modal h2 {
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.password-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.password-modal input {
+  padding: 0.8rem;
+  border: 1px solid var(--text-light);
+  border-radius: 5px;
+  font-size: 1rem;
+  color: var(--text-dark);
+  font-family: var(--header-font);
+}
+
+.password-modal button[type='submit'] {
+  padding: 0.8rem;
+  background-color: var(--text-light);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.password-modal button[type='submit']:hover {
+  background-color: var(--extra-light);
+}
+
+.password-modal .close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.password-modal .close-modal:hover {
+  color: rgba(0, 0, 0, 0.603);
+}
+
+.password-modal .error {
+  color: red;
+  font-size: 0.9rem;
+  text-align: center;
+  display: none;
+}
+
+.password-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem; /* Add space between inputs */
+}
+
+.password-container input {
+  width: 100%;
+  padding: 0.8rem 2.5rem 0.8rem 0.8rem; /* Right padding for icon space */
+  border: 1px solid var(--text-light);
+  border-radius: 5px;
+  font-size: 1rem;
+  color: var(--text-dark);
+  font-family: var(--header-font);
+  box-sizing: border-box; /* Ensure padding doesn’t increase width */
+}
+
+.password-container .toggle-password {
+  position: absolute;
+  right: 0.8rem; /* Distance from right edge */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.password-container .toggle-password:hover {
+  color: var(--extra-light);
+}
+
+.profileDataLabel {
+  font-weight: 600;
+}
+.profileDataInfo {
+  /* background-color: #502b0f1a; */
+  padding: 2px 4px;
+  border-radius: 5px;
+  color: var(--text-light);
+}
+
 @media (width > 540px) {
   .about__grid {
     grid-template-columns: repeat(2, 1fr);
@@ -621,6 +808,23 @@ nav {
   .services__card .card-button {
     transform: translate(-50%, 50%);
     opacity: 1;
+  }
+
+  /* Profile Section */
+  .profile__container {
+    text-align: center;
+    height: auto;
+    padding-top: 7rem;
+  }
+
+  .profile__details h2 {
+    font-size: 1.8rem;
+  }
+
+  .profile__details p {
+    font-size: 1rem;
+    width: 100%;
+    margin: 0 auto;
   }
 }
 
@@ -715,6 +919,12 @@ nav {
 
   .footer__container {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Profile Section */
+  .profile__container {
+    /* padding-top: 6rem; */
+    text-align: left;
   }
 }
 

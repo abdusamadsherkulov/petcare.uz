@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="pics/paw.png" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Profile - petcare.uz</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__header">
+        <div class="nav__logo">
+          <a href="index.html" class="logo" href="index.html"
+            ><img src="pics/Logo.png" alt="petcare.uz"
+          /></a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+          <i class="ri-menu-line"></i>
+        </div>
+      </div>
+      <ul class="nav__links" id="nav-links">
+        <li id="authSection">
+          <a
+            href="index.html"
+            id="logoutBtn"
+            class="logout-btn"
+            style="color: #fff"
+            >Log out</a
+          >
+        </li>
+        <li>
+          <a class="show-modal" id="lang">
+            <i class="ri-global-line"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="modal hidden">
+      <button class="close-modal">×</button>
+      <h1 id="chooselang">Choose a language</h1>
+      <ul>
+        <li><button onclick="changeLanguage('en')">English</button></li>
+        <li><button onclick="changeLanguage('ru')">Русский</button></li>
+        <li><button onclick="changeLanguage('uz')">O'zbekcha</button></li>
+      </ul>
+    </div>
+    <div class="overlay hidden"></div>
+
+    <div class="password-modal hidden">
+      <button class="close-modal">×</button>
+      <h2 id="changePasswordTitle">Change Password</h2>
+      <form id="changePasswordForm">
+        <div class="password-container">
+          <input
+            type="password"
+            id="oldPassword"
+            placeholder="Old Password"
+            required
+          />
+          <i class="ri-eye-line toggle-password" data-target="oldPassword"></i>
+        </div>
+        <div class="password-container">
+          <input
+            type="password"
+            id="newPassword"
+            placeholder="New Password"
+            required
+          />
+          <i class="ri-eye-line toggle-password" data-target="newPassword"></i>
+        </div>
+        <div class="password-container">
+          <input
+            type="password"
+            id="confirmNewPassword"
+            placeholder="Confirm New Password"
+            required
+          />
+          <i
+            class="ri-eye-line toggle-password"
+            data-target="confirmNewPassword"
+          ></i>
+        </div>
+        <button type="submit" id="submitPasswordChange">Change Password</button>
+      </form>
+      <p class="error" id="passwordError"></p>
+    </div>
+
+    <section class="section__container profile__container">
+      <div class="profile__details">
+        <!-- <p id="profileName">Name:User Name</p>
+        <p id="profileSurname">Surname: User Surname</p>
+        <p id="profileEmail">Email: Not available</p>
+        <button id="changePassword">Change password</button> -->
+        <h2 id="profileTitle">Profile</h2>
+        <p>
+          <span id="profileNameLabel" class="profileDataLabel">Name:</span>
+          <span id="profileNameValue" class="profileDataInfo"></span>
+        </p>
+        <p>
+          <span id="profileSurnameLabel" class="profileDataLabel"
+            >Surname:</span
+          >
+          <span id="profileSurnameValue" class="profileDataInfo"></span>
+        </p>
+        <p>
+          <span id="profileEmailLabel" class="profileDataLabel">Email:</span>
+          <span id="profileEmailValue" class="profileDataInfo"></span>
+        </p>
+        <button id="changePassword">Change password</button>
+      </div>
+    </section>
+
+    <section class="section__container your-pets__container">
+      <div class="your-pets__header">
+        <h1 id="yourPets">Your Pets:</h1>
+      </div>
+    </section>
+
+    <footer class="profile-footer" id="contact">
+      <div class="footer__bar" id="footer-bar">© 2025 Petcare.uz</div>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="profile.js"></script>
+    <script src="languages.json"></script>
+  </body>
+</html>

@@ -115,58 +115,6 @@ authForm.addEventListener('submit', async e => {
 const currentUser = localStorage.getItem('currentUser');
 const token = localStorage.getItem('token');
 
-// Use token for making authenticated requests
-fetch('http://localhost:5000/api/auth/profile', {
-  method: 'GET',
-  headers: {
-    Authorization: `Bearer ${token}`,
-  },
-})
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error('Error fetching profile:', error));
-
-// authForm.addEventListener('submit', e => {
-//   e.preventDefault();
-//   const email = document.getElementById('email').value;
-//   const password = document.getElementById('password').value;
-
-//   if (isLogin) {
-//     // Login logic
-//     const user = users.find(u => u.email === email && u.password === password);
-//     if (user) {
-//       localStorage.setItem('currentUser', JSON.stringify(user));
-//       window.location.href = 'index.html'; // Redirect to home page
-//     } else {
-//       errorMsg.textContent = 'Invalid email or password';
-//       errorMsg.style.display = 'block';
-//     }
-//   } else {
-//     // Sign-up logic
-//     const name = nameInput.value;
-//     const surname = surnameInput.value;
-//     const confirmPassword = confirmPasswordInput.value;
-
-//     // Validation
-//     if (password !== confirmPassword) {
-//       errorMsg.textContent = 'Passwords do not match';
-//       errorMsg.style.display = 'block';
-//       return;
-//     }
-
-//     if (users.some(u => u.email === email)) {
-//       errorMsg.textContent = 'Email already exists';
-//       errorMsg.style.display = 'block';
-//     } else {
-//       const newUser = {name, surname, email, password};
-//       users.push(newUser);
-//       localStorage.setItem('users', JSON.stringify(users));
-//       localStorage.setItem('currentUser', JSON.stringify(newUser));
-//       window.location.href = 'index.html'; // Redirect to home page
-//     }
-//   }
-// });
-
 // Check if user is already logged in
 if (localStorage.getItem('currentUser')) {
   window.location.href = 'index.html';

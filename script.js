@@ -100,7 +100,7 @@ btnCloseModal.addEventListener('click', function () {
   overlay.classList.add('hidden');
 });
 
-overlay.addEventListener('click', e => {
+overlay.addEventListener('click', () => {
   modal.classList.add('hidden');
   overlay.classList.add('hidden');
 });
