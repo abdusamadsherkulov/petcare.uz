@@ -4,15 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-
+    <!-- <link rel="stylesheet" href="rehome-pet.css" /> -->
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/png" href="pics/paw.png" />
-    <title>petcare.uz</title>
+    <title>Rehome a Pet - petcare.uz</title>
     <style>
       /* Fonts */
       @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=League+Spartan:wght@100..900&display=swap');
@@ -590,6 +589,22 @@
         font-weight: 600;
       }
 
+      .notification {
+        position: fixed;
+        top: 1%;
+        right: 40%;
+        /* transform: translate(-50%, -50%); */
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 1rem;
+        z-index: 1000;
+        display: none;
+        text-align: center;
+        max-width: 100%;
+        background-color: var(--text-light);
+      }
+
       .logout-btn {
         border: 1px solid rgb(105, 81, 49);
         border-radius: 5px;
@@ -802,6 +817,116 @@
         color: var(--text-light);
       }
 
+      /* Pet Rehoming form page */
+      .rehome__container {
+        max-width: var(--max-width);
+        margin: auto;
+        padding: 2rem 1rem 2rem 1rem;
+      }
+
+      .rehome__header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .rehome__header h1 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+
+      .rehome__header p {
+        font-size: 1.2rem;
+        color: var(--text-light);
+      }
+
+      .rehome__form {
+        background-color: var(--white);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .form__group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form__group label {
+        display: block;
+        font-size: 1.1rem;
+        color: var(--text-dark);
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+
+      .form__group input,
+      .form__group textarea,
+      .form__group select {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid var(--text-light);
+        border-radius: 5px;
+        font-size: 1rem;
+        color: var(--text-dark);
+        font-family: var(--header-font);
+      }
+
+      .form__group input[type='file'] {
+        padding: 0.5rem;
+      }
+
+      .form__group textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      /* ADDED: Style for price and currency container */
+      .price__container {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .price__container input {
+        flex: 2;
+      }
+
+      .price__container select {
+        flex: 1;
+      }
+
+      .photo__preview {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 0.5rem;
+      }
+
+      .photo__preview img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+
+      .submit__btn {
+        width: 100%;
+        padding: 0.8rem;
+        background-color: var(--text-light);
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .submit__btn:hover {
+        background-color: var(--extra-light);
+      }
+
       @media (width > 540px) {
         .about__grid {
           grid-template-columns: repeat(2, 1fr);
@@ -841,6 +966,28 @@
           font-size: 1rem;
           width: 100%;
           margin: 0 auto;
+        }
+
+        /* Pet rehoming page */
+        .rehome__container {
+          padding: 7rem 1rem 2rem 1rem;
+        }
+
+        .rehome__header h1 {
+          font-size: 2rem;
+        }
+
+        .rehome__header p {
+          font-size: 1rem;
+        }
+
+        .rehome__form {
+          padding: 1.5rem;
+        }
+        /* ADDED: Adjust price container for smaller screens */
+        .price__container {
+          flex-direction: column;
+          gap: 0.5rem;
         }
       }
 
@@ -956,341 +1103,189 @@
     </style>
   </head>
   <body>
+    <!-- Reuse the navigation from your main page -->
     <nav>
       <div class="nav__header">
         <div class="nav__logo">
-          <a href="#home" class="logo"
-            ><img src="pics/Logo.png" alt="petcare.uz"
-          /></a>
+          <a href="index.html" class="logo">
+            <img src="pics/Logo.png" alt="petcare.uz" />
+          </a>
         </div>
         <div class="nav__menu__btn" id="menu-btn">
           <i class="ri-menu-line"></i>
         </div>
       </div>
       <ul class="nav__links" id="nav-links">
-        <li>
-          <a class="underline_anim under_ad" id="homeBtn" href="#home">Home</a>
-        </li>
-        <li>
-          <a class="underline_anim under_ad" id="aboutBtn" href="#about"
-            >About us</a
-          >
-        </li>
-        <li>
-          <a class="underline_anim under_ad" id="servicesBtn" href="#services"
-            >Services</a
-          >
-        </li>
-        <li>
-          <a class="underline_anim under_ad" id="contactBtn" href="#contact"
-            >Contact us</a
-          >
-        </li>
         <li id="authSection">
-          <a href="login-page.html" id="login">Log in</a>
+          <a
+            href="index.html"
+            id="logoutBtn"
+            class="logout-btn"
+            style="color: #fff"
+            >Log out</a
+          >
         </li>
-        <li id="profileLi" style="display: none">
-          <a href="profile.html" id="profileBtn" title="Profile">
-            <i class="ri-user-fill"></i>
-          </a>
-        </li>
-        <!-- <li><a href="#" id="logout" style="display: none">Log Out</a></li> -->
-        <!-- <li><a href="#" id="signup">Sign up</a></li> -->
         <li>
           <a class="show-modal" id="lang">
             <i class="ri-global-line"></i>
           </a>
-          <!-- <button class="show-modal" id="lang">
-            <i class="ri-global-line"></i>
-          </button> -->
         </li>
       </ul>
     </nav>
 
     <div class="modal hidden">
-      <button class="close-modal">&times</button>
+      <button class="close-modal">×</button>
       <h1 id="chooselang">Choose a language</h1>
       <ul>
-        <li>
-          <button onclick="changeLanguage('en')">English</button>
-        </li>
-        <li>
-          <button onclick="changeLanguage('ru')">Русский</button>
-        </li>
-        <li>
-          <button onclick="changeLanguage('uz')">O'zbekcha</button>
-        </li>
+        <li><button onclick="changeLanguage('en')">English</button></li>
+        <li><button onclick="changeLanguage('ru')">Русский</button></li>
+        <li><button onclick="changeLanguage('uz')">O'zbekcha</button></li>
       </ul>
     </div>
     <div class="overlay hidden"></div>
 
-    <header class="section__container header__container" id="home">
-      <div class="header__image">
-        <img src="petcare.uz\dog-cat-under-sheet.jpg" alt="header" />
+    <section class="rehome__container">
+      <div class="rehome__header">
+        <h1>Rehome a Pet</h1>
+        <p>Fill out the form below to find a new loving home for your pet.</p>
       </div>
-      <div class="header__content">
-        <div>
-          <h1 id="welcome">Welcome to petcare.uz</h1>
-          <p id="description">
-            Your trusted partner in pet adoption, rehoming, shopping, and vet
-            care—bringing love, joy, and wellness to every pet and their family.
-          </p>
-        </div>
-      </div>
-    </header>
-
-    <section class="section__container about__container" id="about">
-      <div class="about__header">
-        <h1 class="section__header" id="about_headline">About petcare.uz</h1>
-        <p class="section__description" id="about_description">
-          At petcare.uz, we’re passionate about pets and the people who love
-          them, delivering a seamless experience for adoption, supplies, and
-          care.
-        </p>
-      </div>
-      <div class="about__content">
-        <div class="about__image">
-          <img src="petcare.uz/about_img.png" alt="about" />
-        </div>
-        <div class="about__grid">
-          <div class="about__card">
-            <h3>1</h3>
-            <h4 id="whoWeAre">Who we are</h4>
-            <p id="whoWeAreDsc">
-              We are a team of animal enthusiasts building a community where
-              pets and their families thrive.
-            </p>
+      <div class="rehome__form">
+        <form id="rehomeForm">
+          <div class="form__group">
+            <label for="name">Pet Name *</label>
+            <input type="text" id="name" name="name" required />
           </div>
-          <div class="about__card">
-            <h3>2</h3>
-            <h4 id="whatWeDo">What we do</h4>
-            <p id="whatWeDoDsc">
-              We connect pets with homes, sell quality pet products, and offer
-              expert vet services—all in one place.
-            </p>
+          <div class="form__group">
+            <label for="species">Species *</label>
+            <select id="species" name="species" required>
+              <option value="" disabled selected>Select species</option>
+              <option value="Dog">Dog</option>
+              <option value="Cat">Cat</option>
+              <option value="Bird">Bird</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
-          <div class="about__card">
-            <h3>3</h3>
-            <h4 id="howWeHelp">How we help</h4>
-            <p id="howWeHelpDsc">
-              We simplify adoption and rehoming, provide essentials, and ensure
-              pets stay healthy with trusted care.
-            </p>
+          <div class="form__group">
+            <label for="breed">Breed *</label>
+            <input type="text" id="breed" name="breed" required />
           </div>
-          <div class="about__card">
-            <h3>4</h3>
-            <h4 id="whyChooseUs">Why choose us</h4>
-            <p id="whyChooseUsDsc">
-              With compassion, convenience, and a love for pets, we’re your
-              go-to for everything pet-related.
-            </p>
+          <div class="form__group">
+            <label for="age">Age *</label>
+            <input
+              type="text"
+              id="age"
+              name="age"
+              required
+              placeholder="e.g., 2 years"
+            />
           </div>
-        </div>
+          <div class="form__group">
+            <label for="health">Health Condition *</label>
+            <input
+              type="text"
+              id="health"
+              name="health"
+              required
+              placeholder="e.g., Healthy, Vaccinated"
+            />
+          </div>
+          <div class="form__group">
+            <label for="reason">Reason for Rehoming *</label>
+            <textarea id="reason" name="reason" required></textarea>
+          </div>
+          <div class="form__group">
+            <label for="price">Price *</label>
+            <div class="price__container">
+              <input
+                type="number"
+                id="price"
+                name="price"
+                required
+                min="0"
+                value="0"
+              />
+              <select id="currency" name="currency" required>
+                <option value="USD">USD</option>
+                <option value="UZS">UZS</option>
+              </select>
+            </div>
+          </div>
+          <div class="form__group">
+            <label for="location">Location *</label>
+            <input
+              type="text"
+              id="location"
+              name="location"
+              required
+              placeholder="e.g., Tashkent, Uzbekistan"
+            />
+          </div>
+          <!-- CHANGED: Phone number with specific format -->
+          <div class="form__group">
+            <label for="phone">Phone Number *</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              required
+              pattern="\+998[0-9]{9}"
+              placeholder="+998901234567"
+              title="Phone number must be in the format +998 followed by 9 digits"
+            />
+          </div>
+          <div class="form__group">
+            <label for="photos">Pet Photos (max 5) *</label>
+            <input
+              type="file"
+              id="photos"
+              name="photos"
+              accept="image/*"
+              multiple
+            />
+            <div class="photo__preview" id="photoPreview"></div>
+          </div>
+          <button type="submit" class="submit__btn">Submit for Rehoming</button>
+        </form>
       </div>
     </section>
 
-    <section class="section__container services__container" id="services">
-      <div class="services__header">
-        <h1 class="section__header" id="services_headline">Our services</h1>
-        <p class="section__description" id="services_description">
-          Discover everything your pet needs in one place—whether it’s finding a
-          furry friend, giving a pet a new home, shopping for essentials, or
-          booking expert care, we’re here to make every moment with your pet
-          special.
-        </p>
-      </div>
-      <div class="services__content">
-        <!-- <div class="about__image">
-          <img src="petcare.uz/about_img.png" alt="about" />
-        </div> -->
-        <div class="services__grid">
-          <div class="services__card">
-            <div class="card-details">
-              <h1><i data-lucide="paw-print" class="icon"></i></h1>
-              <p class="text-title" id="adoptAPet">Adopt a pet</p>
-              <p class="text-body" id="adoptAPetBody">
-                Find your perfect companion from our curated list of adoptable
-                pets, ready to bring joy to your home.
-              </p>
-            </div>
-            <button class="card-button" id="btnMeetYourPet">
-              Meet your pet
-            </button>
-          </div>
-          <div class="services__card">
-            <div class="card-details">
-              <h1><i data-lucide="house" class="icon"></i></h1>
-              <p class="text-title" id="rehomeAPet">Rehome a pet</p>
-              <p class="text-body" id="rehomeAPetBody">
-                Give a pet a new loving home with our easy rehoming process,
-                connecting pets with caring families.
-              </p>
-            </div>
-            <button class="card-button" id="btnStartRehoming">
-              Start rehoming
-            </button>
-          </div>
-          <div class="services__card">
-            <div class="card-details">
-              <h1><i data-lucide="bone" class="icon"></i></h1>
-              <p class="text-title" id="petShop">Pet shop</p>
-              <p class="text-body" id="petShopBody">
-                Shop quality food, toys, and accessories to keep your pet happy
-                and healthy, all in one convenient spot.
-              </p>
-            </div>
-            <button class="card-button" id="btnBrowseProducts">
-              Browse products
-            </button>
-          </div>
-          <div class="services__card">
-            <div class="card-details">
-              <h1><i data-lucide="briefcase-medical" class="icon"></i></h1>
-              <p class="text-title" id="vetService">Vet service</p>
-              <p class="text-body" id="vetServiceBody">
-                Access trusted veterinary care, from routine check-ups to
-                emergencies, ensuring your pet’s lifelong well-being.
-              </p>
-            </div>
-            <button class="card-button" id="btnBookAVisit">Book a visit</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer" id="contact">
-      <div class="section__container footer__container">
-        <div class="footer__logo">
-          <img src="pics/Logo.png" alt="petcare.uz" />
-          <p id="footerLogoText">
-            From Adoption to Vet Care – We’ve Got It Covered
-          </p>
-        </div>
-
-        <div class="footer__col">
-          <h4 id="support">
-            <span id="supportWord">Support:</span>
-            <a href="" id="email">info@petcare.uz</a>
-          </h4>
-          <div class="footer__socials">
-            <h4 id="followUsAt">Follow us at:</h4>
-            <ul class="footer__links">
-              <li>
-                <a href="#"><i class="ri-telegram-fill"></i></a>
-                <a href="#"><i class="ri-pinterest-fill"></i></a>
-                <a href="#"><i class="ri-instagram-fill"></i></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <footer class="profile-footer" id="contact">
       <div class="footer__bar" id="footer-bar">© 2025 Petcare.uz</div>
     </footer>
 
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="script.js"></script>
-    <script src="languages.json"></script>
-    <!-- Development version -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <div class="notification" id="notification"></div>
 
-    <!-- Production version -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
     <script>
-      lucide.createIcons();
-    </script>
-    <script>
+      // Reuse menu toggle and language modal logic from your main page
       // Menu toggle functionality
       const menuBtn = document.getElementById('menu-btn');
       const navLinks = document.getElementById('nav-links');
       const menuBtnIcon = menuBtn.querySelector('i');
       const overlay = document.querySelector('.overlay');
       const authSection = document.getElementById('authSection');
+      const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
       const profileLi = document.getElementById('profileLi');
 
-      // Function to close the menu
+      const token = localStorage.getItem('token');
+
       function closeMenu() {
         navLinks.classList.remove('open');
         menuBtnIcon.setAttribute('class', 'ri-menu-line');
         overlay.classList.add('hidden');
       }
 
-      menuBtn.addEventListener('click', e => {
+      menuBtn.addEventListener('click', () => {
         navLinks.classList.toggle('open');
         const isOpen = navLinks.classList.contains('open');
         menuBtnIcon.setAttribute(
           'class',
           isOpen ? 'ri-close-line' : 'ri-menu-line'
         );
-        // overlay.classList.toggle('hidden', !isOpen);
-      });
-
-      document.querySelectorAll('.nav__links a[href^="#"]').forEach(link => {
-        link.addEventListener('click', e => {
-          e.preventDefault(); // Prevent default anchor behavior
-          const sectionId = link.getAttribute('href').substring(1); // Get section ID (e.g., "services")
-          const section = document.getElementById(sectionId);
-
-          if (section) {
-            const navHeight = document.querySelector('nav').offsetHeight; // Get navbar height
-            const sectionTop =
-              section.getBoundingClientRect().top + window.pageYOffset; // Section position
-            window.scrollTo({
-              top: sectionTop - navHeight, // Offset by navbar height
-              behavior: 'smooth',
-            });
-
-            // Close menu on phone view (width <= 768px)
-            if (window.innerWidth <= 768) {
-              navLinks.classList.remove('open');
-              overlay.classList.add('hidden');
-              menuBtnIcon.setAttribute('class', 'ri-menu-line');
-            }
-          }
-        });
-      });
-
-      //this helps when navbar interrupts the view of section and for navigation
-      document.querySelector('[href="#home"]').addEventListener('click', e => {
-        e.preventDefault();
-        const aboutSection = document.getElementById('home');
-        if (aboutSection) {
-          const navHeight = document.querySelector('nav').offsetHeight; // Get navbar height
-          const sectionTop =
-            aboutSection.getBoundingClientRect().top + window.pageYOffset; // Section position relative to document
-          window.scrollTo({
-            top: sectionTop - navHeight, // Offset by navbar height
-            behavior: 'smooth',
-          });
-          if (window.innerWidth <= 768) {
-            navLinks.classList.remove('open');
-            overlay.classList.add('hidden');
-            menuBtnIcon.setAttribute('class', 'ri-menu-line');
-          }
-        }
-      });
-
-      document.querySelector('[href="#about"]').addEventListener('click', e => {
-        e.preventDefault();
-        const aboutSection = document.getElementById('about');
-        if (aboutSection) {
-          const navHeight = document.querySelector('nav').offsetHeight; // Get navbar height
-          const sectionTop =
-            aboutSection.getBoundingClientRect().top + window.pageYOffset; // Section position relative to document
-          window.scrollTo({
-            top: sectionTop - navHeight, // Offset by navbar height
-            behavior: 'smooth',
-          });
-          if (window.innerWidth <= 768) {
-            navLinks.classList.remove('open');
-            overlay.classList.add('hidden');
-            menuBtnIcon.setAttribute('class', 'ri-menu-line');
-          }
-        }
       });
 
       // Modal handling
       const modal = document.querySelector('.modal');
-
       const btnCloseModal = document.querySelector('.close-modal');
       const btnShowModal = document.querySelector('.show-modal');
 
@@ -1309,16 +1304,12 @@
         overlay.classList.add('hidden');
       });
 
-      // Variable to store translations
       let languages = {};
-
-      // Function to fetch translations from languages.json
       async function loadTranslations() {
         try {
-          const response = await fetch('languages.json'); // Adjust path if needed (e.g., 'scripts/languages.json')
+          const response = await fetch('languages.json');
           if (!response.ok) throw new Error('Failed to load languages.json');
           languages = await response.json();
-          // Load the saved language or default to 'en' after fetching
           const savedLang = localStorage.getItem('lang') || 'en';
           changeLanguage(savedLang);
         } catch (error) {
@@ -1326,146 +1317,13 @@
         }
       }
 
-      // Function to change language
       function changeLanguage(lang) {
-        if (!languages[lang]) {
-          console.error(`Language ${lang} not found in translations`);
-          return;
-        }
-
-        // Map of elements to update
-        const elements = {
-          home: document.getElementById('homeBtn'),
-          about: document.getElementById('aboutBtn'),
-          services: document.getElementById('servicesBtn'),
-          contact: document.getElementById('contactBtn'),
-          login: document.getElementById('login'),
-          signup: document.getElementById('signup'),
-          chooselang: document.getElementById('chooselang'),
-          welcome: document.getElementById('welcome'),
-          description: document.getElementById('description'),
-          about_headline: document.getElementById('about_headline'),
-          about_description: document.getElementById('about_description'),
-          whoWeAre: document.getElementById('whoWeAre'),
-          whoWeAreDsc: document.getElementById('whoWeAreDsc'),
-          whatWeDo: document.getElementById('whatWeDo'),
-          whatWeDoDsc: document.getElementById('whatWeDoDsc'),
-          howWeHelp: document.getElementById('howWeHelp'),
-          howWeHelpDsc: document.getElementById('howWeHelpDsc'),
-          whyChooseUs: document.getElementById('whyChooseUs'),
-          whyChooseUsDsc: document.getElementById('whyChooseUsDsc'),
-          services_headline: document.getElementById('services_headline'),
-          services_description: document.getElementById('services_description'),
-          adoptAPet: document.getElementById('adoptAPet'),
-          adoptAPetBody: document.getElementById('adoptAPetBody'),
-          btnMeetYourPet: document.getElementById('btnMeetYourPet'),
-          rehomeAPet: document.getElementById('rehomeAPet'),
-          rehomeAPetBody: document.getElementById('rehomeAPetBody'),
-          btnStartRehoming: document.getElementById('btnStartRehoming'),
-          petShop: document.getElementById('petShop'),
-          petShopBody: document.getElementById('petShopBody'),
-          btnBrowseProducts: document.getElementById('btnBrowseProducts'),
-          vetService: document.getElementById('vetService'),
-          vetServiceBody: document.getElementById('vetServiceBody'),
-          btnBookAVisit: document.getElementById('btnBookAVisit'),
-          footerLogoText: document.getElementById('footerLogoText'),
-          supportWord: document.getElementById('supportWord'),
-          followUsAt: document.getElementById('followUsAt'),
-          formTitle: document.getElementById('formTitle'),
-          logoutBtn: document.getElementById('logoutBtn'),
-        };
-
-        // Update all elements with the selected language
-        Object.keys(elements).forEach(key => {
-          if (elements[key] && languages[lang][key]) {
-            elements[key].textContent = languages[lang][key];
-          }
-        });
-
-        // Save the language preference
+        if (!languages[lang]) return;
         localStorage.setItem('lang', lang);
+        // Add translations for this page if needed
       }
 
-      // Load translations when the page loads
       loadTranslations();
-
-      // Lazy reveal (unchanged)
-      const scrollRevealOption = {
-        distance: '50px',
-        origin: 'bottom',
-        duration: 1000,
-      };
-
-      ScrollReveal().reveal('.header__image img', {
-        ...scrollRevealOption,
-        origin: 'right',
-        delay: 300,
-      });
-
-      ScrollReveal().reveal('.header__content div', {
-        duration: 1000,
-        delay: 500,
-      });
-
-      ScrollReveal().reveal('.header__content h1', {
-        ...scrollRevealOption,
-        delay: 800,
-      });
-
-      ScrollReveal().reveal('.header__content p', {
-        ...scrollRevealOption,
-        delay: 1300,
-      });
-
-      ScrollReveal().reveal('#about_headline', {
-        ...scrollRevealOption,
-        origin: 'left',
-        delay: 400,
-      });
-
-      ScrollReveal().reveal('.about__header p', {
-        ...scrollRevealOption,
-        origin: 'left',
-        delay: 500,
-      });
-
-      ScrollReveal().reveal('.about__image img', {
-        ...scrollRevealOption,
-        origin: 'right',
-        delay: 300,
-      });
-
-      ScrollReveal().reveal('.about__card', {
-        duration: 1000,
-        interval: 500,
-        delay: 500,
-      });
-
-      ScrollReveal().reveal('#services_headline', {
-        ...scrollRevealOption,
-        origin: 'left',
-        delay: 400,
-      });
-
-      ScrollReveal().reveal('.services__header p', {
-        ...scrollRevealOption,
-        origin: 'left',
-        delay: 500,
-      });
-
-      ScrollReveal().reveal('.services__card', {
-        duration: 1000,
-        interval: 500,
-        delay: 500,
-      });
-
-      ScrollReveal().reveal('.footer__container', {
-        ...scrollRevealOption,
-        origin: 'left',
-        delay: 400,
-      });
-
-      //client id 877691268840-mfe9nuk08dt5br15sdga7ffb62thvqk9.apps.googleusercontent.com
 
       function updateAuthSection() {
         const currentUser = localStorage.getItem('currentUser');
@@ -1474,22 +1332,121 @@
           authSection.innerHTML = `
             <a href="index.html" id="logoutBtn" class="logout-btn" style="color:#fff">Log out</a>
           `;
-          profileLi.style = 'display: block';
-
+          profileLi.style.display = 'block';
           document.getElementById('logoutBtn').addEventListener('click', e => {
             e.preventDefault();
             localStorage.removeItem('currentUser');
             localStorage.removeItem('token');
-            window.location.href = 'index.html'; // Redirect to login page
+            window.location.href = 'index.html';
           });
         } else {
           authSection.innerHTML = `<a href="login-page.html" id="login">Log in</a>`;
-          profileLi.style = 'display: none';
+          profileLi.style.display = 'none';
         }
       }
 
       updateAuthSection();
+
+      // Form handling
+      const rehomeForm = document.getElementById('rehomeForm');
+      const photoInput = document.getElementById('photos');
+      const photoPreview = document.getElementById('photoPreview');
+      const notification = document.getElementById('notification');
+      const phoneInput = document.getElementById('phone'); // ADDED
+      const priceInput = document.getElementById('price'); // ADDED
+      const currencySelect = document.getElementById('currency'); // ADDED
+
+      // ADDED: Phone number validation
+      phoneInput.addEventListener('input', e => {
+        const value = e.target.value;
+        // Allow only +998 followed by digits and limit to 12 characters
+        if (!value.startsWith('+998') || /[^0-9+]/.test(value)) {
+          e.target.value = '+998';
+        }
+        if (value.length > 12) {
+          e.target.value = value.slice(0, 12);
+        }
+      });
+
+      // ADDED: Ensure phone starts with +998 on page load
+      phoneInput.value = '+998';
+
+      photoInput.addEventListener('change', () => {
+        photoPreview.innerHTML = '';
+        const files = photoInput.files;
+        if (files.length > 5) {
+          showNotification('You can upload a maximum of 5 photos.', 'error');
+          photoInput.value = '';
+          return;
+        }
+        Array.from(files).forEach(file => {
+          const img = document.createElement('img');
+          img.src = URL.createObjectURL(file);
+          photoPreview.appendChild(img);
+        });
+      });
+
+      rehomeForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const formData = new FormData(rehomeForm);
+        const photos = photoInput.files;
+
+        if (photos.length === 0) {
+          showNotification('Please upload at least one photo.', 'error');
+          return;
+        }
+
+        if (photos.length > 5) {
+          showNotification('Maximum 5 photos allowed.', 'error');
+          return;
+        }
+
+        const petData = {
+          name: formData.get('name'),
+          species: formData.get('species'),
+          breed: formData.get('breed'),
+          age: formData.get('age'),
+          health: formData.get('health'),
+          reason: formData.get('reason'),
+          price: parseFloat(formData.get('price')),
+          location: formData.get('location'),
+          phone: formData.get('phone'),
+          photos: Array.from(photos).map(file => file.name), // In a real app, you'd upload these to a server
+        };
+
+        // Simulate submission (replace with actual API call in production)
+        console.log('Pet Data Submitted:', petData);
+        showNotification('Pet successfully added for rehoming!', 'success');
+        rehomeForm.reset();
+        phoneInput.value = '+998'; // ADDED: Reset phone to +998
+        photoPreview.innerHTML = '';
+      });
+
+      function showNotification(message, type) {
+        notification.textContent = message;
+        notification.className = `notification ${type}`;
+        notification.style.display = 'block';
+        setTimeout(() => {
+          notification.style.display = 'none';
+        }, 3000);
+      }
+
+      // ScrollReveal animations
+      const scrollRevealOption = {
+        distance: '50px',
+        origin: 'top',
+        duration: 1000,
+      };
+
+      ScrollReveal().reveal('.rehome__header', {
+        ...scrollRevealOption,
+        delay: 300,
+      });
+
+      ScrollReveal().reveal('.rehome__form', {
+        ...scrollRevealOption,
+        delay: 500,
+      });
     </script>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
   </body>
 </html>

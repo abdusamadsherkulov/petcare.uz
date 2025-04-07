@@ -628,7 +628,7 @@
         padding: 2rem;
         background-color: var(--white);
         border-radius: 10px;
-        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
         display: flex;
         flex-direction: column;
       }
@@ -759,6 +759,178 @@
         display: none;
       }
 
+      .password-container {
+        position: relative;
+        width: 100%;
+        margin-bottom: 1rem; /* Add space between inputs */
+      }
+
+      .password-container input {
+        width: 100%;
+        padding: 0.8rem 2.5rem 0.8rem 0.8rem; /* Right padding for icon space */
+        border: 1px solid var(--text-light);
+        border-radius: 5px;
+        font-size: 1rem;
+        color: var(--text-dark);
+        font-family: var(--header-font);
+        box-sizing: border-box; /* Ensure padding doesn’t increase width */
+      }
+
+      .password-container .toggle-password {
+        position: absolute;
+        right: 0.8rem; /* Distance from right edge */
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+        color: var(--text-dark);
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      .password-container .toggle-password:hover {
+        color: var(--extra-light);
+      }
+
+      .profileDataLabel {
+        font-weight: 600;
+      }
+      .profileDataInfo {
+        /* background-color: #502b0f1a; */
+        padding: 2px 4px;
+        border-radius: 5px;
+        color: var(--text-light);
+      }
+
+      /* Pet Rehoming form page */
+      .rehome__container {
+        max-width: var(--max-width);
+        margin: auto;
+        padding: 2rem 1rem 2rem 1rem;
+      }
+
+      .rehome__header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .rehome__header h1 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+
+      .rehome__header p {
+        font-size: 1.2rem;
+        color: var(--text-light);
+      }
+
+      .rehome__form {
+        background-color: var(--white);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .form__group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form__group label {
+        display: block;
+        font-size: 1.1rem;
+        color: var(--text-dark);
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+
+      .form__group input,
+      .form__group textarea,
+      .form__group select {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid var(--text-light);
+        border-radius: 5px;
+        font-size: 1rem;
+        color: var(--text-dark);
+        font-family: var(--header-font);
+      }
+
+      .form__group input[type='file'] {
+        padding: 0.5rem;
+      }
+
+      .form__group textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      /* ADDED: Style for price and currency container */
+      .price__container {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .price__container input {
+        flex: 2;
+      }
+
+      .price__container select {
+        flex: 1;
+      }
+
+      .photo__preview {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 0.5rem;
+      }
+
+      .photo__preview img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+
+      .submit__btn {
+        width: 100%;
+        padding: 0.8rem;
+        background-color: var(--text-light);
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .submit__btn:hover {
+        background-color: var(--extra-light);
+      }
+
+      .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 1rem;
+        z-index: 1000;
+        display: none;
+      }
+
+      .notification.success {
+        background-color: #28a745;
+      }
+
+      .notification.error {
+        background-color: #dc3545;
+      }
+
       @media (width > 540px) {
         .about__grid {
           grid-template-columns: repeat(2, 1fr);
@@ -798,6 +970,28 @@
           font-size: 1rem;
           width: 100%;
           margin: 0 auto;
+        }
+
+        /* Pet rehoming page */
+        .rehome__container {
+          padding: 7rem 1rem 2rem 1rem;
+        }
+
+        .rehome__header h1 {
+          font-size: 2rem;
+        }
+
+        .rehome__header p {
+          font-size: 1rem;
+        }
+
+        .rehome__form {
+          padding: 1.5rem;
+        }
+        /* ADDED: Adjust price container for smaller screens */
+        .price__container {
+          flex-direction: column;
+          gap: 0.5rem;
         }
       }
 
@@ -957,24 +1151,36 @@
       <button class="close-modal">×</button>
       <h2 id="changePasswordTitle">Change Password</h2>
       <form id="changePasswordForm">
-        <input
-          type="password"
-          id="oldPassword"
-          placeholder="Old Password"
-          required
-        />
-        <input
-          type="password"
-          id="newPassword"
-          placeholder="New Password"
-          required
-        />
-        <input
-          type="password"
-          id="confirmNewPassword"
-          placeholder="Confirm New Password"
-          required
-        />
+        <div class="password-container">
+          <input
+            type="password"
+            id="oldPassword"
+            placeholder="Old Password"
+            required
+          />
+          <i class="ri-eye-line toggle-password" data-target="oldPassword"></i>
+        </div>
+        <div class="password-container">
+          <input
+            type="password"
+            id="newPassword"
+            placeholder="New Password"
+            required
+          />
+          <i class="ri-eye-line toggle-password" data-target="newPassword"></i>
+        </div>
+        <div class="password-container">
+          <input
+            type="password"
+            id="confirmNewPassword"
+            placeholder="Confirm New Password"
+            required
+          />
+          <i
+            class="ri-eye-line toggle-password"
+            data-target="confirmNewPassword"
+          ></i>
+        </div>
         <button type="submit" id="submitPasswordChange">Change Password</button>
       </form>
       <p class="error" id="passwordError"></p>
@@ -988,16 +1194,18 @@
         <button id="changePassword">Change password</button> -->
         <h2 id="profileTitle">Profile</h2>
         <p>
-          <span id="profileNameLabel">Name:</span>
-          <span id="profileNameValue"></span>
+          <span id="profileNameLabel" class="profileDataLabel">Name:</span>
+          <span id="profileNameValue" class="profileDataInfo"></span>
         </p>
         <p>
-          <span id="profileSurnameLabel">Surname:</span>
-          <span id="profileSurnameValue"></span>
+          <span id="profileSurnameLabel" class="profileDataLabel"
+            >Surname:</span
+          >
+          <span id="profileSurnameValue" class="profileDataInfo"></span>
         </p>
         <p>
-          <span id="profileEmailLabel">Email:</span>
-          <span id="profileEmailValue"></span>
+          <span id="profileEmailLabel" class="profileDataLabel">Email:</span>
+          <span id="profileEmailValue" class="profileDataInfo"></span>
         </p>
         <button id="changePassword">Change password</button>
       </div>
@@ -1021,6 +1229,9 @@
             const menuBtnIcon = menuBtn.querySelector('i');
             const overlay = document.querySelector('.overlay');
             const authSection = document.getElementById('authSection');
+            const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
+
+            const token = localStorage.getItem('token');
 
             function closeMenu() {
               navLinks.classList.remove('open');
@@ -1103,29 +1314,63 @@
             loadTranslations();
 
             // Profile data handling
-            function updateProfile() {
-              const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
-              const token = localStorage.getItem('token');
+            // function updateProfile() {
+            //   const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
+            //   const token = localStorage.getItem('token');
 
-              if (currentUser && token) {
-                document.getElementById('profileNameValue').textContent = `
-                  ${currentUser.name}`;
-                document.getElementById('profileSurnameValue').textContent = `
-                  ${currentUser.surname}`;
-                document.getElementById(
-                  'profileEmailValue'
-                ).textContent = `${currentUser.email}`;
-                document.getElementById('profileJoined').textContent = `Joined: ${
-                  currentUser.joined || 'Not available'
-                }`;
-                const savedPhoto = localStorage.getItem('profilePhoto');
-                if (savedPhoto) {
-                  document.getElementById('profilePhoto').src = savedPhoto;
-                }
-              } else {
+            //   if (currentUser && token) {
+            //     document.getElementById('profileNameValue').textContent = `
+            //       ${currentUser.name}`;
+            //     document.getElementById('profileSurnameValue').textContent = `
+            //       ${currentUser.surname}`;
+            //     document.getElementById(
+            //       'profileEmailValue'
+            //     ).textContent = `${currentUser.email}`;
+            //   } else {
+            //     window.location.href = 'index.html'; // Redirect if not logged in
+            //   }
+            // }
+
+            // Profile data fetching from backend
+            async function fetchProfile() {
+              const token = localStorage.getItem('token');
+              if (!token) {
                 window.location.href = 'index.html'; // Redirect if not logged in
+                return;
+              }
+
+              try {
+                const response = await fetch('http://localhost:5000/api/auth/profile', {
+                  method: 'GET',
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                  },
+                });
+
+                if (!response.ok) {
+                  if (response.status === 401) {
+                    localStorage.removeItem('token');
+                    window.location.href = 'index.html'; // Token invalid/expired
+                  }
+                  throw new Error('Failed to fetch profile');
+                }
+
+                const user = await response.json();
+                document.getElementById('profileNameValue').textContent =
+                  user.name || 'Not available';
+                document.getElementById('profileSurnameValue').textContent =
+                  user.surname || 'Not available';
+                document.getElementById('profileEmailValue').textContent =
+                  user.email || 'Not available';
+              } catch (error) {
+                console.error('Error fetching profile:', error);
+                alert('Unable to load profile. Please try again later.');
               }
             }
+
+            // Initial setup
+            fetchProfile();
 
             // Change password modal handling
             const passwordModal = document.querySelector('.password-modal');
@@ -1145,20 +1390,74 @@
               passwordError.style.display = 'none';
             });
 
-            changePasswordForm.addEventListener('submit', e => {
+            console.log('Sending password change request with:', {
+              oldPassword,
+              newPassword,
+              token,
+            });
+
+            // Toggle password visibility and handle Arrow Down/Focus
+            const passwordInputs = document.querySelectorAll('.password-container input');
+            const toggleIcons = document.querySelectorAll('.toggle-password');
+
+            function resetPasswordVisibility(excludeInputId) {
+              toggleIcons.forEach(icon => {
+                const inputId = icon.getAttribute('data-target');
+                if (inputId !== excludeInputId) {
+                  const input = document.getElementById(inputId);
+                  input.type = 'password';
+                  icon.classList.add('ri-eye-line');
+                  icon.classList.remove('ri-eye-off-line');
+                }
+              });
+            }
+
+            toggleIcons.forEach(icon => {
+              icon.addEventListener('click', () => {
+                const inputId = icon.getAttribute('data-target');
+                const input = document.getElementById(inputId);
+                const isPasswordVisible = input.type === 'text';
+
+                input.type = isPasswordVisible ? 'password' : 'text';
+                icon.classList.toggle('ri-eye-line', isPasswordVisible);
+                icon.classList.toggle('ri-eye-off-line', !isPasswordVisible);
+              });
+            });
+
+            passwordInputs.forEach((input, index) => {
+              // Arrow Down to next input
+              input.addEventListener('keydown', e => {
+                if (e.key === 'ArrowDown') {
+                  e.preventDefault();
+                  const nextIndex = index + 1;
+                  if (nextIndex < passwordInputs.length) {
+                    passwordInputs[nextIndex].focus();
+                  }
+                }
+              });
+
+              // Reset eye icon on focus change
+              input.addEventListener('focus', () => {
+                resetPasswordVisibility(input.id);
+              });
+            });
+
+            changePasswordForm.addEventListener('submit', async e => {
               e.preventDefault();
+
               const oldPassword = document.getElementById('oldPassword').value;
               const newPassword = document.getElementById('newPassword').value;
               const confirmNewPassword =
                 document.getElementById('confirmNewPassword').value;
+              const token = localStorage.getItem('token');
               const currentLang = localStorage.getItem('lang') || 'en';
 
-              if (oldPassword !== currentUser.password) {
-                passwordError.textContent =
-                  languages[currentLang].wrongOldPassword || 'Incorrect old password';
-                passwordError.style.display = 'block';
-                return;
-              }
+              // if (oldPassword !== currentUser.password) {
+              //   passwordError.textContent =
+              //     languages[currentLang].wrongOldPassword || 'Incorrect old password';
+              //   passwordError.style.display = 'block';
+              //   return;
+              // }
 
               if (newPassword !== confirmNewPassword) {
                 passwordError.textContent =
@@ -1167,15 +1466,51 @@
                 return;
               }
 
-              // Update password in localStorage
-              currentUser.password = newPassword;
-              const users = JSON.parse(localStorage.getItem('users')) || [];
-              const userIndex = users.findIndex(u => u.email === currentUser.email);
-              if (userIndex !== -1) {
-                users[userIndex].password = newPassword;
-                localStorage.setItem('users', JSON.stringify(users));
+              try {
+                const response = await fetch(
+                  'http://localhost:5000/api/auth/change-password',
+                  {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                      Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({oldPassword, newPassword}),
+                  }
+                );
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                  passwordError.textContent = result.message || 'Password change failed';
+                  passwordError.style.display = 'block';
+                  return;
+                }
+
+                // Success – close modal and show success alert
+                alert(
+                  languages[currentLang].passwordChangeSuccess ||
+                    'Password updated successfully'
+                );
+                passwordModal.classList.add('hidden');
+                overlay.classList.add('hidden');
+                passwordError.style.display = 'none';
+                changePasswordForm.reset();
+              } catch (error) {
+                console.error('Error changing password:', error);
+                passwordError.textContent = 'Something went wrong. Please try again.';
+                passwordError.style.display = 'block';
               }
-              localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+              // Update password in localStorage
+              // currentUser.password = newPassword;
+              // const users = JSON.parse(localStorage.getItem('users')) || [];
+              // const userIndex = users.findIndex(u => u.email === currentUser.email);
+              // if (userIndex !== -1) {
+              //   users[userIndex].password = newPassword;
+              //   localStorage.setItem('users', JSON.stringify(users));
+              // }
+              // localStorage.setItem('currentUser', JSON.stringify(currentUser));
 
               // Close modal and reset form
               passwordModal.classList.add('hidden');
@@ -1198,7 +1533,7 @@
             });
 
             // Initial setup
-            updateProfile();
+            // updateProfile();
     </script>
     <script src="languages.json"></script>
   </body>

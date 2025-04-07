@@ -285,3 +285,31 @@ function updateAuthSection() {
 }
 
 updateAuthSection();
+
+// Handle Start Rehoming button click
+const startRehomingBtn = document.getElementById('btnStartRehoming');
+startRehomingBtn.addEventListener('click', e => {
+  console.log('Button clicked!');
+  e.preventDefault(); // Prevent default button behavior
+  const token = localStorage.getItem('token');
+  if (!token) {
+    showNotification('Please log in first to rehome a pet.', 'error');
+    // setTimeout(() => (window.location.href = 'login-page.html'), 2000);
+  } else {
+    window.location.href = 'rehome-pet.html';
+  }
+});
+
+// Notification function
+function showNotification(message, type) {
+  const notification = document.getElementById('notification');
+  console.log('Notification element:', notification);
+
+  notification.textContent = message;
+  notification.className = `notification ${type}`;
+  notification.style.display = 'block';
+
+  setTimeout(() => {
+    notification.style.display = 'none';
+  }, 3000);
+}

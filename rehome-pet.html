@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="rehome-pet.css" /> -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="pics/paw.png" />
+    <title>Rehome a Pet - petcare.uz</title>
+  </head>
+  <body>
+    <!-- Reuse the navigation from your main page -->
+    <nav>
+      <div class="nav__header">
+        <div class="nav__logo">
+          <a href="index.html" class="logo">
+            <img src="pics/Logo.png" alt="petcare.uz" />
+          </a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+          <i class="ri-menu-line"></i>
+        </div>
+      </div>
+      <ul class="nav__links" id="nav-links">
+        <li id="authSection">
+          <a href="login-page.html" id="login">Log in</a>
+        </li>
+        <li id="profileLi" style="display: none">
+          <a href="profile.html" id="profileBtn" title="Profile">
+            <i class="ri-user-fill"></i>
+          </a>
+        </li>
+        <li>
+          <a class="show-modal" id="lang">
+            <i class="ri-global-line"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="modal hidden">
+      <button class="close-modal">×</button>
+      <h1 id="chooselang">Choose a language</h1>
+      <ul>
+        <li><button onclick="changeLanguage('en')">English</button></li>
+        <li><button onclick="changeLanguage('ru')">Русский</button></li>
+        <li><button onclick="changeLanguage('uz')">O'zbekcha</button></li>
+      </ul>
+    </div>
+    <div class="overlay hidden"></div>
+
+    <section class="rehome__container">
+      <div class="rehome__header">
+        <h1>Rehome a Pet</h1>
+        <p>Fill out the form below to find a new loving home for your pet.</p>
+      </div>
+      <div class="rehome__form">
+        <form id="rehomeForm">
+          <div class="form__group">
+            <label for="name">Pet Name *</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form__group">
+            <label for="species">Species *</label>
+            <select id="species" name="species" required>
+              <option value="" disabled selected>Select species</option>
+              <option value="Dog">Dog</option>
+              <option value="Cat">Cat</option>
+              <option value="Bird">Bird</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form__group">
+            <label for="breed">Breed *</label>
+            <input type="text" id="breed" name="breed" required />
+          </div>
+          <div class="form__group">
+            <label for="age">Age *</label>
+            <input
+              type="text"
+              id="age"
+              name="age"
+              required
+              placeholder="e.g., 2 years"
+            />
+          </div>
+          <div class="form__group">
+            <label for="health">Health Condition *</label>
+            <input
+              type="text"
+              id="health"
+              name="health"
+              required
+              placeholder="e.g., Healthy, Vaccinated"
+            />
+          </div>
+          <div class="form__group">
+            <label for="reason">Reason for Rehoming *</label>
+            <textarea id="reason" name="reason" required></textarea>
+          </div>
+          <div class="form__group">
+            <label for="price">Cost *</label>
+            <div class="price__container">
+              <input
+                type="number"
+                id="cost"
+                name="cost"
+                required
+                min="0"
+                value="0"
+              />
+              <select id="currency" name="currency" required>
+                <option value="USD">USD</option>
+                <option value="UZS">UZS</option>
+              </select>
+            </div>
+          </div>
+          <div class="form__group">
+            <label for="location">Location *</label>
+            <input
+              type="text"
+              id="location"
+              name="location"
+              required
+              placeholder="e.g., Tashkent, Uzbekistan"
+            />
+          </div>
+          <!-- CHANGED: Phone number with specific format -->
+          <div class="form__group">
+            <label for="phone">Phone Number *</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              required
+              pattern="\+998( ?[0-9]{2} ?[0-9]{3}( ?|-)?[0-9]{2}( ?|-)?[0-9]{2}|\d{9})"
+              placeholder="+998 90 123 45 67"
+              title="Phone number must be in the format +998 followed by 9 digits"
+            />
+          </div>
+          <div class="form__group">
+            <label for="photos">Pet Photos (max 5) *</label>
+            <input
+              type="file"
+              id="photos"
+              name="photos"
+              accept="image/*"
+              multiple
+            />
+            <div class="photo__preview" id="photoPreview"></div>
+          </div>
+          <button type="submit" class="submit__btn">Submit for Rehoming</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="profile-footer" id="contact">
+      <div class="footer__bar" id="footer-bar">© 2025 Petcare.uz</div>
+    </footer>
+    <div class="notification" id="notification"></div>
+    <div class="loading-modal" id="loadingModal">
+      <div
+        aria-label="Orange and tan hamster running in a metal wheel"
+        role="img"
+        class="wheel-and-hamster"
+      >
+        <div class="wheel"></div>
+        <div class="hamster">
+          <div class="hamster__body">
+            <div class="hamster__head">
+              <div class="hamster__ear"></div>
+              <div class="hamster__eye"></div>
+              <div class="hamster__nose"></div>
+            </div>
+            <div class="hamster__limb hamster__limb--fr"></div>
+            <div class="hamster__limb hamster__limb--fl"></div>
+            <div class="hamster__limb hamster__limb--br"></div>
+            <div class="hamster__limb hamster__limb--bl"></div>
+            <div class="hamster__tail"></div>
+          </div>
+        </div>
+        <div class="spoke"></div>
+      </div>
+    </div>
+    <div class="loading-overlay" id="loadingOverlay"></div>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="rehome-pet.js"></script>
+  </body>
+</html>
