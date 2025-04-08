@@ -160,7 +160,7 @@ rehomeForm.addEventListener('submit', async e => {
   loadingOverlay.style.display = 'block';
 
   try {
-    const response = await fetch('http://localhost:5000/api/pets/rehoming', {
+    const response = await fetch('http://localhost:10000/api/pets/rehoming', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,

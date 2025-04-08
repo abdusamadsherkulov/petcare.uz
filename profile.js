@@ -115,7 +115,7 @@ async function fetchProfile() {
   }
 
   try {
-    const response = await fetch('http://localhost:5000/api/auth/profile', {
+    const response = await fetch('http://localhost:10000/api/auth/profile', {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -243,7 +243,7 @@ changePasswordForm.addEventListener('submit', async e => {
 
   try {
     const response = await fetch(
-      'http://localhost:5000/api/auth/change-password',
+      'http://localhost:10000/api/auth/change-password',
       {
         method: 'POST',
         headers: {
