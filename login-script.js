@@ -8,7 +8,7 @@ const nameInput = document.getElementById('name');
 const surnameInput = document.getElementById('surname');
 const confirmPasswordInput = document.getElementById('confirmPassword');
 let isLogin = true;
-const API_URL = 'http://localhost:10000/api/auth'; // Change this to your production URL after deploying
+const API_URL = 'https://petcare-backend-h0cq.onrender.com/api/auth'; // Change this to your production URL after deploying
 
 // Load users from localStorage (for demo purposes)
 let users = JSON.parse(localStorage.getItem('users')) || [];
@@ -55,13 +55,16 @@ authForm.addEventListener('submit', async e => {
 
   if (isLogin) {
     // Login logic
-    const response = await fetch('http://localhost:10000/api/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({email, password}),
-    });
+    const response = await fetch(
+      'https://petcare-backend-h0cq.onrender.com/api/auth/login',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({email, password}),
+      }
+    );
 
     const data = await response.json();
 
@@ -88,13 +91,16 @@ authForm.addEventListener('submit', async e => {
       return;
     }
 
-    const response = await fetch('http://localhost:10000/api/auth/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({name, surname, email, password}),
-    });
+    const response = await fetch(
+      'https://petcare-backend-h0cq.onrender.com/api/auth/register',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({name, surname, email, password}),
+      }
+    );
 
     const data = await response.json();
 

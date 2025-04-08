@@ -115,13 +115,16 @@ async function fetchProfile() {
   }
 
   try {
-    const response = await fetch('http://localhost:10000/api/auth/profile', {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-    });
+    const response = await fetch(
+      'https://petcare-backend-h0cq.onrender.com/api/auth/profile',
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
 
     if (!response.ok) {
       if (response.status === 401) {
@@ -243,7 +246,7 @@ changePasswordForm.addEventListener('submit', async e => {
 
   try {
     const response = await fetch(
-      'http://localhost:10000/api/auth/change-password',
+      'https://petcare-backend-h0cq.onrender.com/api/auth/change-password',
       {
         method: 'POST',
         headers: {

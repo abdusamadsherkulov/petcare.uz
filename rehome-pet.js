@@ -160,13 +160,16 @@ rehomeForm.addEventListener('submit', async e => {
   loadingOverlay.style.display = 'block';
 
   try {
-    const response = await fetch('http://localhost:10000/api/pets/rehoming', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      body: formData,
-    });
+    const response = await fetch(
+      'https://petcare-backend-h0cq.onrender.com/api/pets/rehoming',
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      }
+    );
 
     const result = await response.json();
 
