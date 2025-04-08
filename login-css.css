@@ -110,3 +110,35 @@ body {
 .signup-only {
   display: none; /* Hidden by default for login */
 }
+
+.password-container {
+  position: relative;
+  width: 100%;
+  /* margin-bottom: 1rem; */
+}
+
+.password-container input {
+  width: 100%;
+  padding: 0.8rem 2.5rem 0.8rem 0.8rem; /* Right padding for icon space */
+  border: 1px solid var(--text-light);
+  border-radius: 5px;
+  font-size: 1rem;
+  color: var(--text-dark);
+  font-family: var(--header-font);
+  box-sizing: border-box; /* Ensure padding doesn’t increase width */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 0.8rem; /* Distance from right edge */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.password-container .toggle-password:hover {
+  color: var(--extra-light);
+}

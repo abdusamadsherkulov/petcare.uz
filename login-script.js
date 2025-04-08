@@ -183,3 +183,34 @@ function updateLanguage(lang = localStorage.getItem('lang') || 'en') {
 
 // Load translations when the page loads
 loadTranslations();
+
+// Add after your existing code
+document.querySelectorAll('.toggle-password').forEach(icon => {
+  icon.addEventListener('click', function () {
+    const targetId = this.getAttribute('data-target');
+    const passwordInput = document.getElementById(targetId);
+
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      this.classList.remove('ri-eye-line');
+      this.classList.add('ri-eye-off-line');
+    } else {
+      passwordInput.type = 'password';
+      this.classList.remove('ri-eye-off-line');
+      this.classList.add('ri-eye-line');
+    }
+  });
+});
+
+// Modify toggleFormFields to also handle password toggle visibility
+// function toggleFormFields() {
+//   const signupFields = document.querySelectorAll('.signup-only');
+//   signupFields.forEach(field => {
+//     // Check if the field is the input or its container
+//     const element = field.tagName === 'INPUT' ? field.parentElement : field;
+//     element.style.display = isLogin ? 'none' : 'block';
+//     if (field.tagName === 'INPUT') {
+//       field.required = !isLogin;
+//     }
+//   });
+// }

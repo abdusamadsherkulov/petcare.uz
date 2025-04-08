@@ -31,14 +31,28 @@
           required
         />
         <input type="email" id="email" placeholder="Email" required />
-        <input type="password" id="password" placeholder="Password" required />
-        <input
-          type="password"
-          id="confirmPassword"
-          class="signup-only"
-          placeholder="Confirm Password"
-          required
-        />
+        <div class="password-container">
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+          />
+          <i class="ri-eye-line toggle-password" data-target="password"></i>
+        </div>
+        <div class="password-container signup-only">
+          <input
+            type="password"
+            id="confirmPassword"
+            class="signup-only"
+            placeholder="Confirm Password"
+            required
+          />
+          <i
+            class="ri-eye-line toggle-password"
+            data-target="confirmPassword"
+          ></i>
+        </div>
         <button type="submit" id="submitBtn">Log In</button>
       </form>
       <p class="error" id="errorMsg">Invalid email or password</p>
