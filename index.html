@@ -45,23 +45,24 @@
             >Contact us</a
           >
         </li>
-        <li id="authSection">
-          <a href="login-page.html" id="login">Log in</a>
+        <li id="shoppingCartLi" style="display: none">
+          <a href="cart.html" id="shoppingCartBtn" title="Basket">
+            <i class="ri-shopping-cart-2-fill"></i>
+          </a>
         </li>
         <li id="profileLi" style="display: none">
           <a href="profile.html" id="profileBtn" title="Profile">
             <i class="ri-user-fill"></i>
           </a>
         </li>
-        <!-- <li><a href="#" id="logout" style="display: none">Log Out</a></li> -->
-        <!-- <li><a href="#" id="signup">Sign up</a></li> -->
+        <li id="authSection">
+          <a href="login-page.html" id="login">Log in</a>
+        </li>
+
         <li>
           <a class="show-modal" id="lang">
             <i class="ri-global-line"></i>
           </a>
-          <!-- <button class="show-modal" id="lang">
-            <i class="ri-global-line"></i>
-          </button> -->
         </li>
       </ul>
     </nav>
@@ -172,7 +173,11 @@
                 pets, ready to bring joy to your home.
               </p>
             </div>
-            <button class="card-button" id="btnMeetYourPet">
+            <button
+              class="card-button"
+              id="btnMeetYourPet"
+              onclick="location.href='adoption.html'"
+            >
               Meet your pet
             </button>
           </div>
@@ -199,7 +204,11 @@
                 and healthy, all in one convenient spot.
               </p>
             </div>
-            <button class="card-button" id="btnBrowseProducts">
+            <button
+              class="card-button"
+              id="btnBrowseProducts"
+              onclick="location.href='pet-items.html'"
+            >
               Browse products
             </button>
           </div>
@@ -212,7 +221,13 @@
                 emergencies, ensuring your pet’s lifelong well-being.
               </p>
             </div>
-            <button class="card-button" id="btnBookAVisit">Book a visit</button>
+            <button
+              class="card-button"
+              id="btnBookAVisit"
+              onclick="location.href='vet-service.html'"
+            >
+              Book a visit
+            </button>
           </div>
         </div>
       </div>
@@ -246,6 +261,7 @@
       </div>
       <div class="footer__bar" id="footer-bar">© 2025 Petcare.uz</div>
     </footer>
+
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="script.js"></script>
     <script src="languages.json"></script>

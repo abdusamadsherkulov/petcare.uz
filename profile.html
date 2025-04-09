@@ -12,6 +12,31 @@
     <link rel="icon" type="image/png" href="pics/paw.png" />
     <link rel="stylesheet" href="style.css" />
     <title>Profile - petcare.uz</title>
+    <style>
+      .your-pets__container {
+        min-height: calc(
+          100vh - 100px
+        ); /* Adjust 100px for header/nav height */
+        padding: 2rem;
+      }
+
+      .your-pets__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        width: 100%;
+      }
+
+      .profile-footer {
+        background-color: var(--nav-foot-bg);
+        width: 100%;
+        padding: 1rem 0;
+      }
+
+      .footer__bar {
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
     <nav>
@@ -26,14 +51,13 @@
         </div>
       </div>
       <ul class="nav__links" id="nav-links">
+        <li id="shoppingCartLi" style="display: none">
+          <a href="cart.html" id="shoppingCartBtn" title="Basket">
+            <i class="ri-shopping-cart-2-fill"></i>
+          </a>
+        </li>
         <li id="authSection">
-          <a
-            href="index.html"
-            id="logoutBtn"
-            class="logout-btn"
-            style="color: #fff"
-            >Log out</a
-          >
+          <a href="login-page.html" id="login">Log in</a>
         </li>
         <li>
           <a class="show-modal" id="lang">
@@ -118,11 +142,26 @@
       </div>
     </section>
 
+    <!-- <img
+      src="https://drive.usercontent.google.com/download?id=1Ez37dhR5DPgcs32ky07YidU4k8CRY8_Q&export=view&authuser=0"
+      alt="cat"
+    /> -->
     <section class="section__container your-pets__container">
       <div class="your-pets__header">
         <h1 id="yourPets">Your Pets:</h1>
       </div>
+      <div class="your-pets__grid" id="yourPetsGrid"></div>
     </section>
+    <div class="modal delete-modal hidden" id="deleteModal">
+      <h3>Are you sure?</h3>
+      <p>
+        Do you really want to delete this pet? This action cannot be undone.
+      </p>
+      <div class="modal-buttons">
+        <button id="confirmDelete">Yes</button>
+        <button id="cancelDelete">No</button>
+      </div>
+    </div>
 
     <footer class="profile-footer" id="contact">
       <div class="footer__bar" id="footer-bar">© 2025 Petcare.uz</div>

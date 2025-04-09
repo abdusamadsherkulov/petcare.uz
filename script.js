@@ -5,6 +5,7 @@ const menuBtnIcon = menuBtn.querySelector('i');
 const overlay = document.querySelector('.overlay');
 const authSection = document.getElementById('authSection');
 const profileLi = document.getElementById('profileLi');
+const shoppingCartLi = document.getElementById('shoppingCartLi');
 
 // Function to close the menu
 function closeMenu() {
@@ -270,6 +271,7 @@ function updateAuthSection() {
     authSection.innerHTML = `
       <a href="index.html" id="logoutBtn" class="logout-btn" style="color:#fff">Log out</a>
     `;
+    shoppingCartLi.style = 'display: block';
     profileLi.style = 'display: block';
 
     document.getElementById('logoutBtn').addEventListener('click', e => {
@@ -280,6 +282,7 @@ function updateAuthSection() {
     });
   } else {
     authSection.innerHTML = `<a href="login-page.html" id="login">Log in</a>`;
+    shoppingCartLi.style = 'display: none';
     profileLi.style = 'display: none';
   }
 }
@@ -313,3 +316,5 @@ function showNotification(message, type) {
     notification.style.display = 'none';
   }, 3000);
 }
+
+console.log('Modal elements:', {modal, btnShowModal, btnCloseModal, overlay});

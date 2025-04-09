@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart - Petcare.uz</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="pics/paw.png" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav__header">
+        <div class="nav__logo">
+          <a href="index.html" class="logo"
+            ><img src="pics/Logo.png" alt="petcare.uz"
+          /></a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+          <i class="ri-menu-line"></i>
+        </div>
+      </div>
+      <ul class="nav__links" id="nav-links">
+        <li id="authSection">
+          <a href="login-page.html" id="login">Log in</a>
+        </li>
+        <li id="profileLi" style="display: none">
+          <a href="profile.html" id="profileBtn" title="Profile"
+            ><i class="ri-user-fill"></i
+          ></a>
+        </li>
+        <li>
+          <a class="show-modal" id="lang"><i class="ri-global-line"></i></a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="modal hidden">
+      <button class="close-modal">×</button>
+      <h1 id="chooselang">Choose a language</h1>
+      <ul>
+        <li><button onclick="changeLanguage('en')">English</button></li>
+        <li><button onclick="changeLanguage('ru')">Русский</button></li>
+        <li><button onclick="changeLanguage('uz')">O'zbekcha</button></li>
+      </ul>
+    </div>
+    <div class="overlay hidden"></div>
+
+    <section class="cart__container">
+      <div class="cart__header">
+        <h1 id="cartTitle">Your Cart</h1>
+        <p id="cartDescription">Review the items you’ve added to your cart.</p>
+      </div>
+      <div class="cart__grid" id="cartGrid"></div>
+    </section>
+
+    <footer class="footer" id="contact">
+      <div class="footer__bar" id="footer-bar">© 2025 Petcare.uz</div>
+    </footer>
+
+    <!-- <script src="script.js"></script> -->
+    <script src="cart.js"></script>
+  </body>
+</html>

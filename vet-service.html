@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="pics/paw.png" />
+    <title>Vet Service - petcare.uz</title>
+    <style>
+      body {
+        font-family: var(--header-font);
+        background-color: #fff;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+      }
+
+      .coming-soon {
+        text-align: center;
+        padding: 2rem;
+        /* background-color: rgba(255, 255, 255, 0.9); */
+        border-radius: 15px;
+        /* box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1); */
+      }
+
+      .coming-soon h1 {
+        font-size: 3rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .coming-soon p {
+        font-size: 1.2rem;
+        color: var(--text-light);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="coming-soon">
+      <h1 id="comingSoon">Coming Soon</h1>
+      <p id="vetServiceMessage">
+        Our Vet Service is under development. Stay tuned!
+      </p>
+    </div>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+      // Language support (optional, if you want translations)
+      let languages = {};
+
+      async function loadTranslations() {
+        try {
+          const response = await fetch('languages.json');
+          if (!response.ok) throw new Error('Failed to load languages.json');
+          languages = await response.json();
+          const savedLang = localStorage.getItem('lang') || 'en';
+          updateLanguage(savedLang);
+        } catch (error) {
+          console.error('Error fetching translations:', error);
+        }
+      }
+
+      function updateLanguage(lang) {
+        if (!languages[lang]) return;
+
+        document.getElementById('comingSoon').textContent =
+          languages[lang].comingSoon || 'Coming Soon';
+        document.getElementById('vetServiceMessage').textContent =
+          languages[lang].vetServiceMessage ||
+          'Our Vet Service is under development. Stay tuned!';
+      }
+
+      loadTranslations();
+    </script>
+    <script src="languages.json"></script>
+    <!-- Development version -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- Production version -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <div class="notification" id="notification"></div>
+  </body>
+</html>

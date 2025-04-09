@@ -5,6 +5,7 @@ const menuBtnIcon = menuBtn.querySelector('i');
 const overlay = document.querySelector('.overlay');
 const authSection = document.getElementById('authSection');
 const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
+const shoppingCartLi = document.getElementById('shoppingCartLi');
 
 const token = localStorage.getItem('token');
 
@@ -88,29 +89,11 @@ function changeLanguage(lang) {
 
 loadTranslations();
 
-// Profile data handling
-// function updateProfile() {
-//   const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
-//   const token = localStorage.getItem('token');
-
-//   if (currentUser && token) {
-//     document.getElementById('profileNameValue').textContent = `
-//       ${currentUser.name}`;
-//     document.getElementById('profileSurnameValue').textContent = `
-//       ${currentUser.surname}`;
-//     document.getElementById(
-//       'profileEmailValue'
-//     ).textContent = `${currentUser.email}`;
-//   } else {
-//     window.location.href = 'index.html'; // Redirect if not logged in
-//   }
-// }
-
 // Profile data fetching from backend
 async function fetchProfile() {
   const token = localStorage.getItem('token');
   if (!token) {
-    window.location.href = 'index.html'; // Redirect if not logged in
+    window.location.href = 'index.html';
     return;
   }
 
@@ -129,7 +112,7 @@ async function fetchProfile() {
     if (!response.ok) {
       if (response.status === 401) {
         localStorage.removeItem('token');
-        window.location.href = 'index.html'; // Token invalid/expired
+        window.location.href = 'index.html';
       }
       throw new Error('Failed to fetch profile');
     }
@@ -146,9 +129,6 @@ async function fetchProfile() {
     alert('Unable to load profile. Please try again later.');
   }
 }
-
-// Initial setup
-fetchProfile();
 
 // Change password modal handling
 const passwordModal = document.querySelector('.password-modal');
@@ -174,7 +154,6 @@ console.log('Sending password change request with:', {
   token,
 });
 
-// Toggle password visibility and handle Arrow Down/Focus
 const passwordInputs = document.querySelectorAll('.password-container input');
 const toggleIcons = document.querySelectorAll('.toggle-password');
 
@@ -203,7 +182,6 @@ toggleIcons.forEach(icon => {
 });
 
 passwordInputs.forEach((input, index) => {
-  // Arrow Down to next input
   input.addEventListener('keydown', e => {
     if (e.key === 'ArrowDown') {
       e.preventDefault();
@@ -214,7 +192,6 @@ passwordInputs.forEach((input, index) => {
     }
   });
 
-  // Reset eye icon on focus change
   input.addEventListener('focus', () => {
     resetPasswordVisibility(input.id);
   });
@@ -229,13 +206,6 @@ changePasswordForm.addEventListener('submit', async e => {
     document.getElementById('confirmNewPassword').value;
   const token = localStorage.getItem('token');
   const currentLang = localStorage.getItem('lang') || 'en';
-
-  // if (oldPassword !== currentUser.password) {
-  //   passwordError.textContent =
-  //     languages[currentLang].wrongOldPassword || 'Incorrect old password';
-  //   passwordError.style.display = 'block';
-  //   return;
-  // }
 
   if (newPassword !== confirmNewPassword) {
     passwordError.textContent =
@@ -265,7 +235,6 @@ changePasswordForm.addEventListener('submit', async e => {
       return;
     }
 
-    // Success – close modal and show success alert
     alert(
       languages[currentLang].passwordChangeSuccess ||
         'Password updated successfully'
@@ -280,16 +249,6 @@ changePasswordForm.addEventListener('submit', async e => {
     passwordError.style.display = 'block';
   }
 
-  // Update password in localStorage
-  // currentUser.password = newPassword;
-  // const users = JSON.parse(localStorage.getItem('users')) || [];
-  // const userIndex = users.findIndex(u => u.email === currentUser.email);
-  // if (userIndex !== -1) {
-  //   users[userIndex].password = newPassword;
-  //   localStorage.setItem('users', JSON.stringify(users));
-  // }
-  // localStorage.setItem('currentUser', JSON.stringify(currentUser));
-
   // Close modal and reset form
   passwordModal.classList.add('hidden');
   overlay.classList.add('hidden');
@@ -303,12 +262,189 @@ overlay.addEventListener('click', () => {
 });
 
 // Logout functionality
-document.getElementById('logoutBtn').addEventListener('click', e => {
-  e.preventDefault();
-  localStorage.removeItem('currentUser');
-  localStorage.removeItem('token');
-  window.location.href = 'index.html';
-});
+// document.getElementById('logoutBtn').addEventListener('click', e => {
+//   e.preventDefault();
+//   localStorage.removeItem('currentUser');
+//   localStorage.removeItem('token');
+//   window.location.href = 'index.html';
+// });
 
-// Initial setup
-// updateProfile();
+async function fetchAndDisplayPets() {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    window.location.href = 'index.html';
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      'https://petcare-backend-h0cq.onrender.com/api/pets/my-pets',
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch pets');
+    }
+
+    const pets = await response.json();
+    const petGrid = document.getElementById('yourPetsGrid');
+    petGrid.innerHTML = ''; // Clear existing content
+
+    pets.forEach(pet => {
+      const firstPhoto =
+        pet.photos && pet.photos.length > 0
+          ? `https://petcare-backend-h0cq.onrender.com/proxy-image?url=${encodeURIComponent(
+              pet.photos[0]
+            )}`
+          : '';
+      console.log('Pet:', pet.name, 'Photo URL:', firstPhoto);
+      const petCard = document.createElement('div');
+      petCard.classList.add('pet__card');
+      petCard.innerHTML = `
+        ${
+          firstPhoto
+            ? `<img src="${firstPhoto}" alt="${pet.name}" loading="lazy" onerror="console.log('Image failed: ${firstPhoto}');this.nextSibling.style.display='block';this.style.display='none';"><p style="display:none;">No photo available</p>`
+            : '<p>No photo available</p>'
+        }
+        <h3>${pet.name}</h3>
+        <p>Species: ${pet.species}</p>
+        <p>Age: ${pet.age}</p>
+        <p>Cost: ${pet.cost}</p>
+        <div class="button-container">
+          <button class="edit-button" data-pet-id="${pet._id}">
+            <svg class="edit-svgIcon" viewBox="0 0 512 512">
+              <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path>
+            </svg>
+          </button>
+          <button class="bin-button" data-pet-id="${pet._id}">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 39 7" class="bin-top">
+              <line stroke-width="4" stroke="white" y2="5" x2="39" y1="5"></line>
+              <line stroke-width="3" stroke="white" y2="1.5" x2="26.0357" y1="1.5" x1="12"></line>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 33 39" class="bin-bottom">
+              <mask fill="white" id="path-1-inside-1_8_19">
+                <path d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z"></path>
+              </mask>
+              <path mask="url(#path-1-inside-1_8_19)" fill="white" d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"></path>
+              <path stroke-width="4" stroke="white" d="M12 6L12 29"></path>
+              <path stroke-width="4" stroke="white" d="M21 6V29"></path>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 89 80" class="garbage">
+              <path fill="white" d="M20.5 10.5L37.5 15.5L42.5 11.5L51.5 12.5L68.75 0L72 11.5L79.5 12.5H88.5L87 22L68.75 31.5L75.5066 25L86 26L87 35.5L77.5 48L70.5 49.5L80 50L77.5 71.5L63.5 58.5L53.5 68.5L65.5 70.5L45.5 73L35.5 79.5L28 67L16 63L12 51.5L0 48L16 25L22.5 17L20.5 10.5Z"></path>
+            </svg>
+          </button>
+        </div>
+      `;
+      petGrid.appendChild(petCard);
+    });
+
+    // Delete button handling with modal
+    const deleteModal = document.getElementById('deleteModal');
+    const confirmDeleteBtn = document.getElementById('confirmDelete');
+    const cancelDeleteBtn = document.getElementById('cancelDelete');
+    const overlay = document.querySelector('.overlay');
+    let petIdToDelete = null;
+    let isDeleting = false; // Prevent multiple clicks
+
+    document.querySelectorAll('.bin-button').forEach(button => {
+      button.addEventListener('click', () => {
+        if (isDeleting) return; // Prevent double-click
+        petIdToDelete = button.getAttribute('data-pet-id');
+        deleteModal.classList.remove('hidden');
+        overlay.classList.remove('hidden');
+      });
+    });
+
+    confirmDeleteBtn.addEventListener('click', async () => {
+      if (isDeleting) return; // Prevent multiple clicks
+      isDeleting = true;
+      try {
+        console.log('Attempting to delete pet with ID:', petIdToDelete);
+        const deleteResponse = await fetch(
+          `https://petcare-backend-h0cq.onrender.com/api/pets/delete/${petIdToDelete}`,
+          {
+            method: 'DELETE',
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+
+        const result = await deleteResponse.json();
+        console.log('Delete response:', deleteResponse.status, result);
+
+        if (!deleteResponse.ok) {
+          throw new Error(result.message || 'Unknown error');
+        }
+
+        alert('Pet deleted successfully');
+        deleteModal.classList.add('hidden');
+        overlay.classList.add('hidden');
+        fetchAndDisplayPets(); // Refresh only on success
+      } catch (error) {
+        console.error('Error deleting pet:', error.message);
+        alert(`Failed to delete pet: ${error.message}. Please try again.`);
+        deleteModal.classList.add('hidden');
+        overlay.classList.add('hidden');
+      } finally {
+        isDeleting = false;
+        petIdToDelete = null;
+      }
+    });
+
+    cancelDeleteBtn.addEventListener('click', () => {
+      deleteModal.classList.add('hidden');
+      overlay.classList.add('hidden');
+      petIdToDelete = null;
+    });
+
+    overlay.addEventListener('click', () => {
+      deleteModal.classList.add('hidden');
+      overlay.classList.add('hidden');
+      petIdToDelete = null;
+    });
+  } catch (error) {
+    console.error('Error fetching pets:', error);
+    alert('Unable to load your pets. Please try again later.');
+  }
+}
+
+// Ensure this runs only once on page load
+document.addEventListener(
+  'DOMContentLoaded',
+  () => {
+    fetchProfile();
+    fetchAndDisplayPets();
+  },
+  {once: true}
+);
+
+function updateAuthSection() {
+  const currentUser = localStorage.getItem('currentUser');
+  const token = localStorage.getItem('token');
+  if (currentUser && token) {
+    authSection.innerHTML = `
+      <a href="index.html" id="logoutBtn" class="logout-btn" style="color:#fff">Log out</a>
+    `;
+    shoppingCartLi.style = 'display: block';
+
+    document.getElementById('logoutBtn').addEventListener('click', e => {
+      e.preventDefault();
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('token');
+      window.location.href = 'index.html'; // Redirect to login page
+    });
+  } else {
+    authSection.innerHTML = `<a href="login-page.html" id="login">Log in</a>`;
+    shoppingCartLi.style = 'display: none';
+  }
+}
+
+updateAuthSection();

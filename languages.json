@@ -56,7 +56,9 @@
     "oldPassword": "Old Password",
     "newPassword": "New Password",
     "confirmNewPassword": "Confirm New Password",
-    "submitPasswordChange": "Change Password"
+    "submitPasswordChange": "Change Password",
+    "comingSoon": "Coming Soon",
+    "vetServiceMessage": "Our Vet Service is under development. Stay tuned!"
   },
   "ru": {
     "home": "Главная",
@@ -115,7 +117,9 @@
     "oldPassword": "Старый Пароль",
     "newPassword": "Новый Пароль",
     "confirmNewPassword": "Подтвердите Новый Пароль",
-    "submitPasswordChange": "Изменить Пароль"
+    "submitPasswordChange": "Изменить Пароль",
+    "comingSoon": "Скоро",
+    "vetServiceMessage": "Наша ветеринарная служба находится в разработке. Следите за обновлениями!"
   },
   "uz": {
     "home": "Asosiy",
@@ -142,9 +146,9 @@
     "adoptAPet": "Boqib olish",
     "adoptAPetBody": "Bizning tanlangan asrab olinadigan uy hayvonlari ro‘yxatidan o'zingizga yoqqan hamrohingizni toping, ular uyingizga quvonch keltirishga tayyor.",
     "btnMeetYourPet": "Ro'yxatga o'tish",
-    "rehomeAPet": "Qayta joylashtirish",
+    "rehomeAPet": "Yangi uyga",
     "rehomeAPetBody": "Bizning oson qayta joylashtirish jarayonimiz bilan uy hayvoniga yangi mehribon uy topib, hayvonlarni g‘amxo‘r oilalar bilan bog‘laymiz.",
-    "btnStartRehoming": "Qayta joylashtirish",
+    "btnStartRehoming": "Joylashtirish",
     "petShop": "Zoomagazin",
     "petShopBody": "Uy hayvoningizni baxtli va sog‘lom saqlash uchun sifatli oziq-ovqat, o‘yinchoqlar va aksessuarlarni bir joydan xarid qiling.",
     "btnBrowseProducts": "Mahsulotlarni ko'rish",
@@ -174,6 +178,8 @@
     "oldPassword": "Eski Parol",
     "newPassword": "Yangi Parol",
     "confirmNewPassword": "Yangi Parolni Tasdiqlang",
-    "submitPasswordChange": "Parolni O'zgartirish"
+    "submitPasswordChange": "Parolni O'zgartirish",
+    "comingSoon": "Tez kunda",
+    "vetServiceMessage": "Bizning veterinariya xizmatimiz ishlab chiqilmoqda. Kuzatib boring!"
   }
 }

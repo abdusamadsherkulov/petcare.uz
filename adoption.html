@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adoption - Petcare.uz</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="pics/paw.png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="nav__header">
+        <div class="nav__logo">
+          <a href="#home" class="logo"
+            ><img src="pics/Logo.png" alt="petcare.uz"
+          /></a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+          <i class="ri-menu-line"></i>
+        </div>
+      </div>
+      <ul class="nav__links" id="nav-links">
+        <li id="shoppingCartLi" style="display: none">
+          <a href="cart.html" id="shoppingCartBtn" title="Basket">
+            <i class="ri-shopping-cart-2-fill"></i>
+          </a>
+        </li>
+        <li id="profileLi" style="display: none">
+          <a href="profile.html" id="profileBtn" title="Profile">
+            <i class="ri-user-fill"></i>
+          </a>
+        </li>
+        <li id="authSection">
+          <a href="login-page.html" id="login">Log in</a>
+        </li>
+
+        <li>
+          <a class="show-modal" id="lang">
+            <i class="ri-global-line"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="modal hidden">
+      <button class="close-modal">&times</button>
+      <h1 id="chooselang">Choose a language</h1>
+      <ul>
+        <li>
+          <button onclick="changeLanguage('en')">English</button>
+        </li>
+        <li>
+          <button onclick="changeLanguage('ru')">Русский</button>
+        </li>
+        <li>
+          <button onclick="changeLanguage('uz')">O'zbekcha</button>
+        </li>
+      </ul>
+    </div>
+    <div class="overlay hidden"></div>
+    <!-- Assuming you have a nav bar, add it here if needed -->
+    <section class="section__container adoption__container">
+      <div class="adoption__header">
+        <h1 id="adoptionTitle">Pets Available for Adoption</h1>
+      </div>
+      <div class="adoption__grid" id="adoptionGrid"></div>
+    </section>
+
+    <footer class="profile-footer" id="contact">
+      <div class="footer__bar" id="footer-bar">© 2025 Petcare.uz</div>
+    </footer>
+
+    <script src="adoption.js"></script>
+  </body>
+</html>
