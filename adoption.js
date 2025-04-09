@@ -6,7 +6,8 @@ const overlay = document.querySelector('.overlay');
 const authSection = document.getElementById('authSection');
 const profileLi = document.getElementById('profileLi');
 const shoppingCartLi = document.getElementById('shoppingCartLi');
-
+const token = localStorage.getItem('token');
+const BACKEND_URL = 'https://petcare-backend-h0cq.onrender.com/api';
 // Function to close the menu
 function closeMenu() {
   navLinks.classList.remove('open');
@@ -83,7 +84,6 @@ function changeLanguage(lang) {
 }
 
 // Load translations when the page loads
-loadTranslations();
 
 function updateAuthSection() {
   const currentUser = localStorage.getItem('currentUser');
@@ -108,7 +108,34 @@ function updateAuthSection() {
   }
 }
 
-updateAuthSection();
+async function addToCart(petId) {
+  if (!token) {
+    alert('Please log in to add pets to your cart!');
+    return;
+  }
+  console.log('Token:', token); // Add this
+  try {
+    const response = await fetch(`${BACKEND_URL}/cart/add`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({petId}),
+    });
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(
+        `Failed to add pet to cart: ${response.status} - ${errorText}`
+      );
+    }
+    const data = await response.json();
+    alert('Pet added to your cart!');
+  } catch (error) {
+    console.error('Error adding to cart:', error);
+    alert('Failed to add pet to cart.');
+  }
+}
 
 async function fetchAndDisplayAllPets() {
   try {
@@ -159,6 +186,14 @@ async function fetchAndDisplayAllPets() {
       petCard.addEventListener('click', () => {
         window.location.href = `pet-profile.html?petId=${pet._id}`;
       });
+      const cartBtn = petCard.querySelector('.cartBtn');
+      cartBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        addToCart(pet._id);
+      });
+      petCard.addEventListener('click', () => {
+        window.location.href = `pet-profile.html?petId=${pet._id}`;
+      });
       adoptionGrid.appendChild(petCard);
     });
   } catch (error) {
@@ -169,3 +204,9 @@ async function fetchAndDisplayAllPets() {
 
 // Run on page load
 document.addEventListener('DOMContentLoaded', fetchAndDisplayAllPets);
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetchAndDisplayAllPets();
+  loadTranslations();
+  updateAuthSection();
+});
