@@ -97,9 +97,8 @@ async function fetchPetData() {
               )}`
           )
         : [];
-    console.log('Pet:', pet.name, 'Photo URLs:', photos); // Log all URLs
+    console.log('Pet:', pet.name, 'Photo URLs:', photos);
 
-    // Populate pet details
     document.getElementById('petName').textContent = pet.name;
     document.getElementById('petSpecies').textContent = pet.species;
     document.getElementById('petBreed').textContent = pet.breed;
@@ -114,9 +113,8 @@ async function fetchPetData() {
     ).email;
     document.getElementById('petStatus').textContent = pet.status;
 
-    // Setup carousel
     const carouselImages = document.getElementById('carouselImages');
-    carouselImages.innerHTML = ''; // Clear existing images
+    carouselImages.innerHTML = '';
     if (photos.length === 0) {
       carouselImages.innerHTML = '<p>No photos available</p>';
     } else {
@@ -137,14 +135,12 @@ async function fetchPetData() {
   }
 }
 
-// Carousel functionality
 function setupCarousel(photoCount) {
   const carouselImages = document.getElementById('carouselImages');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   let currentIndex = 0;
 
-  // Disable buttons if no photos or only one photo
   if (photoCount <= 1) {
     prevBtn.style.display = 'none';
     nextBtn.style.display = 'none';
@@ -166,7 +162,6 @@ function setupCarousel(photoCount) {
     updateCarousel();
   });
 
-  // Swipe functionality for mobile
   let touchStartX = 0;
   let touchEndX = 0;
 
@@ -185,7 +180,6 @@ function setupCarousel(photoCount) {
   });
 }
 
-// Logout functionality
 document.getElementById('logoutBtn').addEventListener('click', e => {
   e.preventDefault();
   localStorage.removeItem('currentUser');
@@ -193,5 +187,4 @@ document.getElementById('logoutBtn').addEventListener('click', e => {
   window.location.href = 'index.html';
 });
 
-// Initial setup
 fetchPetData();

@@ -1,4 +1,3 @@
-// Menu toggle functionality
 const menuBtn = document.getElementById('menu-btn');
 const navLinks = document.getElementById('nav-links');
 const menuBtnIcon = menuBtn.querySelector('i');
@@ -7,7 +6,6 @@ const authSection = document.getElementById('authSection');
 const profileLi = document.getElementById('profileLi');
 const shoppingCartLi = document.getElementById('shoppingCartLi');
 
-// Function to close the menu
 function closeMenu() {
   navLinks.classList.remove('open');
   menuBtnIcon.setAttribute('class', 'ri-menu-line');
@@ -18,25 +16,23 @@ menuBtn.addEventListener('click', e => {
   navLinks.classList.toggle('open');
   const isOpen = navLinks.classList.contains('open');
   menuBtnIcon.setAttribute('class', isOpen ? 'ri-close-line' : 'ri-menu-line');
-  // overlay.classList.toggle('hidden', !isOpen);
 });
 
 document.querySelectorAll('.nav__links a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
-    e.preventDefault(); // Prevent default anchor behavior
-    const sectionId = link.getAttribute('href').substring(1); // Get section ID (e.g., "services")
+    e.preventDefault();
+    const sectionId = link.getAttribute('href').substring(1); 
     const section = document.getElementById(sectionId);
 
     if (section) {
-      const navHeight = document.querySelector('nav').offsetHeight; // Get navbar height
+      const navHeight = document.querySelector('nav').offsetHeight;
       const sectionTop =
-        section.getBoundingClientRect().top + window.pageYOffset; // Section position
+        section.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({
-        top: sectionTop - navHeight, // Offset by navbar height
+        top: sectionTop - navHeight,
         behavior: 'smooth',
       });
 
-      // Close menu on phone view (width <= 768px)
       if (window.innerWidth <= 768) {
         navLinks.classList.remove('open');
         overlay.classList.add('hidden');
@@ -46,16 +42,15 @@ document.querySelectorAll('.nav__links a[href^="#"]').forEach(link => {
   });
 });
 
-//this helps when navbar interrupts the view of section and for navigation
 document.querySelector('[href="#home"]').addEventListener('click', e => {
   e.preventDefault();
   const aboutSection = document.getElementById('home');
   if (aboutSection) {
-    const navHeight = document.querySelector('nav').offsetHeight; // Get navbar height
+    const navHeight = document.querySelector('nav').offsetHeight;
     const sectionTop =
-      aboutSection.getBoundingClientRect().top + window.pageYOffset; // Section position relative to document
+      aboutSection.getBoundingClientRect().top + window.pageYOffset;
     window.scrollTo({
-      top: sectionTop - navHeight, // Offset by navbar height
+      top: sectionTop - navHeight,
       behavior: 'smooth',
     });
     if (window.innerWidth <= 768) {
@@ -70,11 +65,11 @@ document.querySelector('[href="#about"]').addEventListener('click', e => {
   e.preventDefault();
   const aboutSection = document.getElementById('about');
   if (aboutSection) {
-    const navHeight = document.querySelector('nav').offsetHeight; // Get navbar height
+    const navHeight = document.querySelector('nav').offsetHeight; 
     const sectionTop =
-      aboutSection.getBoundingClientRect().top + window.pageYOffset; // Section position relative to document
+      aboutSection.getBoundingClientRect().top + window.pageYOffset; 
     window.scrollTo({
-      top: sectionTop - navHeight, // Offset by navbar height
+      top: sectionTop - navHeight,
       behavior: 'smooth',
     });
     if (window.innerWidth <= 768) {
@@ -85,7 +80,6 @@ document.querySelector('[href="#about"]').addEventListener('click', e => {
   }
 });
 
-// Modal handling
 const modal = document.querySelector('.modal');
 
 const btnCloseModal = document.querySelector('.close-modal');
@@ -106,16 +100,13 @@ overlay.addEventListener('click', () => {
   overlay.classList.add('hidden');
 });
 
-// Variable to store translations
 let languages = {};
 
-// Function to fetch translations from languages.json
 async function loadTranslations() {
   try {
-    const response = await fetch('languages.json'); // Adjust path if needed (e.g., 'scripts/languages.json')
+    const response = await fetch('languages.json');
     if (!response.ok) throw new Error('Failed to load languages.json');
     languages = await response.json();
-    // Load the saved language or default to 'en' after fetching
     const savedLang = localStorage.getItem('lang') || 'en';
     changeLanguage(savedLang);
   } catch (error) {
@@ -123,14 +114,12 @@ async function loadTranslations() {
   }
 }
 
-// Function to change language
 function changeLanguage(lang) {
   if (!languages[lang]) {
     console.error(`Language ${lang} not found in translations`);
     return;
   }
 
-  // Map of elements to update
   const elements = {
     home: document.getElementById('homeBtn'),
     about: document.getElementById('aboutBtn'),
@@ -172,21 +161,17 @@ function changeLanguage(lang) {
     logoutBtn: document.getElementById('logoutBtn'),
   };
 
-  // Update all elements with the selected language
   Object.keys(elements).forEach(key => {
     if (elements[key] && languages[lang][key]) {
       elements[key].textContent = languages[lang][key];
     }
   });
 
-  // Save the language preference
   localStorage.setItem('lang', lang);
 }
 
-// Load translations when the page loads
 loadTranslations();
 
-// Lazy reveal (unchanged)
 const scrollRevealOption = {
   distance: '50px',
   origin: 'bottom',
@@ -262,8 +247,6 @@ ScrollReveal().reveal('.footer__container', {
   delay: 400,
 });
 
-//client id 877691268840-mfe9nuk08dt5br15sdga7ffb62thvqk9.apps.googleusercontent.com
-
 function updateAuthSection() {
   const currentUser = localStorage.getItem('currentUser');
   const token = localStorage.getItem('token');
@@ -278,7 +261,7 @@ function updateAuthSection() {
       e.preventDefault();
       localStorage.removeItem('currentUser');
       localStorage.removeItem('token');
-      window.location.href = 'index.html'; // Redirect to login page
+      window.location.href = 'index.html';
     });
   } else {
     authSection.innerHTML = `<a href="login-page.html" id="login">Log in</a>`;
@@ -289,21 +272,18 @@ function updateAuthSection() {
 
 updateAuthSection();
 
-// Handle Start Rehoming button click
 const startRehomingBtn = document.getElementById('btnStartRehoming');
 startRehomingBtn.addEventListener('click', e => {
   console.log('Button clicked!');
-  e.preventDefault(); // Prevent default button behavior
+  e.preventDefault();
   const token = localStorage.getItem('token');
   if (!token) {
     showNotification('Please log in first to rehome a pet.', 'error');
-    // setTimeout(() => (window.location.href = 'login-page.html'), 2000);
   } else {
     window.location.href = 'rehome-pet.html';
   }
 });
 
-// Notification function
 function showNotification(message, type) {
   const notification = document.getElementById('notification');
   console.log('Notification element:', notification);

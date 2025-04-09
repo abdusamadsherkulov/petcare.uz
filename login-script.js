@@ -8,24 +8,20 @@ const nameInput = document.getElementById('name');
 const surnameInput = document.getElementById('surname');
 const confirmPasswordInput = document.getElementById('confirmPassword');
 let isLogin = true;
-const API_URL = 'https://petcare-backend-h0cq.onrender.com/api/auth'; // Change this to your production URL after deploying
+const API_URL = 'https://petcare-backend-h0cq.onrender.com/api/auth';
 
-// Load users from localStorage (for demo purposes)
 let users = JSON.parse(localStorage.getItem('users')) || [];
 
-// Function to toggle form fields visibility
 function toggleFormFields() {
   const signupFields = document.querySelectorAll('.signup-only');
   signupFields.forEach(field => {
     field.style.display = isLogin ? 'none' : 'block';
-    field.required = !isLogin; // Make fields required only for signup
+    field.required = !isLogin;
   });
 }
 
-// Initial call to set correct field visibility
 toggleFormFields();
 
-// Toggle between login and sign-up
 toggleLink.addEventListener('click', e => {
   e.preventDefault();
   isLogin = !isLogin;
@@ -44,17 +40,15 @@ toggleLink.addEventListener('click', e => {
     ? languages[currentLang].toggleLink
     : languages[currentLang].formTitle;
   errorMsg.style.display = 'none';
-  toggleFormFields(); // Show/hide signup fields
+  toggleFormFields();
 });
 
-// Handle form submission
 authForm.addEventListener('submit', async e => {
   e.preventDefault();
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 
   if (isLogin) {
-    // Login logic
     const response = await fetch(
       'https://petcare-backend-h0cq.onrender.com/api/auth/login',
       {
@@ -69,22 +63,18 @@ authForm.addEventListener('submit', async e => {
     const data = await response.json();
 
     if (response.ok) {
-      // Successful login, store token and user data
       localStorage.setItem('token', data.token);
-      localStorage.setItem('currentUser', JSON.stringify(data.user)); // Store user data
-      window.location.href = 'index.html'; // Redirect to home page
+      localStorage.setItem('currentUser', JSON.stringify(data.user));
+      window.location.href = 'index.html';
     } else {
-      // Login failed, show error
       errorMsg.textContent = data.message || 'Invalid email or password';
       errorMsg.style.display = 'block';
     }
   } else {
-    // Sign-up logic
     const name = nameInput.value;
     const surname = surnameInput.value;
     const confirmPassword = confirmPasswordInput.value;
 
-    // Validation
     if (password !== confirmPassword) {
       errorMsg.textContent = 'Passwords do not match';
       errorMsg.style.display = 'block';
@@ -105,28 +95,23 @@ authForm.addEventListener('submit', async e => {
     const data = await response.json();
 
     if (response.ok) {
-      // Successful sign-up, store token and user data
       localStorage.setItem('token', data.token);
       localStorage.setItem('currentUser', JSON.stringify(data.user)); // Store user data
       window.location.href = 'index.html'; // Redirect to home page
     } else {
-      // Sign-up failed, show error
       errorMsg.textContent = data.message || 'Error during registration';
       errorMsg.style.display = 'block';
     }
   }
 });
 
-// Get token from localStorage
 const currentUser = localStorage.getItem('currentUser');
 const token = localStorage.getItem('token');
 
-// Check if user is already logged in
 if (localStorage.getItem('currentUser')) {
   window.location.href = 'index.html';
 }
 
-// Fetch translations from languages.json
 async function loadTranslations() {
   try {
     const response = await fetch('languages.json');
@@ -153,7 +138,6 @@ function updateLanguage(lang = localStorage.getItem('lang') || 'en') {
     errorMsg: errorMsg,
   };
 
-  // Update text content based on language
   elements.formTitle.textContent = isLogin
     ? languages[lang].formTitle
     : languages[lang].signup || 'Sign Up';
@@ -169,7 +153,6 @@ function updateLanguage(lang = localStorage.getItem('lang') || 'en') {
   elements.errorMsg.textContent =
     languages[lang].errorMsg || 'Invalid email or password';
 
-  // Update placeholders (optional, if you want them translated)
   document.getElementById('name').placeholder = languages[lang].name || 'Name';
   document.getElementById('surname').placeholder =
     languages[lang].surname || 'Surname';
@@ -181,10 +164,8 @@ function updateLanguage(lang = localStorage.getItem('lang') || 'en') {
     languages[lang].confirmPassword || 'Confirm Password';
 }
 
-// Load translations when the page loads
 loadTranslations();
 
-// Add after your existing code
 document.querySelectorAll('.toggle-password').forEach(icon => {
   icon.addEventListener('click', function () {
     const targetId = this.getAttribute('data-target');

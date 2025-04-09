@@ -344,17 +344,16 @@ async function fetchAndDisplayPets() {
       petGrid.appendChild(petCard);
     });
 
-    // Delete button handling with modal
     const deleteModal = document.getElementById('deleteModal');
     const confirmDeleteBtn = document.getElementById('confirmDelete');
     const cancelDeleteBtn = document.getElementById('cancelDelete');
     const overlay = document.querySelector('.overlay');
     let petIdToDelete = null;
-    let isDeleting = false; // Prevent multiple clicks
+    let isDeleting = false;
 
     document.querySelectorAll('.bin-button').forEach(button => {
       button.addEventListener('click', () => {
-        if (isDeleting) return; // Prevent double-click
+        if (isDeleting) return;
         petIdToDelete = button.getAttribute('data-pet-id');
         deleteModal.classList.remove('hidden');
         overlay.classList.remove('hidden');
@@ -362,7 +361,7 @@ async function fetchAndDisplayPets() {
     });
 
     confirmDeleteBtn.addEventListener('click', async () => {
-      if (isDeleting) return; // Prevent multiple clicks
+      if (isDeleting) return;
       isDeleting = true;
       try {
         console.log('Attempting to delete pet with ID:', petIdToDelete);
@@ -387,7 +386,7 @@ async function fetchAndDisplayPets() {
         alert('Pet deleted successfully');
         deleteModal.classList.add('hidden');
         overlay.classList.add('hidden');
-        fetchAndDisplayPets(); // Refresh only on success
+        fetchAndDisplayPets();
       } catch (error) {
         console.error('Error deleting pet:', error.message);
         alert(`Failed to delete pet: ${error.message}. Please try again.`);
@@ -416,7 +415,6 @@ async function fetchAndDisplayPets() {
   }
 }
 
-// Ensure this runs only once on page load
 document.addEventListener(
   'DOMContentLoaded',
   () => {
@@ -439,7 +437,7 @@ function updateAuthSection() {
       e.preventDefault();
       localStorage.removeItem('currentUser');
       localStorage.removeItem('token');
-      window.location.href = 'index.html'; // Redirect to login page
+      window.location.href = 'index.html';
     });
   } else {
     authSection.innerHTML = `<a href="login-page.html" id="login">Log in</a>`;

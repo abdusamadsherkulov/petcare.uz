@@ -1,5 +1,3 @@
-// Reuse menu toggle and language modal logic from your main page
-// Menu toggle functionality
 const menuBtn = document.getElementById('menu-btn');
 const navLinks = document.getElementById('nav-links');
 const menuBtnIcon = menuBtn.querySelector('i');
@@ -22,7 +20,6 @@ menuBtn.addEventListener('click', () => {
   menuBtnIcon.setAttribute('class', isOpen ? 'ri-close-line' : 'ri-menu-line');
 });
 
-// Modal handling
 const modal = document.querySelector('.modal');
 const btnCloseModal = document.querySelector('.close-modal');
 const btnShowModal = document.querySelector('.show-modal');
@@ -58,7 +55,6 @@ async function loadTranslations() {
 function changeLanguage(lang) {
   if (!languages[lang]) return;
   localStorage.setItem('lang', lang);
-  // Add translations for this page if needed
 }
 
 loadTranslations();
@@ -90,24 +86,9 @@ const rehomeForm = document.getElementById('rehomeForm');
 const photoInput = document.getElementById('photos');
 const photoPreview = document.getElementById('photoPreview');
 const notification = document.getElementById('notification');
-const phoneInput = document.getElementById('phone'); // ADDED
-const costInput = document.getElementById('cost'); // ADDED
-const currencySelect = document.getElementById('currency'); // ADDED
-
-// ADDED: Phone number validation
-// phoneInput.addEventListener('input', e => {
-//   const value = e.target.value;
-//   // Allow only +998 followed by digits and limit to 12 characters
-//   // if (!value.startsWith('+998') || /[^0-18+]/.test(value)) {
-//   //   e.target.value = '+998';
-//   // }
-//   // if (value.length > 18) {
-//   //   e.target.value = value.slice(0, 18);
-//   // }
-// });
-
-// ADDED: Ensure phone starts with +998 on page load
-// phoneInput.value = '+998';
+const phoneInput = document.getElementById('phone');
+const costInput = document.getElementById('cost');
+const currencySelect = document.getElementById('currency');
 
 photoInput.addEventListener('change', () => {
   photoPreview.innerHTML = '';
@@ -147,10 +128,9 @@ rehomeForm.addEventListener('submit', async e => {
     return;
   }
 
-  // Append currency to formData (since backend doesn't expect it separately)
   formData.set('cost', `${formData.get('cost')} ${formData.get('currency')}`);
-  formData.delete('cost'); // Remove standalone price
-  formData.delete('currency'); // Remove standalone currency
+  formData.delete('cost');
+  formData.delete('currency');
 
   // Show loading modal
   const loadingModal = document.getElementById('loadingModal');
@@ -173,7 +153,6 @@ rehomeForm.addEventListener('submit', async e => {
 
     const result = await response.json();
 
-    // Hide loading modal after response
     loadingModal.style.display = 'none';
     loadingOverlay.style.display = 'none';
 
@@ -187,35 +166,10 @@ rehomeForm.addEventListener('submit', async e => {
     }
   } catch (error) {
     console.error('Error submitting form:', error);
-    // Hide loading modal on error
     loadingModal.style.display = 'none';
     loadingOverlay.style.display = 'none';
     showNotification('An error occurred. Please try again.', 'error');
   }
-
-  // try {
-  //   const response = await fetch('http://localhost:5000/api/pets/rehoming', {
-  //     method: 'POST',
-  //     headers: {
-  //       Authorization: `Bearer ${token}`, // Send JWT token
-  //     },
-  //     body: formData, // Send FormData with files and fields
-  //   });
-
-  //   const result = await response.json();
-
-  //   if (response.ok) {
-  //     showNotification('Pet successfully added for rehoming!', 'success');
-  //     rehomeForm.reset();
-  //     // phoneInput.value = '+998'; // Reset phone to +998
-  //     photoPreview.innerHTML = '';
-  //   } else {
-  //     showNotification(result.message || 'Failed to submit form.', 'error');
-  //   }
-  // } catch (error) {
-  //   console.error('Error submitting form:', error);
-  //   showNotification('An error occurred. Please try again.', 'error');
-  // }
 });
 function showNotification(message, type) {
   notification.textContent = message;
@@ -226,7 +180,6 @@ function showNotification(message, type) {
   }, 3000);
 }
 
-// ScrollReveal animations
 const scrollRevealOption = {
   distance: '50px',
   origin: 'top',

@@ -20,7 +20,6 @@ menuBtn.addEventListener('click', () => {
   menuBtnIcon.setAttribute('class', isOpen ? 'ri-close-line' : 'ri-menu-line');
 });
 
-// Modal handling
 const modal = document.querySelector('.modal');
 const btnCloseModal = document.querySelector('.close-modal');
 const btnShowModal = document.querySelector('.show-modal');
@@ -40,7 +39,6 @@ overlay.addEventListener('click', () => {
   overlay.classList.add('hidden');
 });
 
-// Language translations
 let languages = {};
 
 async function loadTranslations() {
@@ -88,7 +86,6 @@ function changeLanguage(lang) {
 
 loadTranslations();
 
-// Fake pet items data
 const fakePetItems = [
   {
     id: 1,
@@ -134,7 +131,7 @@ const fakePetItems = [
 
 function displayPetItems() {
   const petItemsGrid = document.getElementById('petItemsGrid');
-  petItemsGrid.innerHTML = ''; // Clear existing content
+  petItemsGrid.innerHTML = '';
 
   fakePetItems.forEach(item => {
     const itemCard = document.createElement('div');
@@ -153,14 +150,12 @@ function displayPetItems() {
 </button>
     `;
     itemCard.addEventListener('click', () => {
-      // Placeholder for future item detail page
       alert(`Selected ${item.name} - Price: ${item.price} ${item.currency}`);
     });
     petItemsGrid.appendChild(itemCard);
   });
 }
 
-// Run on page load
 document.addEventListener('DOMContentLoaded', displayPetItems);
 
 function updateAuthSection() {
@@ -177,7 +172,7 @@ function updateAuthSection() {
       e.preventDefault();
       localStorage.removeItem('currentUser');
       localStorage.removeItem('token');
-      window.location.href = 'index.html'; // Redirect to login page
+      window.location.href = 'index.html';
     });
   } else {
     authSection.innerHTML = `<a href="login-page.html" id="login">Log in</a>`;

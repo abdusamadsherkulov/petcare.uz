@@ -28,7 +28,6 @@ function initializePage() {
     });
   }
 
-  // Modal handling
   const modal = document.querySelector('.modal');
   const btnCloseModal = document.querySelector('.close-modal');
   const btnShowModal = document.querySelector('.show-modal');
@@ -52,14 +51,12 @@ function initializePage() {
     });
   }
 
-  // Cart display
   const cartGrid = document.getElementById('cartGrid');
   if (cartGrid) {
     displayCart(cartGrid);
   }
 }
 
-// Language translations
 let languages = {};
 
 async function loadTranslations() {
@@ -92,7 +89,6 @@ function changeLanguage(lang) {
   localStorage.setItem('lang', lang);
 }
 
-// Cart functions
 async function fetchCart() {
   if (!token) return [];
   try {
@@ -130,7 +126,7 @@ async function removeFromCart(petId, cartGrid) {
     }
     const data = await response.json();
     console.log('Pet removed:', data);
-    displayCart(cartGrid); // Refresh cart display
+    displayCart(cartGrid);
   } catch (error) {
     console.error('Error removing from cart:', error);
     alert(`Failed to remove pet: ${error.message}`);
@@ -212,7 +208,7 @@ function updateAuthSection() {
       e.preventDefault();
       localStorage.removeItem('currentUser');
       localStorage.removeItem('token');
-      window.location.href = 'index.html'; // Redirect to login page
+      window.location.href = 'index.html';
     });
   } else {
     authSection.innerHTML = `<a href="login-page.html" id="login">Log in</a>`;

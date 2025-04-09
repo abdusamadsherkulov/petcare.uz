@@ -30,12 +30,10 @@
 }
 
 .section__header {
-  /* margin-bottom: 1rem; */
   font-size: 2.5rem;
   font-weight: 600;
   font-family: var(--header-font);
   color: var(--primary-color);
-  /* display: inline-block; */
 }
 
 .section__description {
@@ -46,18 +44,13 @@
 .logo {
   display: inline-block;
   width: 190px;
-  /* width: 30%; */
   padding-top: 0.9rem;
 }
 
 img {
-  /* display: inline-block; */
   display: flex;
-  /* width: 12rem; */
   width: 100%;
 }
-
-/* img:hover{} */
 
 a {
   text-decoration: none;
@@ -80,10 +73,6 @@ a {
   border: 1px solid rgb(105, 81, 49);
   border-radius: 5px;
   padding: 5px 8px;
-  /* padding-left: 4px;
-  padding-top: 5px;
-  padding-right: 4px;
-  padding-bottom: 2px; */
   font-size: 18px;
   font-weight: 100;
   color: rgb(105, 81, 49);
@@ -124,10 +113,6 @@ nav {
   justify-content: space-between;
   background-color: var(--nav-foot-bg);
 }
-
-/* .nav__logo .logo {
-  color: var(--white);
-} */
 
 .nav__menu__btn {
   font-size: 1.5rem;
@@ -192,14 +177,10 @@ nav {
   display: none;
 }
 
-/* Language preferences */
-
-/* Close modal button */
 .show-modal {
   font-size: 2rem;
   font-weight: 600;
   padding: 1.75rem 3.5rem;
-  /* margin: 1rem; */
   border: none;
   background-color: #fff;
   color: #444;
@@ -245,7 +226,6 @@ nav {
 .modal h1 {
   font-size: 1.5rem;
   color: var(--text-dark);
-  /* text-align: center; */
 }
 
 .modal ul li {
@@ -257,7 +237,6 @@ nav {
 .modal ul li button {
   display: inline-block;
   color: var(--text-dark);
-  /* background-color: var(--text-light); */
   font-size: 1rem;
   padding: 0.7rem;
   margin: auto;
@@ -271,7 +250,6 @@ nav {
   background-color: var(--white);
   color: var(--text-light);
   cursor: pointer;
-  /* border-radius: 0.2rem; */
 }
 
 .overlay {
@@ -284,8 +262,6 @@ nav {
   backdrop-filter: blur(2px);
   z-index: 5;
 }
-
-/* Home page */
 
 .header__container {
   display: grid;
@@ -306,10 +282,6 @@ nav {
 .header__content {
   grid-area: 1/1/2/2;
   display: flex;
-  /* background-color: var(--white);
-  width: 100%;
-  margin: auto;
-  height: 400px; */
   align-items: center;
 }
 
@@ -390,7 +362,6 @@ nav {
 
 .services__grid {
   display: grid;
-  /* grid-template-columns: 1fr; */
   grid-template-columns: minmax(0, 240px);
   justify-content: center;
   gap: 3rem;
@@ -414,20 +385,17 @@ nav {
   height: 100%;
   gap: 0.3em;
   display: grid;
-  /* place-content: center; */
 }
 
 .text-body {
   color: var(--primary-color);
 }
 
-/*Text*/
 .text-title {
   font-size: 1.3em;
   font-weight: bold;
 }
 
-/*Hover*/
 .services__card:hover {
   border-color: var(--extra-light);
   box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
@@ -521,9 +489,9 @@ nav {
 }
 
 .footer__socials {
-  display: flex; /* Align "Follow us at" and icons horizontally */
-  align-items: center; /* Vertically center them */
-  gap: 1rem; /* Space between text and icons */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .footer__links {
@@ -578,7 +546,6 @@ nav {
   position: fixed;
   top: 1%;
   right: 40%;
-  /* transform: translate(-50%, -50%); */
   padding: 1rem 2rem;
   border-radius: 5px;
   color: #fff;
@@ -606,8 +573,6 @@ nav {
 #profileBtn {
   font-size: 1rem;
   color: var(--extra-dark);
-  /* padding: 10px; */
-  /* background-color: rgb(143, 143, 143); */
   border-radius: 50%;
 }
 
@@ -618,8 +583,6 @@ nav {
 #shoppingCartBtn {
   font-size: 1rem;
   color: var(--extra-dark);
-  /* padding: 10px; */
-  /* background-color: rgb(143, 143, 143); */
   border-radius: 50%;
 }
 
@@ -627,9 +590,7 @@ nav {
   color: var(--extra-light);
 }
 
-/* Profile Section */
 .profile__container {
-  /* padding-top: 6rem; */
   text-align: center;
   height: 350px;
   padding-top: 4rem;
@@ -684,7 +645,6 @@ nav {
   background-color: var(--nav-foot-bg);
   padding-bottom: 0rem;
   width: 100%;
-  /* position: fixed; */
 }
 
 .your-pets__container {
@@ -698,7 +658,6 @@ nav {
   color: var(--extra-dark);
 }
 
-/* Change Password Modal */
 .password-modal {
   position: fixed;
   top: 50%;
@@ -776,23 +735,23 @@ nav {
 .password-container {
   position: relative;
   width: 100%;
-  margin-bottom: 1rem; /* Add space between inputs */
+  margin-bottom: 1rem;
 }
 
 .password-container input {
   width: 100%;
-  padding: 0.8rem 2.5rem 0.8rem 0.8rem; /* Right padding for icon space */
+  padding: 0.8rem 2.5rem 0.8rem 0.8rem;
   border: 1px solid var(--text-light);
   border-radius: 5px;
   font-size: 1rem;
   color: var(--text-dark);
   font-family: var(--header-font);
-  box-sizing: border-box; /* Ensure padding doesn’t increase width */
+  box-sizing: border-box;
 }
 
 .password-container .toggle-password {
   position: absolute;
-  right: 0.8rem; /* Distance from right edge */
+  right: 0.8rem;
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.2rem;
@@ -809,7 +768,6 @@ nav {
   font-weight: 600;
 }
 .profileDataInfo {
-  /* background-color: #502b0f1a; */
   padding: 2px 4px;
   border-radius: 5px;
   color: var(--text-light);
@@ -880,7 +838,6 @@ nav {
   min-height: 100px;
 }
 
-/* ADDED: Style for price and currency container */
 .price__container {
   display: flex;
   gap: 1rem;
@@ -925,17 +882,15 @@ nav {
   background-color: var(--extra-light);
 }
 
-/* Loader */
 .loading-modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* background-color: rgba(0, 0, 0, 0.8);  */
-  /* padding: 2rem; */
+
   border-radius: 10px;
-  z-index: 2000; /* Higher than notification */
-  display: none; /* Hidden by default */
+  z-index: 2000;
+  display: none;
   padding: 0;
 }
 
@@ -945,14 +900,9 @@ nav {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.8
-  ); /* Semi-transparent black covering whole page */
-  z-index: 1999; /* Below modal, above everything else */
-  display: none; /* Hidden by default */
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1999;
+  display: none;
 }
 
 .wheel-and-hamster {
@@ -961,10 +911,6 @@ nav {
   width: 12em;
   height: 12em;
   font-size: 14px;
-  /* position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
 }
 
 .wheel,
@@ -1143,7 +1089,6 @@ nav {
       50% 50% / 99% 99% no-repeat;
 }
 
-/* Animations */
 @keyframes hamster {
   from,
   to {
@@ -1388,8 +1333,8 @@ nav {
 }
 
 .carousel__images div {
-  flex: 0 0 100%; /* Each image takes full width of the container */
-  width: 100%; /* Force full width */
+  flex: 0 0 100%;
+  width: 100%;
 }
 
 .carousel__images img {
@@ -1441,10 +1386,8 @@ nav {
   color: var(--primary-color);
 }
 
-/* Adoption container */
 .adoption__container {
-  min-height: calc(100vh - 100px); /* Adjust 100px for header/nav height */
-  /* padding: 2rem; */
+  min-height: calc(100vh - 100px);
   max-width: var(--max-width);
   width: 100%;
   margin: auto;
@@ -1455,7 +1398,6 @@ nav {
   padding-bottom: 1rem;
 }
 
-/* Grid for adoption cards */
 .adoption__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -1463,7 +1405,6 @@ nav {
   width: 100%;
 }
 
-/* Reuse pet card styles from profile */
 .pet__card {
   background-color: #fff;
   border-radius: 10px;
@@ -1493,7 +1434,6 @@ nav {
   margin: 0.25rem 0;
 }
 
-/* Footer styles (same as profile) */
 .profile-footer {
   background-color: var(--nav-foot-bg);
   width: 100%;
@@ -1561,7 +1501,6 @@ nav {
   }
 }
 
-/* From Uiverse.io by aaronross1 */
 .edit-button {
   width: 45px;
   height: 45px;
@@ -1632,7 +1571,6 @@ nav {
   margin-top: 0.5rem;
 }
 
-/* Modal styles */
 .delete-modal {
   position: fixed;
   top: 50%;
@@ -1693,13 +1631,11 @@ nav {
   display: none;
 }
 
-/* Pet items container */
 .section__container.pet-items__container {
-  min-height: calc(100vh - 100px); /* Adjust 100px for header/nav height */
+  min-height: calc(100vh - 100px);
   padding: 2rem;
 }
 
-/* Grid for pet item cards */
 .pet-items__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -1707,7 +1643,6 @@ nav {
   width: 100%;
 }
 
-/* From Uiverse.io by vinodjangid07 */
 .cartBtn {
   width: 155px;
   height: 40px;
@@ -1785,7 +1720,6 @@ nav {
 
 .cart__container {
   min-height: calc(100vh - 100px);
-  /* padding: 2rem; */
   max-width: var(--max-width);
   width: 100%;
   margin: auto;
@@ -1805,7 +1739,6 @@ nav {
   color: #666;
 }
 
-/* Pricing Section */
 .pricing {
   padding: 4rem 2rem;
   background-color: #fff;
@@ -1873,7 +1806,6 @@ nav {
   background-color: var(--extra-light);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .pricing__row {
     flex-direction: column;
@@ -1885,7 +1817,6 @@ nav {
   }
 }
 
-/* Mobile adjustments */
 @media (width <= 768px) {
   .pet-profile__container {
     padding-top: 7rem;
@@ -1896,15 +1827,13 @@ nav {
   }
   .cart__container {
     min-height: calc(103vh - 100px);
-    /* padding: 2rem; */
     max-width: var(--max-width);
     width: 100%;
     margin: auto;
     padding: 7rem 1rem;
   }
   .adoption__container {
-    min-height: calc(100vh - 100px); /* Adjust 100px for header/nav height */
-    /* padding: 2rem; */
+    min-height: calc(100vh - 100px);
     max-width: var(--max-width);
     width: 100%;
     margin: auto;
@@ -1936,7 +1865,6 @@ nav {
     opacity: 1;
   }
 
-  /* Profile Section */
   .profile__container {
     text-align: center;
     height: auto;
@@ -1953,7 +1881,6 @@ nav {
     margin: 0 auto;
   }
 
-  /* Pet rehoming page */
   .rehome__container {
     padding: 7rem 1rem 2rem 1rem;
   }
@@ -1969,7 +1896,7 @@ nav {
   .rehome__form {
     padding: 1.5rem;
   }
-  /* ADDED: Adjust price container for smaller screens */
+
   .price__container {
     flex-direction: column;
     gap: 0.5rem;
@@ -2014,10 +1941,6 @@ nav {
     margin: auto;
   }
 
-  /* .nav__logo .logo {
-    /* color: var(--primary-color); */
-  /* }  */
-
   .nav__links {
     position: static;
     padding: 0;
@@ -2042,7 +1965,6 @@ nav {
 
   .about__header {
     flex-direction: column;
-    /* align-items: center; */
     justify-content: space-between;
   }
 
@@ -2061,7 +1983,6 @@ nav {
   }
 
   .services__content {
-    /* grid-template-columns: repeat(1, 1fr); */
     align-items: center;
   }
 
@@ -2074,10 +1995,8 @@ nav {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Profile Section */
   .profile__container {
     padding-top: 1rem;
-    /* text-align: left; */
     margin: auto;
     max-width: var(--max-width);
   }

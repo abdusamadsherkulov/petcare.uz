@@ -8,7 +8,7 @@ const profileLi = document.getElementById('profileLi');
 const shoppingCartLi = document.getElementById('shoppingCartLi');
 const token = localStorage.getItem('token');
 const BACKEND_URL = 'https://petcare-backend-h0cq.onrender.com/api';
-// Function to close the menu
+
 function closeMenu() {
   navLinks.classList.remove('open');
   menuBtnIcon.setAttribute('class', 'ri-menu-line');
@@ -19,10 +19,8 @@ menuBtn.addEventListener('click', e => {
   navLinks.classList.toggle('open');
   const isOpen = navLinks.classList.contains('open');
   menuBtnIcon.setAttribute('class', isOpen ? 'ri-close-line' : 'ri-menu-line');
-  // overlay.classList.toggle('hidden', !isOpen);
 });
 
-// Modal handling
 const modal = document.querySelector('.modal');
 
 const btnCloseModal = document.querySelector('.close-modal');
@@ -43,13 +41,12 @@ overlay.addEventListener('click', () => {
   overlay.classList.add('hidden');
 });
 
-// Variable to store translations
 let languages = {};
 
 // Function to fetch translations from languages.json
 async function loadTranslations() {
   try {
-    const response = await fetch('languages.json'); // Adjust path if needed (e.g., 'scripts/languages.json')
+    const response = await fetch('languages.json');
     if (!response.ok) throw new Error('Failed to load languages.json');
     languages = await response.json();
     // Load the saved language or default to 'en' after fetching
@@ -67,7 +64,6 @@ function changeLanguage(lang) {
     return;
   }
 
-  // Map of elements to update
   const elements = {
     home: document.getElementById('homeBtn'),
   };
@@ -99,7 +95,7 @@ function updateAuthSection() {
       e.preventDefault();
       localStorage.removeItem('currentUser');
       localStorage.removeItem('token');
-      window.location.href = 'index.html'; // Redirect to login page
+      window.location.href = 'index.html';
     });
   } else {
     authSection.innerHTML = `<a href="login-page.html" id="login">Log in</a>`;
@@ -113,7 +109,7 @@ async function addToCart(petId) {
     alert('Please log in to add pets to your cart!');
     return;
   }
-  console.log('Token:', token); // Add this
+  console.log('Token:', token);
   try {
     const response = await fetch(`${BACKEND_URL}/cart/add`, {
       method: 'POST',
@@ -155,7 +151,7 @@ async function fetchAndDisplayAllPets() {
 
     const pets = await response.json();
     const adoptionGrid = document.getElementById('adoptionGrid');
-    adoptionGrid.innerHTML = ''; // Clear existing content
+    adoptionGrid.innerHTML = '';
 
     pets.forEach(pet => {
       const firstPhoto =
@@ -202,7 +198,7 @@ async function fetchAndDisplayAllPets() {
   }
 }
 
-// Run on page load
+
 document.addEventListener('DOMContentLoaded', fetchAndDisplayAllPets);
 
 document.addEventListener('DOMContentLoaded', () => {
