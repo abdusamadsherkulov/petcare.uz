@@ -55,23 +55,25 @@ loadTranslations();
 
 // Fetch pet data
 async function fetchPetData() {
+  console.log('fetchPetData started');
   const urlParams = new URLSearchParams(window.location.search);
   const petId = urlParams.get('petId');
   const token = localStorage.getItem('token');
 
-  if (!token || !petId) {
-    window.location.href = 'index.html';
+  if (!petId) {
+    window.location.href = 'adoption.html';
     return;
   }
 
   try {
+    console.log('Fetching from /api/pets/all-pets');
     const response = await fetch(
-      'https://petcare-backend-h0cq.onrender.com/api/pets/my-pets',
+      `https://petcare-backend-h0cq.onrender.com/api/pets/${petId}`,
       {
         method: 'GET',
         headers: {
-          Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
+          // ...(token && {Authorization: `Bearer ${token}`}),
         },
       }
     );
@@ -80,20 +82,21 @@ async function fetchPetData() {
       throw new Error('Failed to fetch pet data');
     }
 
-    const pets = await response.json();
-    const pet = pets.find(p => p._id === petId);
-    if (!pet) {
-      alert('Pet not found');
-      window.location.href = 'profile.html';
-      return;
-    }
+    const pet = await response.json();
+    console.log('Fetched pet:', pet);
+    // const pet = pets.find(p => p._id === petId);
+    // if (!pet) {
+    //   alert('Pet not found');
+    //   window.location.href = 'profile.html';
+    //   return;
+    // }
 
     const photos =
       pet.photos && pet.photos.length > 0
         ? pet.photos.map(
             photo =>
               `https://petcare-backend-h0cq.onrender.com/proxy-image?url=${encodeURIComponent(
-                photo + '&export=view'
+                photo
               )}`
           )
         : [];
@@ -108,9 +111,6 @@ async function fetchPetData() {
     document.getElementById('petReason').textContent = pet.reason;
     document.getElementById('petLocation').textContent = pet.location;
     document.getElementById('petPhone').textContent = pet.phone;
-    document.getElementById('petOwnerEmail').textContent = JSON.parse(
-      localStorage.getItem('currentUser')
-    ).email;
     document.getElementById('petStatus').textContent = pet.status;
 
     const carouselImages = document.getElementById('carouselImages');
@@ -131,9 +131,12 @@ async function fetchPetData() {
     setupCarousel(photos.length);
   } catch (error) {
     console.error('Error fetching pet data:', error);
+    alert('Unable to load pet data: ' + error.message);
     alert('Unable to load pet data. Please try again later.');
   }
 }
+
+fetchPetData();
 
 function setupCarousel(photoCount) {
   const carouselImages = document.getElementById('carouselImages');
@@ -187,4 +190,27 @@ document.getElementById('logoutBtn').addEventListener('click', e => {
   window.location.href = 'index.html';
 });
 
-fetchPetData();
+function updateAuthSection() {
+  const currentUser = localStorage.getItem('currentUser');
+  const token = localStorage.getItem('token');
+  if (currentUser && token) {
+    authSection.innerHTML = `
+      <a href="index.html" id="logoutBtn" class="logout-btn" style="color:#fff">Log out</a>
+    `;
+    shoppingCartLi.style = 'display: block';
+    profileLi.style = 'display: block';
+
+    document.getElementById('logoutBtn').addEventListener('click', e => {
+      e.preventDefault();
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('token');
+      window.location.href = 'index.html';
+    });
+  } else {
+    authSection.innerHTML = `<a href="login-page.html" id="login">Log in</a>`;
+    shoppingCartLi.style = 'display: none';
+    profileLi.style = 'display: none';
+  }
+}
+
+updateAuthSection();
