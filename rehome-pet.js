@@ -129,8 +129,8 @@ rehomeForm.addEventListener('submit', async e => {
   }
 
   formData.set('cost', `${formData.get('cost')} ${formData.get('currency')}`);
-  formData.delete('cost');
-  formData.delete('currency');
+  // formData.delete('cost');
+  // formData.delete('currency');
 
   // Show loading modal
   const loadingModal = document.getElementById('loadingModal');
