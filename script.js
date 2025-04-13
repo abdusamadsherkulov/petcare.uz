@@ -21,7 +21,7 @@ menuBtn.addEventListener('click', e => {
 document.querySelectorAll('.nav__links a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
-    const sectionId = link.getAttribute('href').substring(1); 
+    const sectionId = link.getAttribute('href').substring(1);
     const section = document.getElementById(sectionId);
 
     if (section) {
@@ -65,9 +65,9 @@ document.querySelector('[href="#about"]').addEventListener('click', e => {
   e.preventDefault();
   const aboutSection = document.getElementById('about');
   if (aboutSection) {
-    const navHeight = document.querySelector('nav').offsetHeight; 
+    const navHeight = document.querySelector('nav').offsetHeight;
     const sectionTop =
-      aboutSection.getBoundingClientRect().top + window.pageYOffset; 
+      aboutSection.getBoundingClientRect().top + window.pageYOffset;
     window.scrollTo({
       top: sectionTop - navHeight,
       behavior: 'smooth',

@@ -777,7 +777,7 @@ nav {
 .rehome__container {
   max-width: var(--max-width);
   margin: auto;
-  padding: 2rem 1rem 2rem 1rem;
+  padding: 0rem 1rem 2rem 1rem;
 }
 
 .rehome__header {
@@ -827,6 +827,29 @@ nav {
   font-size: 1rem;
   color: var(--text-dark);
   font-family: var(--header-font);
+}
+
+.select2-container .select2-selection--single {
+  height: 3rem !important; /* Match your other inputs */
+  line-height: 3rem !important;
+  padding-top: 0.5rem;
+}
+
+.select2-container--default .select2-results__option {
+  padding: 8px 12px !important;
+  line-height: 1.5 !important;
+}
+
+.select2-search--dropdown .select2-search__field {
+  height: 36px !important;
+}
+
+.select2-selection__placeholder {
+  margin-top: 1rem !important;
+}
+
+.select2-selection__arrow {
+  margin-top: 0.5rem !important;
 }
 
 .form__group input[type='file'] {
@@ -1882,7 +1905,7 @@ nav {
   }
 
   .rehome__container {
-    padding: 7rem 1rem 2rem 1rem;
+    padding: 1rem 1rem 2rem 1rem;
   }
 
   .rehome__header h1 {

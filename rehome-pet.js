@@ -5,6 +5,7 @@ const overlay = document.querySelector('.overlay');
 const authSection = document.getElementById('authSection');
 const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
 const profileLi = document.getElementById('profileLi');
+const savedLang = localStorage.getItem('lang');
 
 const token = localStorage.getItem('token');
 
@@ -53,7 +54,82 @@ async function loadTranslations() {
 }
 
 function changeLanguage(lang) {
-  if (!languages[lang]) return;
+  if (!languages[lang]) {
+    console.error(`Language ${lang} not found in translations`);
+    return;
+  }
+
+  const elements = {
+    login: document.getElementById('login'),
+    rehomeAPet: document.getElementById('rehomeAPet'),
+    logoutBtn: document.getElementById('logoutBtn'),
+    rehomeAPetForm: document.getElementById('rehomeAPetForm'),
+    rehomeAPetFormDesc: document.getElementById('rehomeAPetFormDesc'),
+    petName: document.getElementById('petName'),
+    petSpecies: document.getElementById('petSpecies'),
+    selectSpecies: document.getElementById('selectSpecies'),
+    dogOption: document.getElementById('dogOption'),
+    catOption: document.getElementById('catOption'),
+    birdOption: document.getElementById('birdOption'),
+    otherOption: document.getElementById('otherOption'),
+    petBreed: document.getElementById('petBreed'),
+    petAge: document.getElementById('petAge'),
+    selectAge: document.getElementById('selectAge'),
+    petHealthCondition: document.getElementById('petHealthCondition'),
+    selectHealth: document.getElementById('selectHealth'),
+    reasonRehoming: document.getElementById('reasonRehoming'),
+    healthyVaccinatedOption: document.getElementById('healthyVaccinatedOption'),
+    healthyNotVaccinatedOption: document.getElementById(
+      'healthyNotVaccinatedOption'
+    ),
+    notHealthyVaccinatedOption: document.getElementById(
+      'notHealthyVaccinatedOption'
+    ),
+    selectReason: document.getElementById('selectReason'),
+    allergiesOption: document.getElementById('allergiesOption'),
+    movingOption: document.getElementById('movingOption'),
+    financialOption: document.getElementById('financialOption'),
+    deathOfOwnerOption: document.getElementById('deathOfOwnerOption'),
+    incompatibilityOption: document.getElementById('incompatibilityOption'),
+    timeOption: document.getElementById('timeOption'),
+    lblCost: document.getElementById('lblCost'),
+    lblLocation: document.getElementById('lblLocation'),
+    selectRegion: document.getElementById('selectRegion'),
+    tashkent: document.getElementById('tashkent'),
+    andijan: document.getElementById('andijan'),
+    bukhara: document.getElementById('bukhara'),
+    fergana: document.getElementById('fergana'),
+    jizzakh: document.getElementById('jizzakh'),
+    namangan: document.getElementById('namangan'),
+    navoi: document.getElementById('navoi'),
+    kashkadarya: document.getElementById('kashkadarya'),
+    samarkand: document.getElementById('samarkand'),
+    syrdarya: document.getElementById('syrdarya'),
+    surkhandarya: document.getElementById('surkhandarya'),
+    tashkentRegion: document.getElementById('tashkentRegion'),
+    khorezm: document.getElementById('khorezm'),
+    karakalpakstan: document.getElementById('karakalpakstan'),
+    lblPhone: document.getElementById('lblPhone'),
+    lblPhotos: document.getElementById('lblPhotos'),
+  };
+
+  Object.keys(elements).forEach(key => {
+    if (elements[key] && languages[lang][key]) {
+      elements[key].textContent = languages[lang][key];
+    }
+  });
+
+  const placeholderElements = {
+    health: document.getElementById('health'),
+    location: document.getElementById('location'),
+  };
+
+  Object.keys(placeholderElements).forEach(key => {
+    if (placeholderElements[key] && languages[lang][key]?.placeholder) {
+      placeholderElements[key].placeholder = languages[lang][key].placeholder;
+    }
+  });
+
   localStorage.setItem('lang', lang);
 }
 

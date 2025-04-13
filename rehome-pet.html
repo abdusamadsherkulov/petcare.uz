@@ -13,7 +13,7 @@
     <title>Rehome a Pet - petcare.uz</title>
   </head>
   <body>
-    <nav>
+    <nav style="position: static">
       <div class="nav__header">
         <div class="nav__logo">
           <a href="index.html" class="logo">
@@ -54,55 +54,115 @@
 
     <section class="rehome__container">
       <div class="rehome__header">
-        <h1>Rehome a Pet</h1>
-        <p>Fill out the form below to find a new loving home for your pet.</p>
+        <h1 id="rehomeAPetForm">Rehome a Pet</h1>
+        <p id="rehomeAPetFormDesc">
+          Fill out the form below to find a new loving home for your pet.
+        </p>
       </div>
       <div class="rehome__form">
         <form id="rehomeForm">
           <div class="form__group">
-            <label for="name">Pet Name *</label>
+            <label for="name" id="petName">Pet name *</label>
             <input type="text" id="name" name="name" required />
           </div>
           <div class="form__group">
-            <label for="species">Species *</label>
+            <label for="species" id="petSpecies">Species *</label>
             <select id="species" name="species" required>
-              <option value="" disabled selected>Select species</option>
-              <option value="Dog">Dog</option>
-              <option value="Cat">Cat</option>
-              <option value="Bird">Bird</option>
-              <option value="Other">Other</option>
+              <option id="selectSpecies" value="" disabled selected>
+                Select species
+              </option>
+              <option value="Dog" id="dogOption">Dog</option>
+              <option value="Cat" id="catOption">Cat</option>
+              <option value="Bird" id="birdOption">Bird</option>
+              <option value="Other" id="otherOption">Other</option>
             </select>
           </div>
           <div class="form__group">
-            <label for="breed">Breed *</label>
+            <label for="breed" id="petBreed">Breed *</label>
             <input type="text" id="breed" name="breed" required />
           </div>
           <div class="form__group">
-            <label for="age">Age *</label>
-            <input
-              type="text"
-              id="age"
-              name="age"
-              required
-              placeholder="e.g., 2 years"
-            />
+            <label for="age" id="petAge">Age *</label>
+            <select id="age" name="age" required>
+              <option id="selectAge" value="" disabled selected>
+                Select age
+              </option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+            </select>
           </div>
           <div class="form__group">
-            <label for="health">Health Condition *</label>
-            <input
-              type="text"
-              id="health"
-              name="health"
-              required
-              placeholder="e.g., Healthy, Vaccinated"
-            />
+            <label for="health" id="petHealthCondition"
+              >Health condition *</label
+            >
+            <select id="health" name="health" required>
+              <option id="selectHealth" value="" disabled selected>
+                Select condition
+              </option>
+              <option value="Healthy, vaccinated" id="healthyVaccinatedOption">
+                Healthy, vaccinated
+              </option>
+              <option
+                value="Healthy, not vaccinated"
+                id="healthyNotVaccinatedOption"
+              >
+                Healthy, not vaccinated
+              </option>
+              <option
+                value="Not healthy, vaccinated"
+                id="notHealthyVaccinatedOption"
+              >
+                Not healthy, vaccinated
+              </option>
+              <option
+                value="Not healthy, not vaccinated"
+                id="notHealthyNotVaccinatedOption"
+              >
+                Not healthy, not vaccinated
+              </option>
+            </select>
           </div>
           <div class="form__group">
-            <label for="reason">Reason for Rehoming *</label>
-            <textarea id="reason" name="reason" required></textarea>
+            <label for="reason" id="reasonRehoming"
+              >Reason for rehoming *</label
+            >
+            <select id="reason" name="reason" required>
+              <option id="selectReason" value="" disabled selected>
+                Select reason
+              </option>
+              <option value="Allergies" id="allergiesOption">Allergies</option>
+              <option value="Moving" id="movingOption">Moving</option>
+              <option value="Financial reason" id="financialOption">
+                Financial reason
+              </option>
+              <option value="Death of owner" id="deathOfOwnerOption">
+                Death of owner
+              </option>
+              <option value="Incompatibility" id="incompatibilityOption">
+                Incompatibility
+              </option>
+              <option value="Lack of time" id="timeOption">Lack of time</option>
+            </select>
           </div>
           <div class="form__group">
-            <label for="price">Cost *</label>
+            <label id="lblCost" for="price">Cost *</label>
             <div class="price__container">
               <input
                 type="number"
@@ -119,17 +179,35 @@
             </div>
           </div>
           <div class="form__group">
-            <label for="location">Location *</label>
-            <input
-              type="text"
-              id="location"
-              name="location"
-              required
-              placeholder="e.g., Tashkent, Uzbekistan"
-            />
+            <label id="lblLocation" for="location">Location *</label>
+            <select id="location" name="location" required>
+              <option id="selectRegion" value="" disabled selected>
+                Select region
+              </option>
+              <option id="tashkent" value="Tashkent">Tashkent</option>
+              <option id="andijan" value="Andijan">Andijan</option>
+              <option id="bukhara" value="Bukhara">Bukhara</option>
+              <option id="fergana" value="Fergana">Fergana</option>
+              <option id="jizzakh" value="Jizzakh">Jizzakh</option>
+              <option id="namangan" value="Namangan">Namangan</option>
+              <option id="navoi" value="Navoiy">Navoi</option>
+              <option id="kashkadarya" value="Qashqadaryo">Kashkadarya</option>
+              <option id="samarkand" value="Samarkand">Samarkand</option>
+              <option id="syrdarya" value="Syrdaryo">Syrdarya</option>
+              <option id="surkhandarya" value="Surxondaryo">
+                Surkhandarya
+              </option>
+              <option id="tashkentRegion" value="Tashkent region">
+                Tashkent region
+              </option>
+              <option id="khorezm" value="Khorezm">Khorezm</option>
+              <option id="karakalpakstan" value="Republic of Karakalpakstan">
+                Republic of Karakalpakstan
+              </option>
+            </select>
           </div>
           <div class="form__group">
-            <label for="phone">Phone Number *</label>
+            <label id="lblPhone" for="phone">Phone number *</label>
             <input
               type="tel"
               id="phone"
@@ -141,7 +219,7 @@
             />
           </div>
           <div class="form__group">
-            <label for="photos">Pet Photos (max 5) *</label>
+            <label id="lblPhotos" for="photos">Pet photos (max 5) *</label>
             <input
               type="file"
               id="photos"
@@ -187,5 +265,6 @@
     <div class="loading-overlay" id="loadingOverlay"></div>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="rehome-pet.js"></script>
+    <script src="languages.json"></script>
   </body>
 </html>
