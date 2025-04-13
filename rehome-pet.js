@@ -255,19 +255,3 @@ function showNotification(message, type) {
     notification.style.display = 'none';
   }, 3000);
 }
-
-const scrollRevealOption = {
-  distance: '50px',
-  origin: 'top',
-  duration: 1000,
-};
-
-ScrollReveal().reveal('.rehome__header', {
-  ...scrollRevealOption,
-  delay: 300,
-});
-
-ScrollReveal().reveal('.rehome__form', {
-  ...scrollRevealOption,
-  delay: 500,
-});

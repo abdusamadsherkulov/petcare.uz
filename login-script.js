@@ -48,6 +48,11 @@ authForm.addEventListener('submit', async e => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 
+  const loadingModal = document.getElementById('loadingModal');
+  const loadingOverlay = document.getElementById('loadingOverlay');
+
+  loadingModal.style.display = 'block';
+  loadingOverlay.style.display = 'block';
   if (isLogin) {
     const response = await fetch(
       'https://petcare-backend-h0cq.onrender.com/api/auth/login',
@@ -61,6 +66,9 @@ authForm.addEventListener('submit', async e => {
     );
 
     const data = await response.json();
+
+    loadingModal.style.display = 'none';
+    loadingOverlay.style.display = 'none';
 
     if (response.ok) {
       localStorage.setItem('token', data.token);
@@ -93,6 +101,9 @@ authForm.addEventListener('submit', async e => {
     );
 
     const data = await response.json();
+
+    loadingModal.style.display = 'none';
+    loadingOverlay.style.display = 'none';
 
     if (response.ok) {
       localStorage.setItem('token', data.token);
