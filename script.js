@@ -247,6 +247,12 @@ ScrollReveal().reveal('.footer__container', {
   delay: 400,
 });
 
+ScrollReveal().reveal('.pricing__container', {
+  ...scrollRevealOption,
+  origin: 'left',
+  delay: 400,
+});
+
 function updateAuthSection() {
   const currentUser = localStorage.getItem('currentUser');
   const token = localStorage.getItem('token');

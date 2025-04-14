@@ -103,7 +103,9 @@
     "khorezm": "Khorezm",
     "karakalpakstan": "Republic of Karakalpakstan",
     "lblPhone": "Phone number *",
-    "lblPhotos": "Pet photos (max 5)"
+    "lblPhotos": "Pet photos (max 5)",
+    "adoptionTitle": "Pets available for adoption",
+    "cartBtn": "Add to cart"
   },
   "ru": {
     "home": "Главная",
@@ -209,7 +211,9 @@
     "khorezm": "Хорезм",
     "karakalpakstan": "Республика Каракалпакстан",
     "lblPhone": "Номер телефона *",
-    "lblPhotos": "Фото питомца (макс 5)"
+    "lblPhotos": "Фото питомца (макс 5)",
+    "adoptionTitle": "Домашние животные, доступные для усыновления",
+    "cartBtn": "Добавить в корзинку"
   },
   "uz": {
     "home": "Asosiy",
@@ -276,7 +280,7 @@
     "petName": "Uy hayvoningizning ismi *",
     "petSpecies": "Turi *",
     "selectSpecies": "Turni tanlang",
-    "dogOption": "It",
+    "dogOption": "Kuchuk",
     "catOption": "Mushuk",
     "birdOption": "Qush",
     "otherOption": "Boshqa",
@@ -315,6 +319,8 @@
     "khorezm": "Xorazm",
     "karakalpakstan": "Qoraqalpog'iston Respublikasi",
     "lblPhone": "Telefon raqam *",
-    "lblPhotos": "Uy hayvonining rasmi (maks. 5)"
+    "lblPhotos": "Uy hayvonining rasmi (maks. 5)",
+    "adoptionTitle": "Asrab olish uchun mavjud bo'lgan uy hayvonlari",
+    "cartBtn": "Savatga qo'shish"
   }
 }

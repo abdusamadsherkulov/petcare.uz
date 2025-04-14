@@ -1419,6 +1419,7 @@ nav {
 
 .adoption__header {
   padding-bottom: 1rem;
+  color: var(--text-dark);
 }
 
 .adoption__grid {
@@ -1555,7 +1556,7 @@ nav {
   width: 120px;
   border-radius: 50px;
   transition-duration: 0.3s;
-  background-color: rgb(255, 69, 69);
+  background-color: rgb(212, 166, 37);
   align-items: center;
 }
 
@@ -1667,7 +1668,7 @@ nav {
 }
 
 .cartBtn {
-  width: 155px;
+  width: 200px;
   height: 40px;
   border: none;
   border-radius: 10px;
@@ -1676,6 +1677,8 @@ nav {
   justify-content: center;
   gap: 7px;
   color: white;
+  font-size: 1rem;
+  font-family: var(--header-font);
   font-weight: 500;
   position: relative;
   background-color: var(--text-light);
@@ -1683,6 +1686,7 @@ nav {
   transition: all 0.3s ease-in-out;
   cursor: pointer;
   overflow: hidden;
+  margin-top: 0.5rem;
 }
 
 .cartBtn:hover {
