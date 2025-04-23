@@ -46,6 +46,7 @@ async function loadTranslations() {
     const response = await fetch('languages.json');
     if (!response.ok) throw new Error('Failed to load languages.json');
     languages = await response.json();
+    window.languages = languages;
     const savedLang = localStorage.getItem('lang') || 'en';
     changeLanguage(savedLang);
   } catch (error) {
@@ -66,6 +67,26 @@ function getTranslatedSpecies(species, lang) {
   return translationKey && languages[lang]?.[translationKey]
     ? languages[lang][translationKey]
     : species;
+}
+
+function showNotification(translationKey, type) {
+  const notification = document.getElementById('notification1');
+  if (!notification) {
+    console.error('Notification element (#notification1) not found in DOM');
+    return;
+  }
+
+  const currentLang = localStorage.getItem('lang') || 'en';
+  let message = languages[currentLang]?.[translationKey];
+
+  console.log('Displaying notification:', {message, type, currentLang});
+  notification.textContent = message;
+  notification.className = `notification ${type}`;
+  notification.style.display = 'block';
+
+  setTimeout(() => {
+    notification.style.display = 'none';
+  }, 3500);
 }
 
 function changeLanguage(lang) {
@@ -117,7 +138,7 @@ function updateAuthSection() {
 
 async function addToCart(petId) {
   if (!token) {
-    alert('Please log in to add pets to your cart!');
+    showNotification('loginToAddPet', 'error');
     return;
   }
   console.log('Token:', token);
@@ -137,10 +158,11 @@ async function addToCart(petId) {
       );
     }
     const data = await response.json();
-    alert('Pet added to your cart!');
+    // alert('Pet added to your cart!');
+    showNotification('petAddedToCart', 'success');
   } catch (error) {
     console.error('Error adding to cart:', error);
-    alert('Failed to add pet to cart.');
+    showNotification('petAlreadyInCart', 'info');
   }
 }
 

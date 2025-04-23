@@ -295,6 +295,7 @@
         <div class="footer__col">
           <h4 id="support">
             <span id="supportWord">Support:</span>
+            <br />
             <a href="" id="email">abdusamadsherkulov@gmail.com</a>
           </h4>
           <div class="footer__socials">
@@ -321,6 +322,13 @@
       lucide.createIcons();
     </script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <div class="notification" id="notification"></div>
+    <div class="notification" id="notification1"></div>
+    <script type="module" src="auth.js"></script>
+    <script type="module">
+      import {initializeAuth} from './auth.js';
+      document.addEventListener('DOMContentLoaded', () => {
+        initializeAuth();
+      });
+    </script>
   </body>
 </html>

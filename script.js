@@ -278,29 +278,50 @@ function updateAuthSection() {
 
 updateAuthSection();
 
-const startRehomingBtn = document.getElementById('btnStartRehoming');
-startRehomingBtn.addEventListener('click', e => {
-  console.log('Button clicked!');
-  e.preventDefault();
-  const token = localStorage.getItem('token');
-  if (!token) {
-    showNotification('Please log in first to rehome a pet.', 'error');
-  } else {
-    window.location.href = 'rehome-pet.html';
+function showNotification(translationKey, type) {
+  const notification = document.getElementById('notification1');
+  if (!notification) {
+    console.error('Notification element (#notification1) not found in DOM');
+    return;
   }
-});
 
-function showNotification(message, type) {
-  const notification = document.getElementById('notification');
-  console.log('Notification element:', notification);
+  const currentLang = localStorage.getItem('lang') || 'en';
+  let message = languages[currentLang]?.[translationKey];
+  if (!message) {
+    console.warn(
+      `Translation missing for key: ${translationKey} in language: ${currentLang}`
+    );
+    message =
+      translationKey === 'loginToRehome'
+        ? 'Please log in first to rehome a pet.'
+        : 'An error occurred. Please try again.';
+  }
 
+  console.log('Displaying notification:', {message, type, currentLang});
   notification.textContent = message;
   notification.className = `notification ${type}`;
   notification.style.display = 'block';
 
   setTimeout(() => {
     notification.style.display = 'none';
-  }, 3000);
+  }, 3500);
+}
+
+// Notification when user clicks on rehome button
+const startRehomingBtn = document.getElementById('btnStartRehoming');
+if (!startRehomingBtn) {
+  console.error('Start Rehoming button (#btnStartRehoming) not found in DOM');
+} else {
+  startRehomingBtn.addEventListener('click', e => {
+    console.log('Start Rehoming button clicked!');
+    e.preventDefault();
+    const token = localStorage.getItem('token');
+    if (!token) {
+      showNotification('loginToRehome', 'error');
+    } else {
+      window.location.href = 'rehome-pet.html';
+    }
+  });
 }
 
 console.log('Modal elements:', {modal, btnShowModal, btnCloseModal, overlay});

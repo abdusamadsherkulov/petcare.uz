@@ -266,5 +266,12 @@
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="rehome-pet.js"></script>
     <script src="languages.json"></script>
+    <script type="module" src="auth.js"></script>
+    <script type="module">
+      import {initializeAuth} from './auth.js';
+      document.addEventListener('DOMContentLoaded', () => {
+        initializeAuth();
+      });
+    </script>
   </body>
 </html>

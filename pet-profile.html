@@ -13,7 +13,7 @@
     <title>Pet Profile - petcare.uz</title>
   </head>
   <body>
-    <nav>
+    <nav style="position: static">
       <div class="nav__header">
         <div class="nav__logo">
           <a href="index.html" class="logo">
@@ -58,7 +58,7 @@
     <div class="overlay hidden"></div>
 
     <section class="pet-profile__container">
-      <h1 id="petProfileTitle">Pet Profile</h1>
+      <!-- <h1 id="petProfileTitle">Pet Profile</h1> -->
       <div class="pet-profile__content">
         <div class="pet-profile__carousel">
           <button class="carousel__btn carousel__btn--left" id="prevBtn">
@@ -70,36 +70,47 @@
           </button>
         </div>
         <div class="pet-profile__details">
-          <p><span class="pet-label">Name:</span> <span id="petName"></span></p>
           <p>
-            <span class="pet-label">Species:</span>
+            <span class="pet-label" id="petNameLbl">Name:</span>
+            <span id="petName"></span>
+          </p>
+          <p>
+            <span class="pet-label" id="petSpeciesLbl">Species:</span>
             <span id="petSpecies"></span>
           </p>
           <p>
-            <span class="pet-label">Breed:</span> <span id="petBreed"></span>
-          </p>
-          <p><span class="pet-label">Age:</span> <span id="petAge"></span></p>
-          <p>
-            <span class="pet-label">Health:</span> <span id="petHealth"></span>
-          </p>
-          <p><span class="pet-label">Cost:</span> <span id="petCost"></span></p>
-          <p>
-            <span class="pet-label">Reason:</span> <span id="petReason"></span>
+            <span class="pet-label" id="petBreedLbl">Breed:</span>
+            <span id="petBreed"></span>
           </p>
           <p>
-            <span class="pet-label">Location:</span>
+            <span class="pet-label" id="petAgeLbl">Age:</span>
+            <span id="petAge"></span>
+          </p>
+          <p>
+            <span class="pet-label" id="petHealthLbl">Health:</span>
+            <span id="petHealth"></span>
+          </p>
+          <p>
+            <span class="pet-label" id="petCostLbl">Cost:</span>
+            <span id="petCost"></span>
+          </p>
+          <p>
+            <span class="pet-label" id="petReasonLbl">Reason:</span>
+            <span id="petReason"></span>
+          </p>
+          <p>
+            <span class="pet-label" id="petLocationLbl">Location:</span>
             <span id="petLocation"></span>
           </p>
           <p>
-            <span class="pet-label">Phone:</span> <span id="petPhone"></span>
+            <span class="pet-label" id="petPhoneLbl">Phone:</span>
+            <span id="petPhone"></span>
           </p>
-          <p>
-            <span id="petOwnerEmail"></span>
-          </p>
-          <p>
-            <span class="pet-label">Status:</span> <span id="petStatus"></span>
-          </p>
-          <button class="cartBtn">
+          <!-- <p>
+            <span class="pet-label" id="petStatusLbl">Status:</span>
+            <span id="petStatus"></span>
+          </p> -->
+          <button class="cartBtn" id="cartBtn">
             <svg
               class="cart"
               fill="white"
@@ -132,5 +143,12 @@
     </footer>
 
     <script src="pet-profile.js"></script>
+    <script type="module" src="auth.js"></script>
+    <script type="module">
+      import {initializeAuth} from './auth.js';
+      document.addEventListener('DOMContentLoaded', () => {
+        initializeAuth();
+      });
+    </script>
   </body>
 </html>

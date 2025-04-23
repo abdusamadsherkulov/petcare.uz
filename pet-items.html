@@ -96,5 +96,12 @@
     <script src="pet-items.js"></script>
     <!-- <script src="script.js"></script> -->
     <script src="languages.json"></script>
+    <script type="module" src="auth.js"></script>
+    <script type="module">
+      import {initializeAuth} from './auth.js';
+      document.addEventListener('DOMContentLoaded', () => {
+        initializeAuth();
+      });
+    </script>
   </body>
 </html>

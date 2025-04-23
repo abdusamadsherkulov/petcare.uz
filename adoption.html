@@ -72,8 +72,15 @@
     <footer class="profile-footer" id="contact">
       <div class="footer__bar" id="footer-bar">© 2025 Petcare.uz</div>
     </footer>
-
     <script src="adoption.js"></script>
     <script src="languages.json"></script>
+    <script type="module" src="auth.js"></script>
+    <script type="module">
+      import {initializeAuth} from './auth.js';
+      document.addEventListener('DOMContentLoaded', () => {
+        initializeAuth();
+      });
+    </script>
+    <div id="notification1" class="notification"></div>
   </body>
 </html>

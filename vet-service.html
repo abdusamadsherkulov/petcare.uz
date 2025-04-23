@@ -87,5 +87,12 @@
     </script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <div class="notification" id="notification"></div>
+    <script type="module" src="auth.js"></script>
+    <script type="module">
+      import {initializeAuth} from './auth.js';
+      document.addEventListener('DOMContentLoaded', () => {
+        initializeAuth();
+      });
+    </script>
   </body>
 </html>

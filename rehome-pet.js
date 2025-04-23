@@ -85,6 +85,9 @@ function changeLanguage(lang) {
     notHealthyVaccinatedOption: document.getElementById(
       'notHealthyVaccinatedOption'
     ),
+    notHealthyNotVaccinatedOption: document.getElementById(
+      'notHealthyNotVaccinatedOption'
+    ),
     selectReason: document.getElementById('selectReason'),
     allergiesOption: document.getElementById('allergiesOption'),
     movingOption: document.getElementById('movingOption'),

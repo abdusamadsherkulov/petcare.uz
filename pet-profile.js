@@ -46,12 +46,122 @@ async function loadTranslations() {
 }
 
 function changeLanguage(lang) {
-  if (!languages[lang]) return;
+  if (!languages[lang]) {
+    console.error(`Language ${lang} not found in translations`);
+    return;
+  }
+
+  const elements = {
+    login: document.getElementById('login'),
+    logoutBtn: document.getElementById('logoutBtn'),
+    cartBtn: document.getElementById('cartBtn'),
+    petNameLbl: document.getElementById('petNameLbl'),
+    petSpeciesLbl: document.getElementById('petSpeciesLbl'),
+    petBreedLbl: document.getElementById('petBreedLbl'),
+    petAgeLbl: document.getElementById('petAgeLbl'),
+    petHealthLbl: document.getElementById('petHealthLbl'),
+    petCostLbl: document.getElementById('petCostLbl'),
+    petReasonLbl: document.getElementById('petReasonLbl'),
+    petLocationLbl: document.getElementById('petLocationLbl'),
+    petPhoneLbl: document.getElementById('petPhoneLbl'),
+  };
+
+  Object.keys(elements).forEach(key => {
+    if (elements[key] && languages[lang][key]) {
+      elements[key].textContent = languages[lang][key];
+    }
+  });
+
+  if (currentPet) updatePetDataUI(currentPet, lang);
+
   localStorage.setItem('lang', lang);
-  // Add translations if needed
 }
 
-loadTranslations();
+function updateAuthSection() {
+  const currentUser = localStorage.getItem('currentUser');
+  const token = localStorage.getItem('token');
+  if (currentUser && token) {
+    authSection.innerHTML = `
+      <a href="index.html" id="logoutBtn" class="logout-btn" style="color:#fff">Log out</a>
+    `;
+    shoppingCartLi.style = 'display: block';
+    profileLi.style = 'display: block';
+
+    document.getElementById('logoutBtn').addEventListener('click', e => {
+      e.preventDefault();
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('token');
+      window.location.href = 'index.html';
+    });
+  } else {
+    authSection.innerHTML = `<a href="login-page.html" id="login">Log in</a>`;
+    shoppingCartLi.style = 'display: none';
+    profileLi.style = 'display: none';
+  }
+}
+
+// loadTranslations();
+
+let currentPet = null;
+
+function getTranslatedPetData(data, lang) {
+  const elementsMap = {
+    Dog: 'dogOption',
+    Cat: 'catOption',
+    Bird: 'birdOption',
+    Other: 'otherOption',
+    'Healthy, vaccinated': 'healthyVaccinatedOption',
+    'Healthy, not vaccinated': 'healthyNotVaccinatedOption',
+    'Not healthy, vaccinated': 'notHealthyVaccinatedOption',
+    'Not healthy, not vaccinated': 'notHealthyNotVaccinatedOption',
+    Allergies: 'allergiesOption',
+    Moving: 'movingOption',
+    'Financial reason': 'financialOption',
+    'Death of owner': 'deathOfOwnerOption',
+    Incompatibility: 'IncompatibilityOption',
+    'Lack of time': 'timeOption',
+    Tashkent: 'tashkent',
+    Andijan: 'andijan',
+    Bukhara: 'bukhara',
+    Fergana: 'fergana',
+    Jizzakh: 'jizzakh',
+    Namangan: 'namangan',
+    Navoi: 'navoi',
+    Kashkadarya: 'kashkadarya',
+    Samarkand: 'samarkand',
+    Syrdarya: 'syrdarya',
+    Surkhandarya: 'surkhandarya',
+    'Tashkent region': 'tashkentRegion',
+  };
+  const translationKey = elementsMap[data];
+  return translationKey && languages[lang]?.[translationKey]
+    ? languages[lang][translationKey]
+    : data;
+}
+
+function updatePetDataUI(pet, lang) {
+  document.getElementById('petName').textContent = pet.name;
+  document.getElementById('petSpecies').textContent = getTranslatedPetData(
+    pet.species,
+    lang
+  );
+  document.getElementById('petBreed').textContent = pet.breed;
+  document.getElementById('petAge').textContent = pet.age;
+  document.getElementById('petHealth').textContent = getTranslatedPetData(
+    pet.health,
+    lang
+  );
+  document.getElementById('petCost').textContent = pet.cost;
+  document.getElementById('petReason').textContent = getTranslatedPetData(
+    pet.reason,
+    lang
+  );
+  document.getElementById('petLocation').textContent = getTranslatedPetData(
+    pet.location,
+    lang
+  );
+  document.getElementById('petPhone').textContent = pet.phone;
+}
 
 // Fetch pet data
 async function fetchPetData() {
@@ -73,7 +183,6 @@ async function fetchPetData() {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          // ...(token && {Authorization: `Bearer ${token}`}),
         },
       }
     );
@@ -83,13 +192,8 @@ async function fetchPetData() {
     }
 
     const pet = await response.json();
+    currentPet = pet;
     console.log('Fetched pet:', pet);
-    // const pet = pets.find(p => p._id === petId);
-    // if (!pet) {
-    //   alert('Pet not found');
-    //   window.location.href = 'profile.html';
-    //   return;
-    // }
 
     const photos =
       pet.photos && pet.photos.length > 0
@@ -101,17 +205,6 @@ async function fetchPetData() {
           )
         : [];
     console.log('Pet:', pet.name, 'Photo URLs:', photos);
-
-    document.getElementById('petName').textContent = pet.name;
-    document.getElementById('petSpecies').textContent = pet.species;
-    document.getElementById('petBreed').textContent = pet.breed;
-    document.getElementById('petAge').textContent = pet.age;
-    document.getElementById('petHealth').textContent = pet.health;
-    document.getElementById('petCost').textContent = pet.cost;
-    document.getElementById('petReason').textContent = pet.reason;
-    document.getElementById('petLocation').textContent = pet.location;
-    document.getElementById('petPhone').textContent = pet.phone;
-    document.getElementById('petStatus').textContent = pet.status;
 
     const carouselImages = document.getElementById('carouselImages');
     carouselImages.innerHTML = '';
@@ -129,6 +222,9 @@ async function fetchPetData() {
     }
 
     setupCarousel(photos.length);
+
+    const currentLang = localStorage.getItem('lang');
+    updatePetDataUI(pet, currentLang);
   } catch (error) {
     console.error('Error fetching pet data:', error);
     alert('Unable to load pet data: ' + error.message);
@@ -136,7 +232,15 @@ async function fetchPetData() {
   }
 }
 
-fetchPetData();
+// fetchPetData();
+
+async function initPage() {
+  await loadTranslations();
+  fetchPetData();
+  updateAuthSection();
+}
+
+initPage();
 
 function setupCarousel(photoCount) {
   const carouselImages = document.getElementById('carouselImages');
@@ -190,27 +294,8 @@ document.getElementById('logoutBtn').addEventListener('click', e => {
   window.location.href = 'index.html';
 });
 
-function updateAuthSection() {
-  const currentUser = localStorage.getItem('currentUser');
-  const token = localStorage.getItem('token');
-  if (currentUser && token) {
-    authSection.innerHTML = `
-      <a href="index.html" id="logoutBtn" class="logout-btn" style="color:#fff">Log out</a>
-    `;
-    shoppingCartLi.style = 'display: block';
-    profileLi.style = 'display: block';
-
-    document.getElementById('logoutBtn').addEventListener('click', e => {
-      e.preventDefault();
-      localStorage.removeItem('currentUser');
-      localStorage.removeItem('token');
-      window.location.href = 'index.html';
-    });
-  } else {
-    authSection.innerHTML = `<a href="login-page.html" id="login">Log in</a>`;
-    shoppingCartLi.style = 'display: none';
-    profileLi.style = 'display: none';
-  }
-}
-
-updateAuthSection();
+const cartBtn = petCard.querySelector('.cartBtn');
+cartBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  addToCart(pet._id);
+});
