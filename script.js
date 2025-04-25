@@ -159,6 +159,11 @@ function changeLanguage(lang) {
     followUsAt: document.getElementById('followUsAt'),
     formTitle: document.getElementById('formTitle'),
     logoutBtn: document.getElementById('logoutBtn'),
+    breed_detector_headline: document.getElementById('breed_detector_headline'),
+    breed_detector_description: document.getElementById(
+      'breed_detector_description'
+    ),
+    btnBreedDetector: document.getElementById('btnBreedDetector'),
   };
 
   Object.keys(elements).forEach(key => {

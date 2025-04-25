@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dog Breed Detector - Petcare.uz</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="pics/paw.png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="nav__header">
+        <div class="nav__logo">
+          <a href="#home" class="logo"
+            ><img src="pics/Logo.png" alt="petcare.uz"
+          /></a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+          <i class="ri-menu-line"></i>
+        </div>
+      </div>
+      <ul class="nav__links" id="nav-links">
+        <li id="shoppingCartLi" style="display: none">
+          <a href="cart.html" id="shoppingCartBtn" title="Basket">
+            <i class="ri-shopping-cart-2-fill"></i>
+          </a>
+        </li>
+        <li id="profileLi" style="display: none">
+          <a href="profile.html" id="profileBtn" title="Profile">
+            <i class="ri-user-fill"></i>
+          </a>
+        </li>
+        <li id="authSection">
+          <a href="login-page.html" id="login">Log in</a>
+        </li>
+
+        <li>
+          <a class="show-modal" id="lang">
+            <i class="ri-global-line"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="modal hidden">
+      <button class="close-modal">&times</button>
+      <h1 id="chooselang">Choose a language</h1>
+      <ul>
+        <li>
+          <button onclick="changeLanguage('en')">English</button>
+        </li>
+        <li>
+          <button onclick="changeLanguage('ru')">Русский</button>
+        </li>
+        <li>
+          <button onclick="changeLanguage('uz')">O'zbekcha</button>
+        </li>
+      </ul>
+    </div>
+    <div class="overlay hidden"></div>
+    <section class="detector__container">
+      <div class="detector__inner__container">
+        <h1 id="breedDetectorHeader">Dog Breed Detector</h1>
+        <div id="container">
+          <div id="drop-area">
+            <span id="dragAndDrop">Drag image or click to select</span>
+            <input
+              type="file"
+              id="file-input"
+              accept="image/*"
+              style="display: none"
+            />
+          </div>
+          <img id="preview" alt="Image Preview" />
+        </div>
+        <button class="detectorBtns" id="predictBtn">Predict breed</button>
+        <button class="detectorBtns" id="clearBtn">Clear</button>
+        <div id="output">Prediction will appear here</div>
+        <!-- <div class="loader hidden">
+          <div class="circle">
+            <div class="dot"></div>
+            <div class="outline"></div>
+          </div>
+          <div class="circle">
+            <div class="dot"></div>
+            <div class="outline"></div>
+          </div>
+          <div class="circle">
+            <div class="dot"></div>
+            <div class="outline"></div>
+          </div>
+          <div class="circle">
+            <div class="dot"></div>
+            <div class="outline"></div>
+          </div>
+        </div> -->
+        <div class="loader hidden">
+          <div class="dot-wave__dot"></div>
+          <div class="dot-wave__dot"></div>
+          <div class="dot-wave__dot"></div>
+          <div class="dot-wave__dot"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Load Gradio JavaScript Client -->
+    <!-- <script src="languages.json"></script> -->
+    <!-- <script type="module" src="js/gradio-client.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@gradio/client@0.10.1/dist/index.min.js"></script>
+    <script type="module" src="dogBreedDetector.js"></script>
+    <script type="module" src="auth.js"></script>
+    <script type="module">
+      import {initializeAuth} from './auth.js';
+      document.addEventListener('DOMContentLoaded', () => {
+        initializeAuth();
+      });
+    </script>
+    <!-- <div id="notification1" class="notification"></div> -->
+  </body>
+</html>

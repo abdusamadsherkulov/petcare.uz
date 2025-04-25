@@ -126,7 +126,19 @@
     "petCostLbl": "Cost:",
     "petReasonLbl": "Reason:",
     "petLocationLbl": "Location:",
-    "petPhoneLbl": "Phone:"
+    "petPhoneLbl": "Phone:",
+    "breedDetectorHeader": "Dog Breed Detector",
+    "dragAndDrop": "Drag image or click to select",
+    "predictBtn": "Predict breed",
+    "clearBtn": "Clear",
+    "output": "Result will appear here",
+    "breed_detector_headline": "Discover your pet's breed",
+    "breed_detector_description": "Curious about your pet’s breed? Use our advanced Breed Detector to identify your dog’s heritage with a simple photo.",
+    "btnBreedDetector": "Try Breed Detector",
+    "petShopTitle": "Pet Shop",
+    "petShopDescription": "Browse our selection of pet essentials—food, toys, and more!",
+    "predictedBreed": "Predicted Breed",
+    "confidence": "Confidence"
   },
   "ru": {
     "home": "Главная",
@@ -255,7 +267,19 @@
     "petCostLbl": "Цена:",
     "petReasonLbl": "Причина:",
     "petLocationLbl": "Локация:",
-    "petPhoneLbl": "Тел. номер:"
+    "petPhoneLbl": "Тел. номер:",
+    "breedDetectorHeader": "Детектор Породы Собак",
+    "dragAndDrop": "Вставьте изображение или нажмите, чтобы выбрать",
+    "predictBtn": "Узнать породу",
+    "clearBtn": "Очистить",
+    "output": "Результат будет отображаться здесь",
+    "breed_detector_headline": "Узнайте породу вашего питомца",
+    "breed_detector_description": "Хотите узнать породу своего питомца? Используйте наш продвинутый детектор породы, чтобы определить происхождение вашей собаки с помощью простой фотографии.",
+    "btnBreedDetector": "Попробуйте детектор пород",
+    "petShopTitle": "Зоомагазин",
+    "petShopDescription": "Ознакомьтесь с нашим ассортиментом товаров первой необходимости для домашних животных — корма, игрушек и многого другого!",
+    "predictedBreed": "Результат",
+    "confidence": "Уверенность"
   },
   "uz": {
     "home": "Asosiy",
@@ -384,6 +408,18 @@
     "petCostLbl": "Narxi:",
     "petReasonLbl": "Topshirishning sababi:",
     "petLocationLbl": "Manzili:",
-    "petPhoneLbl": "Tel. raqami:"
+    "petPhoneLbl": "Tel. raqami:",
+    "breedDetectorHeader": "It Zoti Detektori",
+    "dragAndDrop": "Rasmni joylashtiring",
+    "predictBtn": "Naslni aniqlash",
+    "clearBtn": "Tozalash",
+    "output": "Natija shu yerda ko'rinadi",
+    "breed_detector_headline": "Uy hayvoningizning zotini bilib oling",
+    "breed_detector_description": "Uy hayvoningizning zotini bilmoqchimisiz? Oddiy fotosurat yordamida itingizning nasl-nasabini aniqlash uchun ilg'or zot detektorimizdan foydalaning.",
+    "btnBreedDetector": "Detektorni sinab ko'ring",
+    "petShopTitle": "Zoomagazin",
+    "petShopDescription": "Uy hayvonlari uchun zarur bo‘lgan mahsulotlar – oziq-ovqat, o‘yinchoqlar va boshqalarni ko‘rib chiqing!",
+    "predictedBreed": "Aniqlangan zot",
+    "confidence": "Ishonchlilik"
   }
 }

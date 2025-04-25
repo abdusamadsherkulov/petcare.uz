@@ -235,7 +235,7 @@ async function fetchPetData() {
 // fetchPetData();
 
 async function initPage() {
-  await loadTranslations();
+  loadTranslations();
   fetchPetData();
   updateAuthSection();
 }
