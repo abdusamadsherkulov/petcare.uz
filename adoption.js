@@ -553,9 +553,7 @@ function displayPets(pets) {
 
 function resetFilters() {
   document.getElementById('speciesFilter').value = '';
-  document.getElementById('costFilter').value = '';
   document.getElementById('locationFilter').value = '';
-  document.getElementById('healthFilter').value = '';
   applyFilters();
 }
 
