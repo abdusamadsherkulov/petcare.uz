@@ -1570,6 +1570,58 @@ nav {
   margin-bottom: 0.3rem;
 }
 
+.filter__container {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.filter__container h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.filter__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.filter__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter__item label {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.filter__item select {
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.filter__container button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: var(--text-light);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: var(--header-font);
+}
+
+.filter__container button:hover {
+  background-color: var(--extra-light);
+}
+
 .pet-profile__container {
   padding-top: 1rem;
   text-align: center;

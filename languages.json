@@ -138,7 +138,15 @@
     "petShopTitle": "Pet Shop",
     "petShopDescription": "Browse our selection of pet essentials—food, toys, and more!",
     "predictedBreed": "Predicted Breed",
-    "confidence": "Confidence"
+    "confidence": "Confidence",
+    "all": "All",
+    "all1": "All",
+    "all2": "All",
+    "filterPets": "Filter pets",
+    "filterSpecies": "Species",
+    "filterLocation": "Location",
+    "filterHealth": "Health Status",
+    "resetFilters": "Reset filters"
   },
   "ru": {
     "home": "Главная",
@@ -279,7 +287,15 @@
     "petShopTitle": "Зоомагазин",
     "petShopDescription": "Ознакомьтесь с нашим ассортиментом товаров первой необходимости для домашних животных — корма, игрушек и многого другого!",
     "predictedBreed": "Результат",
-    "confidence": "Уверенность"
+    "confidence": "Уверенность",
+    "all": "Все",
+    "all1": "Все",
+    "all2": "Все",
+    "filterPets": "Фильтр",
+    "filterSpecies": "Вид",
+    "filterLocation": "Местоположение",
+    "filterHealth": "Здоровье",
+    "resetFilters": "Очистить фильтр"
   },
   "uz": {
     "home": "Asosiy",
@@ -420,6 +436,14 @@
     "petShopTitle": "Zoomagazin",
     "petShopDescription": "Uy hayvonlari uchun zarur bo‘lgan mahsulotlar – oziq-ovqat, o‘yinchoqlar va boshqalarni ko‘rib chiqing!",
     "predictedBreed": "Aniqlangan zot",
-    "confidence": "Ishonchlilik"
+    "confidence": "Ishonchlilik",
+    "all": "Hammasi",
+    "all1": "Hammasi",
+    "all2": "Hammasi",
+    "filterPets": "Filtr",
+    "filterSpecies": "Turi",
+    "filterLocation": "Joylashuvi",
+    "filterHealth": "Salomatligi",
+    "resetFilters": "Filtrni tozalash"
   }
 }

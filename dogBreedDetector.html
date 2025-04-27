@@ -80,24 +80,6 @@
         <button class="detectorBtns" id="predictBtn">Predict breed</button>
         <button class="detectorBtns" id="clearBtn">Clear</button>
         <div id="output">Prediction will appear here</div>
-        <!-- <div class="loader hidden">
-          <div class="circle">
-            <div class="dot"></div>
-            <div class="outline"></div>
-          </div>
-          <div class="circle">
-            <div class="dot"></div>
-            <div class="outline"></div>
-          </div>
-          <div class="circle">
-            <div class="dot"></div>
-            <div class="outline"></div>
-          </div>
-          <div class="circle">
-            <div class="dot"></div>
-            <div class="outline"></div>
-          </div>
-        </div> -->
         <div class="loader hidden">
           <div class="dot-wave__dot"></div>
           <div class="dot-wave__dot"></div>
@@ -107,9 +89,6 @@
       </div>
     </section>
 
-    <!-- Load Gradio JavaScript Client -->
-    <!-- <script src="languages.json"></script> -->
-    <!-- <script type="module" src="js/gradio-client.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@gradio/client@0.10.1/dist/index.min.js"></script>
     <script type="module" src="dogBreedDetector.js"></script>
     <script type="module" src="auth.js"></script>
@@ -119,6 +98,5 @@
         initializeAuth();
       });
     </script>
-    <!-- <div id="notification1" class="notification"></div> -->
   </body>
 </html>

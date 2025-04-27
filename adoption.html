@@ -12,7 +12,7 @@
     />
   </head>
   <body>
-    <nav>
+    <nav style="position: static">
       <div class="nav__header">
         <div class="nav__logo">
           <a href="#home" class="logo"
@@ -65,6 +65,50 @@
     <section class="adoption__container">
       <div class="adoption__header">
         <h1 id="adoptionTitle">Pets available for adoption</h1>
+      </div>
+      <div class="filter__container">
+        <h2 id="filterPets">Filter</h2>
+        <div class="filter__grid">
+          <div class="filter__item">
+            <label for="speciesFilter" id="filterSpecies">Species</label>
+            <select id="speciesFilter" onchange="applyFilters()">
+              <option value="" id="all">All</option>
+              <option value="Dog" id="dogOption">Dog</option>
+              <option value="Cat" id="catOption">Cat</option>
+              <option value="Bird" id="birdOption">Bird</option>
+              <option value="Other" id="otherOption">Other</option>
+            </select>
+          </div>
+          <div class="filter__item">
+            <label for="locationFilter" id="filterLocation">Location</label>
+            <select id="locationFilter" onchange="applyFilters()">
+              <option value="" id="all1">All</option>
+              <option id="tashkent" value="Tashkent">Tashkent</option>
+              <option id="andijan" value="Andijan">Andijan</option>
+              <option id="bukhara" value="Bukhara">Bukhara</option>
+              <option id="fergana" value="Fergana">Fergana</option>
+              <option id="jizzakh" value="Jizzakh">Jizzakh</option>
+              <option id="namangan" value="Namangan">Namangan</option>
+              <option id="navoi" value="Navoiy">Navoi</option>
+              <option id="kashkadarya" value="Qashqadaryo">Kashkadarya</option>
+              <option id="samarkand" value="Samarkand">Samarkand</option>
+              <option id="syrdarya" value="Syrdaryo">Syrdarya</option>
+              <option id="surkhandarya" value="Surxondaryo">
+                Surkhandarya
+              </option>
+              <option id="tashkentRegion" value="Tashkent region">
+                Tashkent region
+              </option>
+              <option id="khorezm" value="Khorezm">Khorezm</option>
+              <option id="karakalpakstan" value="Republic of Karakalpakstan">
+                Republic of Karakalpakstan
+              </option>
+            </select>
+          </div>
+        </div>
+        <button onclick="resetFilters()" id="resetFilters">
+          Reset filters
+        </button>
       </div>
       <div class="adoption__grid" id="adoptionGrid"></div>
     </section>
