@@ -1573,6 +1573,7 @@ nav {
 .pet-profile__container {
   padding-top: 1rem;
   text-align: center;
+  padding-bottom: 1.7rem;
 }
 
 .pet-profile__content {
