@@ -552,8 +552,11 @@ function displayPets(pets) {
 }
 
 function resetFilters() {
-  document.getElementById('speciesFilter').value = '';
-  document.getElementById('locationFilter').value = '';
+  const speciesFilter = document.getElementById('speciesFilter');
+  const locationFilter = document.getElementById('locationFilter');
+
+  if (speciesFilter) speciesFilter.value = '';
+  if (locationFilter) locationFilter.value = '';
   applyFilters();
 }
 
